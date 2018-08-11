@@ -1,8 +1,8 @@
-## kubler/musl
+## thehaven/musl
 
 Run this [musl libc][] image with:
 
-    docker run -it --rm --name lynx kubler/musl
+    docker run -it --rm --name lynx thehaven/musl
 
 [Last Build][packages]
 

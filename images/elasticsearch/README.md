@@ -1,8 +1,8 @@
-## kubler/elasticsearch
+## thehaven/elasticsearch
 
 Run this [Elasticsearch][] image with:
 
-    $ docker run -d --name elasticsearch-0 kubler/elasticsearch
+    $ docker run -d --name elasticsearch-0 thehaven/elasticsearch
 
 Note: Since Elastic 5.0 you will most likely need to modify sysctl's
 `vm.max_map_count` on the **host**.
@@ -16,7 +16,7 @@ Then [link][linking] to it from your client container:
 
 For example, we can use the busybox image and wget to query the elasticsearch container:
 
-    $ docker run --link elasticsearch-0:es -it --rm kubler/busybox /bin/sh
+    $ docker run --link elasticsearch-0:es -it --rm thehaven/busybox /bin/sh
     $ wget --quiet -O - "http://es:9200/"
     {
       "status" : 200,

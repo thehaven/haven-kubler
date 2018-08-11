@@ -1,4 +1,4 @@
-## kubler/openssl-musl
+## thehaven/openssl-musl
 
 Run this [Openssl][] image with:
 

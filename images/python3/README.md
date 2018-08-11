@@ -1,8 +1,8 @@
-## kubler/python3
+## thehaven/python3
 
 Run this [Python][] image with:
 
-    $ docker run -it --rm --name bash kubler/python3 python
+    $ docker run -it --rm --name bash thehaven/python3 python
 
 Comes with [Pip][].
 

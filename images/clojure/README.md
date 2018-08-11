@@ -1,8 +1,8 @@
-## kubler/clojure
+## thehaven/clojure
 
 Run this [Clojure][] image with:
 
-    $ docker run -it --rm --name clojure kubler/clojure java clojure.main
+    $ docker run -it --rm --name clojure thehaven/clojure java clojure.main
 
 [Boot][] and/or [Leiningen][] will install on first execution unless you mount the respective local
 cache directories.
@@ -32,7 +32,7 @@ services:
 The referenced `docker/Dockerfile`:
 
 ```
-FROM kubler/clojure
+FROM thehaven/clojure
 ```
 
 The [ONBUILD][] instructions are triggered by setting the `JAVA_UID` and `JAVA_GID` Docker build args and will

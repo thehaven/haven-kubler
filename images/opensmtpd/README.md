@@ -1,8 +1,8 @@
-## kubler/opensmtpd
+## thehaven/opensmtpd
 
 Run this [OpenSMTPD][] image with:
 
-    $ docker run -d -v /my.conf:/etc/opensmptd/smptd.conf -p 25:25 --name mail_relay kubler/opensmtpd
+    $ docker run -d -v /my.conf:/etc/opensmptd/smptd.conf -p 25:25 --name mail_relay thehaven/opensmtpd
 
 Basic install, primarily intended as mail relay for other containers.
 

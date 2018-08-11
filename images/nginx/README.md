@@ -1,8 +1,8 @@
-## kubler/nginx
+## thehaven/nginx
 
 Run this [Nginx][] image with:
 
-    $ docker run -d --name nginx-0 -v /var/www/nginx-0/htdocs:/var/www/localhost -p 80:80 -p 443:443 kubler/nginx
+    $ docker run -d --name nginx-0 -v /var/www/nginx-0/htdocs:/var/www/localhost -p 80:80 -p 443:443 thehaven/nginx
 
 ##### Site config
 
@@ -17,7 +17,7 @@ For dev setups you may specify the `UID/GID` of the Nginx worker process:
     $ docker run -d --name nginx-0 -v /var/www/nginx-0/htdocs:/var/www/localhost -p 80:80  -p 443:443 \
         -e NGINX_UID=$(id -u $(whoami)) \
         -e NGINX_GID=$(id -g $(whoami)) \
-        kubler/nginx
+        thehaven/nginx
 
 ##### SSL options
 
@@ -34,7 +34,7 @@ To enable [forward-secrecy][] set `NGINX_FORWARD_SECRECY` on container start:
     $ docker run -d --name nginx-0 -v /var/www/nginx-0/htdocs:/var/www/localhost -p 80:80  -p 443:443 \
         -v /host/data/certs:/etc/nginx/certs
         -e NGINX_FORWARD_SECRECY=true
-        kubler/nginx
+        thehaven/nginx
 
 ##### Templating Nginx config files
 
@@ -42,7 +42,7 @@ The Nginx startup script also provides a simple templating mechanism for site co
 
     $ docker run -d --name nginx-0 -v /var/www/nginx-0/htdocs:/var/www/localhost -p 80:80 -p 443:443 \
         -e NG_TMPL_MY_VAR=my_value \
-        kubler/nginx
+        thehaven/nginx
 
 This would replace the marker named `##_NG_TMPL_MY_VAR_##` with the provided value in all `.conf` files in 
 `/etc/nginx/sites-enabled`. Template variable names must start with `NG_TMPL_`.
@@ -55,7 +55,7 @@ requests:
 $ docker run -d --name nginx-0 -v /var/www/nginx-0/htdocs:/var/www/localhost \
         -e "VIRTUAL_HOST=foo.net"
         -e "NGINX_REAL_IP_FROM=172.18.0.0/16" \
-        kubler/nginx 
+        thehaven/nginx 
 
 See [real_ip_from][] docs for details.
 
