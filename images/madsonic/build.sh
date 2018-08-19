@@ -8,7 +8,7 @@
 #     thehaven.sh build -i thehaven/madsonic
 # ..and then search the Portage database:
 #     eix <search-string>
-_packages="media-sound/madsonic-bin"
+_packages="=media-sound/madsonic-bin-6.3.9840"
 # Install a standard system directory layout at ${_EMERGE_ROOT}, optional, default: false
 #BOB_INSTALL_BASELAYOUT=true
 
@@ -42,5 +42,6 @@ configure_rootfs_build()
 # This hook is called just before packaging the root fs tar ball, ideal for any post-install tasks, clean up, etc
 finish_rootfs_build()
 {
-    :
+    mkdir -p /config /media/{default,uploaded,podcast,playlist/{import,export,backup}}
+    chown -Rf madsonic:madsonic /config /media
 }
