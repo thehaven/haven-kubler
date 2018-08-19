@@ -4,7 +4,7 @@ Run this [Gulp][] and [libsass][] image with:
 
     $ docker run -it --rm -v /some/project:/some/project thehaven/gulp-sass
 
-The image comes with a `nodejs` user for unprivileged container usage. See [kubler/nodejs](../nodejs/README.md) for
+The image comes with a `nodejs` user for unprivileged container usage. See [thehaven/nodejs](../nodejs/README.md) for
 details. Docker-Compose example:
 
 ```

@@ -30,7 +30,7 @@ configure_rootfs_build()
     mkdir -p "${_EMERGE_ROOT}"/lib64
     ln -sr "${_EMERGE_ROOT}"/lib64 "${_EMERGE_ROOT}"/lib
     # as we broke the normal builder chain, recreate the docs for the busybox image
-    init_docs 'kubler/busybox'
+    init_docs 'thehaven/busybox'
     update_use 'sys-apps/busybox' '+static +make-symlinks'
     generate_doc_package_installed 'sys-apps/busybox'
     # fake portage install

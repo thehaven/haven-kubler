@@ -5,8 +5,8 @@ _packages="sys-kernel/linux-headers sys-devel/make sys-devel/binutils sys-devel/
 _keep_headers=true
 _keep_static_libs=true
 # include glibc headers and static files from glibc image
-_headers_from=kubler/glibc
-_static_libs_from=kubler/glibc
+_headers_from=thehaven/glibc
+_static_libs_from=thehaven/glibc
 
 #
 # This hook is called just before starting the build of the root fs

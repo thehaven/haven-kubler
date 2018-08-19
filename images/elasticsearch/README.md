@@ -8,7 +8,7 @@ Note: Since Elastic 5.0 you will most likely need to modify sysctl's
 `vm.max_map_count` on the **host**.
 See https://www.elastic.co/guide/en/elasticsearch/reference/5.0/vm-max-map-count.html
 
-Last Elastic 2.x version: `kubler/elasticsearch:20161020`
+Last Elastic 2.x version: `thehaven/elasticsearch:20161020`
 
 Then [link][linking] to it from your client container:
 
