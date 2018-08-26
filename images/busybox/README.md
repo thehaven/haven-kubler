@@ -1,8 +1,8 @@
-## thehaven/busybox
+## haven/busybox
 
 Run this [BusyBox][] image with:
 
-    $ docker run -it --rm thehaven/busybox
+    $ docker run -it --rm haven/busybox
 
 [Last Build][packages]
 

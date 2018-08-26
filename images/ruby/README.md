@@ -1,12 +1,12 @@
-## thehaven/ruby
+## haven/ruby
 
 Run this [Ruby][] image with:
 
-    $ docker run -it --rm thehaven/ruby
+    $ docker run -it --rm haven/ruby
 
 Comes with ruby 2.x and gems.
 
-If you need to compile native ruby extensions use thehaven/ruby-gcc.
+If you need to compile native ruby extensions use haven/ruby-gcc.
 
 [Last Build][packages]
 

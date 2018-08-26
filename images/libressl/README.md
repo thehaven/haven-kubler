@@ -1,8 +1,8 @@
-## thehaven/libressl
+## haven/libressl
 
 Run this [LibreSSL][] image with:
 
-    docker run -it --rm --name lynx thehaven/libressl
+    docker run -it --rm --name lynx haven/libressl
 
 [Last Build][packages]
 

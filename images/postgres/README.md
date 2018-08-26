@@ -1,8 +1,8 @@
-## thehaven/postgres
+## haven/postgres
 
 Run this [PostgreSQL][] image with:
 
-    $ docker run -d --name db-0 -v /data/db/db-0:/var/lib/postgresql/data thehaven/postgres
+    $ docker run -d --name db-0 -v /data/db/db-0:/var/lib/postgresql/data haven/postgres
 
 Then [link][linking] to it from your client container:
 
@@ -15,7 +15,7 @@ Admin credentials for the new database can be set via env:
         -e POSTGRES_PASSWORD=secret
         -e POSTGRES_USER=admin \
         -e POSTGRES_DB=mydb \
-        thehaven/postgres
+        haven/postgres
 
 Defaults if omitted:
 
@@ -28,7 +28,7 @@ To enable backups set `BACKUP_CRON_SCHEDULE` to a standard cron expression, i.e.
     $ docker run -d --name db-0 \
         -e BACKUP_CRON_SCHEDULE='0 5 * * *' \
         -v /host_backups/db-0:/backup \
-        thehaven/postgres
+        haven/postgres
 
 [Last Build][packages]
 

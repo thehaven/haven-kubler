@@ -1,5 +1,5 @@
-## thehaven
+## haven
 
 <mission statement goes here>
 
-Maintainer: Simon Alman <haven@thehavennet.org.uk>
+Maintainer: Simon Alman <haven@havennet.org.uk>

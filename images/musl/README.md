@@ -1,8 +1,8 @@
-## thehaven/musl
+## haven/musl
 
 Run this [musl libc][] image with:
 
-    docker run -it --rm --name lynx thehaven/musl
+    docker run -it --rm --name lynx haven/musl
 
 [Last Build][packages]
 

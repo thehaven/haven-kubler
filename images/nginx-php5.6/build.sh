@@ -6,7 +6,7 @@ _php_target="php${_php_slot/\./-}"
 _packages="dev-lang/php:${_php_slot} dev-php/xdebug dev-php/pecl-memcache dev-php/pecl-redis dev-php/pecl-apcu pecl-imagick"
 _php_timezone="${BOB_TIMEZONE:-UTC}"
 _adminer_version="4.6.2"
-#_iconv_from=thehaven/glibc
+#_iconv_from=haven/glibc
 
 configure_bob()
 {
@@ -40,7 +40,7 @@ configure_rootfs_build()
 #
 finish_rootfs_build()
 {
-    # set php iconv default to UTF-8, if you need full iconv functionality set _iconv_from=thehaven/glibc above
+    # set php iconv default to UTF-8, if you need full iconv functionality set _iconv_from=haven/glibc above
     local fpm_php_ini
     fpm_php_ini="${_EMERGE_ROOT}"/etc/php/fpm-php"${_php_slot}"/php.ini
     sed -i 's/^;iconv.input_encoding = ISO-8859-1/iconv.input_encoding = UTF-8/g' "${fpm_php_ini}"

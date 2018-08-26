@@ -1,8 +1,8 @@
-## thehaven/mysql
+## haven/mysql
 
 Run this [Mysql][] image with:
 
-    $ docker run -d --name db-0 -v /data/db/db-0:/var/lib/mysql/ thehaven/mysql
+    $ docker run -d --name db-0 -v /data/db/db-0:/var/lib/mysql/ haven/mysql
 
 Then [link][linking] to it from your client container:
 
@@ -10,7 +10,7 @@ Then [link][linking] to it from your client container:
 
 Alternatively you can use the mysql server socket directly:
 
-    $ docker run --it --rm --volumes-from db-0 thehaven/mysql /bin/bash
+    $ docker run --it --rm --volumes-from db-0 haven/mysql /bin/bash
 
 The container will check /var/lib/mysql/ on startup, if empty it will install a default database.
 Admin credentials for the new database can be set via env:
@@ -19,7 +19,7 @@ Admin credentials for the new database can be set via env:
         -e MYSQL_ROOT_PW=secret
         -e MYSQL_ADMIN_USER=admin \
         -e MYSQL_ADMIN_PW=secret \
-        thehaven/mysql
+        haven/mysql
 
 Defaults if omitted:
 
@@ -32,7 +32,7 @@ To enable backups set `BACKUP_CRON_SCHEDULE` to a standard cron expression, i.e.
     $ docker run -d --name db-0 \
         -e BACKUP_CRON_SCHEDULE='0 5 * * *' \
         -v /host_backups/db-0:/backup \
-        thehaven/mysql
+        haven/mysql
 
 Backup related ENV and their defaults:
 

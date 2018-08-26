@@ -1,8 +1,8 @@
-## thehaven/riemann-dash
+## haven/riemann-dash
 
 Run this [riemann-dash][] image with:
 
-    $ docker run -d -p 4567:4567 --name riemann-dash-0 thehaven/riemann-dash
+    $ docker run -d -p 4567:4567 --name riemann-dash-0 haven/riemann-dash
 
 Default config location: 
 

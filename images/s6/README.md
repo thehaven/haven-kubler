@@ -1,8 +1,8 @@
-## thehaven/s6
+## haven/s6
 
 Run this [s6][] image with:
 
-    $ docker run -d --name s6 thehaven/s6
+    $ docker run -d --name s6 haven/s6
 
 Provides a generic filesystem watcher service that can be configured via env. Disabled per default.
 

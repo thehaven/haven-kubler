@@ -1,8 +1,8 @@
-## thehaven/glibc
+## haven/glibc
 
 Run this [Glibc][] image with:
 
-    $ docker run -it --rm thehaven/glibc
+    $ docker run -it --rm haven/glibc
 
 [Last Build][packages]
 

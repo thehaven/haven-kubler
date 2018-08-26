@@ -1,4 +1,4 @@
-## thehaven/gcc
+## haven/gcc
 
 GCC with gmake and binutils.
 

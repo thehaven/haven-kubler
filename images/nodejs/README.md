@@ -1,8 +1,8 @@
-## thehaven/nodejs
+## haven/nodejs
 
 Run this [nodejs][] image with:
 
-    $ docker run -it --rm thehaven/nodejs
+    $ docker run -it --rm haven/nodejs
 
 Includes [npm][] and [yarn][]
 
@@ -29,7 +29,7 @@ services:
 The referenced Dockerfile:
 
 ```
-FROM thehaven/nodejs
+FROM haven/nodejs
 ```
 
 The [ONBUILD][] instructions are triggered by setting the `NODEJS_UID` and `NODEJS_GID` docker build args

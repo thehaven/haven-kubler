@@ -1,8 +1,8 @@
-## thehaven/plantuml
+## haven/plantuml
 
 Run this [PlantUML][] image with:
 
-    $ docker run -d --name plantuml -p "8080:8080" thehaven/plantuml
+    $ docker run -d --name plantuml -p "8080:8080" haven/plantuml
 
 Webinterface: http://127.0.0.1:8080/
 
@@ -10,7 +10,7 @@ PlantUML currently does not support running with `/` context, the image redirect
 
 In conjunction with the [nginx-proxy][] container use:
 
-    $ docker run -d --name plantuml -e VIRTUAL_HOST=plantuml.void -e VIRTUAL_PORT=8080 thehaven/plantuml
+    $ docker run -d --name plantuml -e VIRTUAL_HOST=plantuml.void -e VIRTUAL_PORT=8080 haven/plantuml
 
 [Last Build][packages]
 

@@ -1,7 +1,11 @@
-### haven/madsonic:20180729
+### haven/jdk-icedtea:20180729
 
-Built: Wed 22 Aug 10:06:06 BST 2018
-Image Size: 437MB
+Built: Wed 22 Aug 10:03:35 BST 2018
+Image Size: 319MB
+
+
+
+
 
 
 
@@ -13,13 +17,6 @@ Image Size: 437MB
 #### Installed
 Package | USE Flags
 --------|----------
-media-sound/lame-3.100-r1 | `frontend -debug -mp3rtp -sndfile -static-libs`
-media-sound/madsonic-bin-6.3.9840 | `ffmpeg lame -systemd -xmp`
-media-video/ffmpeg-3.3.6 | `bzip2 encode gpl hardcoded-tables iconv mp3 network postproc threads zlib -`
-#### Inherited
-Package | USE Flags
---------|----------
-**FROM haven/jdk-icedtea** |
 app-arch/bzip2-1.0.6-r9 | `-static -static-libs`
 app-eselect/eselect-fontconfig-1.1 | ``
 app-eselect/eselect-java-0.4.0 | ``
@@ -38,6 +35,9 @@ media-libs/libjpeg-turbo-1.5.3-r2 | `-java -static-libs`
 sys-apps/baselayout-java-0.1.0 | ``
 sys-apps/util-linux-2.32-r4 | `cramfs nls readline suid unicode -build -caps -fdformat -kill -ncurses -pam -python (-selinux) -slang -static-libs -systemd {-test} -tty-helpers -udev`
 x11-misc/shared-mime-info-1.9 | `{-test}`
+#### Inherited
+Package | USE Flags
+--------|----------
 **FROM haven/gcc** |
 dev-libs/gmp-6.1.2 | `asm cxx -doc -pgo -static-libs`
 dev-libs/mpc-1.0.3 | `-static-libs`

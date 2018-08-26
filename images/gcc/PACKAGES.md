@@ -1,7 +1,11 @@
-### haven/madsonic:20180729
+### haven/gcc:20180729
 
-Built: Wed 22 Aug 10:06:06 BST 2018
-Image Size: 437MB
+Built: Wed 22 Aug 10:02:46 BST 2018
+Image Size: 196MB
+
+
+
+
 
 
 
@@ -13,32 +17,6 @@ Image Size: 437MB
 #### Installed
 Package | USE Flags
 --------|----------
-media-sound/lame-3.100-r1 | `frontend -debug -mp3rtp -sndfile -static-libs`
-media-sound/madsonic-bin-6.3.9840 | `ffmpeg lame -systemd -xmp`
-media-video/ffmpeg-3.3.6 | `bzip2 encode gpl hardcoded-tables iconv mp3 network postproc threads zlib -`
-#### Inherited
-Package | USE Flags
---------|----------
-**FROM haven/jdk-icedtea** |
-app-arch/bzip2-1.0.6-r9 | `-static -static-libs`
-app-eselect/eselect-fontconfig-1.1 | ``
-app-eselect/eselect-java-0.4.0 | ``
-dev-java/icedtea-bin-3.8.0 | `headless-awt -alsa (-big-endian) -cups -doc -examples -gtk (-multilib) -nsplugin -pulseaudio (-selinux) -source -webstart`
-dev-java/java-config-2.2.0-r4 | `{-test}`
-dev-libs/expat-2.2.5 | `unicode -examples -static-libs`
-dev-libs/glib-2.52.3 | `mime xattr -dbus -debug (-fam) (-selinux) -static-libs -systemtap {-test} -utils`
-dev-libs/libffi-3.2.1 | `-debug -pax`
-dev-libs/libpcre-8.41-r1 | `bzip2 cxx readline recursion-limit (unicode) zlib -jit -libedit -pcre16 -pcre32 -static-libs`
-dev-libs/libxml2-2.9.8 | `readline -debug -examples -icu -ipv6 -lzma -python -static-libs {-test}`
-media-fonts/liberation-fonts-2.00.1-r3 | `-`
-media-libs/fontconfig-2.12.6 | `-doc -static-libs`
-media-libs/freetype-2.9.1-r3 | `adobe-cff bindist bzip2 cleartype`
-media-libs/lcms-2.9 | `threads -doc -jpeg -static-libs {-test} -tiff`
-media-libs/libjpeg-turbo-1.5.3-r2 | `-java -static-libs`
-sys-apps/baselayout-java-0.1.0 | ``
-sys-apps/util-linux-2.32-r4 | `cramfs nls readline suid unicode -build -caps -fdformat -kill -ncurses -pam -python (-selinux) -slang -static-libs -systemd {-test} -tty-helpers -udev`
-x11-misc/shared-mime-info-1.9 | `{-test}`
-**FROM haven/gcc** |
 dev-libs/gmp-6.1.2 | `asm cxx -doc -pgo -static-libs`
 dev-libs/mpc-1.0.3 | `-static-libs`
 dev-libs/mpfr-3.1.6 | `-static-libs`
@@ -48,6 +26,9 @@ sys-devel/gcc-7.3.0-r3 | `cxx hardened nls nptl openmp (pie) (ssp) vtv (-altivec
 sys-devel/gcc-config-1.8-r1 | ``
 sys-devel/make-4.2.1-r3 | `nls -guile -static`
 sys-kernel/linux-headers-4.13 | `-headers-only`
+#### Inherited
+Package | USE Flags
+--------|----------
 **FROM haven/bash** |
 app-admin/eselect-1.4.12 | `-doc -emacs -vim-syntax`
 app-portage/portage-utils-0.64 | `nls -static`
@@ -79,8 +60,8 @@ sys-libs/timezone-data-2018d | `nls -leaps`
 **FROM haven/busybox** |
 sys-apps/busybox-1.29.0 | `make-symlinks static -debug -ipv6 -livecd -math -mdev -pam -savedconfig (-selinux) -sep-usr -syslog -systemd`
 #### Purged
-- [x] Headers
-- [x] Static Libs
+- [ ] Headers
+- [ ] Static Libs
 
 #### Included
 - [x] Headers from haven/glibc

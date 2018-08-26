@@ -1,8 +1,8 @@
-## thehaven/jre-oracle
+## haven/jre-oracle
 
 Run this [Java][] image with:
 
-    $ docker run -it --rm thehaven/jre-oracle
+    $ docker run -it --rm haven/jre-oracle
 
 The image comes with a `java` user for unprivileged container usage. To ease development pains
 you can use the provided [ONBUILD][] instructions. Docker Compose example for a Gradle project:
@@ -29,7 +29,7 @@ services:
 The referenced Dockerfile:
 
 ```
-FROM thehaven/jre-oracle
+FROM haven/jre-oracle
 ```
 
 The [ONBUILD][] instructions are triggered by setting `JAVA_UID` and `JAVA_GID` docker build args and will

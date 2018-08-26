@@ -4,7 +4,7 @@
 _packages="app-emulation/docker-gen"
 _keep_headers=true
 # need curl headers for fluentd gem installs
-_headers_from=thehaven/bash
+_headers_from=haven/bash
 
 #
 # This hook is called just before starting the build of the root fs
