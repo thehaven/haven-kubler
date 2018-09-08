@@ -9,5 +9,5 @@ EXPOSE 25/tcp
 EXPOSE 465/tcp
 EXPOSE 587/tcp
 
-USER exim
+USER mail
 CMD ["/usr/sbin/exim -bdf -q15m"]
