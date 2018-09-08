@@ -1,9 +1,7 @@
 ### haven/bash:20180729
 
-Built: Sat  8 Sep 15:29:15 BST 2018
+Built: Tue 28 Aug 19:52:35 BST 2018
 Image Size: 33.9MB
-
-
 
 
 
