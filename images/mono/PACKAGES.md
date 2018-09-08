@@ -1,7 +1,8 @@
 ### haven/mono:20180729
 
-Built: Sun 26 Aug 23:06:37 BST 2018
-Image Size: 502MB
+Built: Tue 28 Aug 13:29:36 BST 2018
+Image Size: 340MB
+
 
 #### Installed
 Package | USE Flags
