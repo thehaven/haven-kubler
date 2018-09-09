@@ -9,5 +9,7 @@ EXPOSE 25/tcp
 EXPOSE 465/tcp
 EXPOSE 587/tcp
 
+COPY ./exim.conf /etc/exim
+
 USER mail
 CMD ["/usr/sbin/exim -bdf -q15m"]

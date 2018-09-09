@@ -1,9 +1,7 @@
 ### haven/exim:20180729
 
-Built: Sat  8 Sep 15:29:31 BST 2018
-Image Size: 318MB
-
-
+Built: Sat  8 Sep 19:21:20 BST 2018
+Image Size: 482MB
 
 #### Installed
 Package | USE Flags
