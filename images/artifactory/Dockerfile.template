@@ -1,0 +1,25 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer ${MAINTAINER}
+
+ADD rootfs.tar /
+ADD files/artifactory.jar /root
+RUN sh -c '/bin/echo -e "2\n/opt/artifactory\nyes\nexit\n" | java -jar /root/artifactory.jar'
+
+ENV ARTIFACTORY_HOME="/opt/artifactory"
+ENV ARTIFACTORY_USER="artifactory"
+ENV START_LOCAL_REPLICATOR="true"
+ENV TOMCAT_HOME="/opt/artifactory/tomcat"
+ENV ARTIFACTORY_PID="/opt/artifactory/run/artifactory.pid"
+ENV CATALINA_BASE="/opt/artifactory/tomcat"
+ENV CATALINA_HOME="/opt/artifactory/tomcat"
+ENV CATALINA_TMPDIR="/opt/artifactory/tomcat/temp"
+ENV JRE_HOME="/usr"
+ENV CLASSPATH="/opt/artifactory/tomcat/bin/bootstrap.jar:/opt/artifactory/tomcat/bin/tomcat-juli.jar"
+ENV CATALINA_PID="/opt/artifactory/run/artifactory.pid"
+ENV JAVA_OPTIONS="-server -Xms512m -Xmx4g -Xss256k -XX:PermSize=128m -XX:MaxPermSize=256m -XX:+UseG1GC"
+
+VOLUME /opt/artifactory/data /opt/artifactory/etc /opt/artifactory/logs
+EXPOSE 8081
+
+USER artifactory
+CMD ["/opt/artifactory/tomcat/bin/catalina.sh", "start"]
