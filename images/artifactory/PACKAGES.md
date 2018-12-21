@@ -1,7 +1,13 @@
 ### haven/artifactory:20181220
 
-Built: Thu 20 Dec 18:50:26 GMT 2018
+Built: Thu 20 Dec 22:23:46 GMT 2018
 Image Size: 548MB
+
+
+
+
+
+
 
 #### Installed
 Package | USE Flags
