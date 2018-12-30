@@ -8,7 +8,8 @@ _packages="dev-lang/mono"
 #
 configure_rootfs_build()
 {
-    update_use 'x11-libs/cairo' +X 
+    update_use 'x11-libs/cairo' +X
+    :
 }
 
 #
