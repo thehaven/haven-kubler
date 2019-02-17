@@ -1,8 +1,8 @@
-## haven/bash
+## kubler/bash
 
 Run this [Bash][] image with:
 
-    $ docker run -it --rm haven/bash
+    $ docker run -it --rm kubler/bash
 
 Includes curl.
 

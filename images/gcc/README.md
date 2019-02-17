@@ -1,4 +1,4 @@
-## haven/gcc
+## kubler/gcc
 
 GCC with gmake and binutils.
 

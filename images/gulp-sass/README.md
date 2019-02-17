@@ -1,10 +1,10 @@
-## haven/gulp-sass
+## kubler/gulp-sass
 
 Run this [Gulp][] and [libsass][] image with:
 
-    $ docker run -it --rm -v /some/project:/some/project haven/gulp-sass
+    $ docker run -it --rm -v /some/project:/some/project kubler/gulp-sass
 
-The image comes with a `nodejs` user for unprivileged container usage. See [haven/nodejs](../nodejs/README.md) for
+The image comes with a `nodejs` user for unprivileged container usage. See [kubler/nodejs](../nodejs/README.md) for
 details. Docker-Compose example:
 
 ```
@@ -30,7 +30,7 @@ services:
 The referenced Dockerfile just points to the image:
 
 ```
-FROM haven/gulp-sass
+FROM kubler/gulp-sass
 ```
 
 Note: The example above expects the environment variables `UID` and `GID`, on Bash `UID` is an internal

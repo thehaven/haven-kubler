@@ -1,4 +1,4 @@
-## haven/cadvisor
+## kubler/cadvisor
 
 Run this [cadvisor][] image with:
 
@@ -10,7 +10,7 @@ Run this [cadvisor][] image with:
     --publish="8080:8080" \
     --detach=true \
     --name=cadvisor \
-    haven/cadvisor:latest
+    kubler/cadvisor:latest
 
 Web interface:
 

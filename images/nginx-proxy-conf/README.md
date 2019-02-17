@@ -1,4 +1,4 @@
-## haven/nginx-proxy-conf
+## kubler/nginx-proxy-conf
 
 This is pretty much a copy of Jason Wilder's [jwilder-proxy][nginx-proxy] project. See the upstream documentation for
 usage and configuration options. Docker Compose example:
@@ -7,7 +7,7 @@ usage and configuration options. Docker Compose example:
 version: '2.3'
 services:
   nginx:
-    image: haven/nginx
+    image: kubler/nginx
     restart: always
     environment:
      - "NGINX_RELOAD_ON_CONTAINER_SIGHUP=true"
@@ -19,7 +19,7 @@ services:
      - "443:443"
 
   conf:
-    image: haven/nginx-proxy-conf
+    image: kubler/nginx-proxy-conf
     restart: always
     environment:
       - "CERT_DEFAULT_FALLBACK=true"
@@ -39,7 +39,7 @@ The image works well with the [letsencryt-companion][] image to provide automati
 version: '2.3'
 services:
   nginx:
-    image: haven/nginx
+    image: kubler/nginx
     restart: always
     labels:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy"
@@ -56,7 +56,7 @@ services:
       - "443:443"
 
   conf:
-    image: haven/nginx-proxy-conf
+    image: kubler/nginx-proxy-conf
     restart: always
     labels:
       - "com.github.jrcs.letsencrypt_nginx_proxy_companion.docker_gen"

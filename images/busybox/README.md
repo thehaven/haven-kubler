@@ -1,8 +1,8 @@
-## haven/busybox
+## kubler/busybox
 
 Run this [BusyBox][] image with:
 
-    $ docker run -it --rm haven/busybox
+    $ docker run -it --rm kubler/busybox
 
 [Last Build][packages]
 

@@ -8,7 +8,7 @@ _packages=""
 #
 configure_rootfs_build()
 {
-    init_docs "haven/riemann"
+    init_docs "kubler/riemann"
 }
 
 #

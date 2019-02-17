@@ -1,29 +1,7 @@
-### haven/busybox:20180729
+### kubler/busybox:20181130
 
-Built: Sun  9 Sep 10:16:49 BST 2018
+Built: Fri Nov 30 17:02:50 CET 2018
 Image Size: 1.2MB
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #### Installed
 Package | USE Flags

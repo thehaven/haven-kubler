@@ -1,8 +1,8 @@
-## haven/jdk-icedtea
+## kubler/jdk-icedtea
 
 Run this [Java][] image with:
 
-    $ docker run -it --rm haven/jdk-icedtea
+    $ docker run -it --rm kubler/jdk-icedtea
 
 The image comes with a `java` user for unprivileged container usage. To ease development pains
 you can use the provided [ONBUILD][] instructions. Docker Compose example for a Gradle project:
@@ -29,7 +29,7 @@ services:
 The referenced `docker/Dockerfile`:
 
 ```
-FROM haven/jdk-icedtea
+FROM kubler/jdk-icedtea
 ```
 
 The [ONBUILD][] instructions are triggered by setting the `JAVA_UID` and `JAVA_GID` Docker build args and will
