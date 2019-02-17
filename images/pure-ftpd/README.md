@@ -1,4 +1,4 @@
-## kubler/pure-ftpd
+## haven/pure-ftpd
 
 Run this [pure-ftpd][] image with:
 
@@ -7,7 +7,7 @@ Run this [pure-ftpd][] image with:
         -v /some/path/pureftpd/ssl:/etc/ssl/private \
         -v /some/path/pureftpd/passwd:/etc/pure-ftpd \
         -v /some/path/mydata:/var/ftp-data \
-        kubler/pure-ftpd
+        haven/pure-ftpd
 
 Default config only allows explicit FTP over TLS. Unless you provide your own cert a self signed one is
 created on container start. All users are chrooted to their configured home dir.
@@ -28,7 +28,7 @@ A more real-life `docker-compose.yml`:
 version: '2'
 services:
   pureftpd:
-    image: kubler/pure-ftpd
+    image: haven/pure-ftpd
     environment:
       - FTPD_VIRT_UID
       - FTPD_VIRT_GID

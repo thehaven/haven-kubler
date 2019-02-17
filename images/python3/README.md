@@ -1,8 +1,8 @@
-## kubler/python3
+## haven/python3
 
 Run this [Python][] image with:
 
-    $ docker run -it --rm --name bash kubler/python3 python
+    $ docker run -it --rm --name bash haven/python3 python
 
 Comes with [Pip][].
 
@@ -29,7 +29,7 @@ services:
 The referenced Dockerfile:
 
 ```
-FROM kubler/python3
+FROM haven/python3
 ```
 
 The [ONBUILD][] instructions are triggered by setting the `PYTHON_UID` and `PYTHON_GID` docker build args

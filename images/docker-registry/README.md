@@ -1,11 +1,11 @@
-## kubler/docker-registry
+## haven/docker-registry
 
 Run this [docker-registry][] 2.x image with:
 
     $ mkdir /var/lib/docker-registry
     $ docker run -d --name docker-registry \
        -v /var/lib/docker-registry:/tmp/registry \
-       -p 5000:5000 kubler/docker-registry
+       -p 5000:5000 haven/docker-registry
 
 Assuming the [nginx-proxy][] container is running, you can also start the registry with VIRTUAL_HOST and VIRTUAL_PORT ENV set:
 
@@ -13,7 +13,7 @@ Assuming the [nginx-proxy][] container is running, you can also start the regist
        -e VIRTUAL_HOST=docker.local \
        -e VIRTUAL_PORT=5000 \
        -v /var/lib/docker-registry:/tmp/registry \
-       kubler/docker-registry
+       haven/docker-registry
 
 When using a self signed CA for the proxy you need to either pass `--insecure-registry docker.local` to your docker daemon
 or copy the CA to `/etc/docker/certs.d/docker.local/ca.crt` on each box that wants to use the registry.

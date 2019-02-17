@@ -9,7 +9,7 @@ _clojure_version=1.9.0
 #
 configure_rootfs_build()
 {
-    init_docs "kubler/clojure"
+    init_docs "haven/clojure"
 }
 
 #

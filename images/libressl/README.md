@@ -1,8 +1,8 @@
-## kubler/libressl
+## haven/libressl
 
 Run this [LibreSSL][] image with:
 
-    docker run -it --rm --name lynx kubler/libressl
+    docker run -it --rm --name lynx haven/libressl
 
 [Last Build][packages]
 

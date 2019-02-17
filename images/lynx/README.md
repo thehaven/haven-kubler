@@ -1,8 +1,8 @@
-## kubler/lynx
+## haven/lynx
 
 Run this [lynx][] image with:
 
-    docker run -it --rm --name lynx kubler/lynx https://github.com/edannenberg/kubler
+    docker run -it --rm --name lynx haven/lynx https://github.com/edannenberg/kubler
 
 [Last Build][packages]
 

@@ -1,4 +1,4 @@
-## kubler/log-collector
+## haven/log-collector
 
 This image collects logs from all running containers on the host and forwards them to an elasticsearch instance.
 [Fluentd][] is configured dynamically by using [docker-gen][].
@@ -10,7 +10,7 @@ Run this [Fluentd][] image with:
     $ docker run -d -v /var/run/docker.sock:/var/run/docker.sock \
         -v /var/lib/docker/containers:/var/lib/docker/containers \
         --link log_elasticsearch:es1 \
-        --name log_collector kubler/log-collector
+        --name log_collector haven/log-collector
 
 [Last Build][packages]
 

@@ -1,8 +1,8 @@
-## kubler/nodejs
+## haven/nodejs
 
 Run this [nodejs][] image with:
 
-    $ docker run -it --rm kubler/nodejs
+    $ docker run -it --rm haven/nodejs
 
 Includes [npm][] and [yarn][]
 
@@ -29,7 +29,7 @@ services:
 The referenced Dockerfile:
 
 ```
-FROM kubler/nodejs
+FROM haven/nodejs
 ```
 
 The [ONBUILD][] instructions are triggered by setting the `NODEJS_UID` and `NODEJS_GID` docker build args
