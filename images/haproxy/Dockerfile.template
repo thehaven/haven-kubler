@@ -1,0 +1,15 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer ${MAINTAINER}
+
+ADD rootfs.tar /
+
+VOLUME ["/etc/haproxy","/etc/ssl"]
+EXPOSE 80:80/tcp
+EXPOSE 443:443/tcp
+EXPOSE 8080
+EXPOSE 8089
+EXPOSE 8443
+
+USER haproxy
+HEALTHCHECK CMD curl -k --fail https://localhost:443/ || exit 1
+CMD ["/usr/sbin/haproxy", "-Ws", "-f /etc/haproxy/haproxy.cfg", "-p /run/haproxy.pid"]
