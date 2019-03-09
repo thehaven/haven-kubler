@@ -6,10 +6,8 @@ ADD rootfs.tar /
 VOLUME ["/etc/haproxy","/etc/ssl"]
 EXPOSE 80:80/tcp
 EXPOSE 443:443/tcp
-EXPOSE 8080
-EXPOSE 8089
-EXPOSE 8443
+RUN mkdir /run && chmod 777 /tmp /run && chown haproxy:haproxy /tmp /run
 
-USER haproxy
-HEALTHCHECK CMD curl -k --fail https://localhost:443/ || exit 1
-CMD ["/usr/sbin/haproxy", "-Ws", "-f /etc/haproxy/haproxy.cfg", "-p /run/haproxy.pid"]
+HEALTHCHECK CMD printf "GET / HTTP/1.1\n\n" > /dev/tcp/127.0.0.1/443
+#HEALTHCHECK CMD curl -k --fail https://localhost:443/ || exit 1
+CMD ["/usr/sbin/haproxy","-f","/etc/haproxy/haproxy.cfg"]
