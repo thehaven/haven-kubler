@@ -1,3 +1,8 @@
+### haven/artifactory:20190217
+
+Built: Sat  9 Mar 15:33:54 GMT 2019
+Image Size: 540MB
+
 ### haven/artifactory:20181220
 
 Built: Thu 20 Dec 22:23:46 GMT 2018

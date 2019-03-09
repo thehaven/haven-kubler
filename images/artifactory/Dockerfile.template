@@ -4,7 +4,6 @@ LABEL maintainer ${MAINTAINER}
 ADD rootfs.tar /
 ADD files/artifactory.jar /root
 RUN sh -c '/bin/echo -e "2\n/opt/artifactory\nyes\nexit\n" | java -jar /root/artifactory.jar'
-RUN sh -c 'rm -Rf /opt/artifactory/logs/catalina /opt/artifactory/tomcat/logs/catalina'
 
 ENV ARTIFACTORY_HOME="/opt/artifactory"
 ENV ARTIFACTORY_USER="artifactory"
@@ -18,6 +17,8 @@ ENV JRE_HOME="/usr"
 ENV CLASSPATH="/opt/artifactory/tomcat/bin/bootstrap.jar:/opt/artifactory/tomcat/bin/tomcat-juli.jar"
 ENV CATALINA_PID="/opt/artifactory/run/artifactory.pid"
 ENV JAVA_OPTIONS="-server -Xms512m -Xmx4g -Xss256k -XX:PermSize=128m -XX:MaxPermSize=256m -XX:+UseG1GC"
+
+RUN sh -c 'rm -Rf $TOMCAT_HOME/logs && ln -s $ARTIFACTORY_HOME/logs/catalina $TOMCAT_HOME/logs'
 
 VOLUME ["/opt/artifactory/data", "/opt/artifactory/etc", "/opt/artifactory/logs"]
 EXPOSE 8081
