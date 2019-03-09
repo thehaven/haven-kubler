@@ -3,3 +3,4 @@ Dockerfile
 rootfs.tar
 push.conf
 builder/*/PACKAGES.md
+images/*/PACKAGES.md
