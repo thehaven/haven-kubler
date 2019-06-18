@@ -6,7 +6,7 @@
 # This hook can be used to configure the build container itself, install packages, run any command, etc
 #
 configure_bob() {
-    mv /etc/portage/postsync.d/eix /tmp/ && emerge --sync
+    mv /etc/portage/postsync.d/eix /tmp/ && emerge dev-vcs/git && emerge --sync
     fix_portage_profile_symlink
     emerge --oneshot portage
     # migrate from files to directories at /etc/portage/package.*
@@ -19,9 +19,10 @@ configure_bob() {
     # install basics used by helper functions
     emerge app-portage/flaggie app-portage/eix app-portage/gentoolkit
     configure_eix && mv /tmp/eix /etc/portage/postsync.d/
+    mkdir -p /etc/portage/package.{accept_keywords,unmask,mask,use}
 
     touch /etc/portage/package.accept_keywords/flaggie
-    echo 'LANG="en_US.UTF-8"' > /etc/env.d/02locale
+    echo 'LANG="en_US.UTF-8 UTF-8"' > /etc/env.d/02locale
     env-update
     source /etc/profile
     # install default packages
