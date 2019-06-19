@@ -1,18 +1,14 @@
 #
 # Kubler phase 1 config, pick installed packages and/or customize the build
 #
-_packages="dev-java/oracle-jdk-bin"
+_packages="=dev-java/oracle-jdk-bin-1.8.0.202"
 
 #
 # This hook is called just before starting the build of the root fs
 #
 configure_rootfs_build()
 {
-    local java_url
-    java_url='http://download.oracle.com/otn-pub/java'
-    download_from_oracle "${java_url}"/jdk/8u192-b12/750e1c8617c5452694857ad95c3ee230/jdk-8u192-linux-x64.tar.gz
-    download_from_oracle "${java_url}"/jce/8/jce_policy-8.zip
-
+    download_from_oracle "https://github.com/frekele/oracle-java/releases/download/8u202-b08/jdk-8u202-linux-x64.tar.gz"
     update_use 'dev-java/oracle-jdk-bin' +headless-awt +jce +fontconfig
     # skip python and iced-tea
     provide_package dev-lang/python dev-java/icedtea-bin
