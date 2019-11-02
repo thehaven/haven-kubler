@@ -6,9 +6,11 @@
 # This hook can be used to configure the build container itself, install packages, run any command, etc
 #
 configure_bob() {
-    mv /etc/portage/postsync.d/eix /tmp/ && emerge dev-vcs/git && rm -Rf /var/sync/portage && emerge --sync && etc-update --automode -5
+    mv /etc/portage/postsync.d/eix /tmp/
     fix_portage_profile_symlink
-    emerge --oneshot portage
+    emerge dev-vcs/git && rm -Rf /var/sync/portage
+    emerge --sync
+    emerge -u portage git
     # migrate from files to directories at /etc/portage/package.*
     for i in /etc/portage/package.{accept_keywords,unmask,mask,use}; do
         [[ -f "${i}" ]] && { cat "${i}"; mv "${i}" "${i}".old; }

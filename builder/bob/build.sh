@@ -6,7 +6,7 @@
 # This hook can be used to configure the build container itself, install packages, run any command, etc
 #
 configure_bob() {
-    mv /etc/portage/postsync.d/eix /tmp/ && emerge dev-vcs/git && rm -Rf /var/sync/portage && emerge --sync && etc-update --automode -5
+    mv /etc/portage/postsync.d/eix /tmp/ && emerge dev-vcs/git && emerge --sync
     fix_portage_profile_symlink
     emerge --oneshot portage
     # install basics used by helper functions
@@ -29,9 +29,10 @@ configure_bob() {
     update_use 'dev-vcs/git' '-perl'
     update_use 'app-crypt/pinentry' '+ncurses'
     update_keywords 'app-portage/layman' '+~amd64'
+    update_keywords 'dev-libs/openssl' '+~amd64'
     update_keywords 'dev-python/ssl-fetch' '+~amd64'
     update_keywords 'app-admin/su-exec' '+~amd64'
-    emerge dev-vcs/git app-portage/layman app-misc/jq app-shells/bash-completion
+    emerge --usepkg n --getbinpkg n dev-vcs/git app-portage/layman app-misc/jq app-shells/bash-completion
     install_git_postsync_hooks
     configure_layman
     add_overlay kubler https://github.com/edannenberg/kubler-overlay.git
