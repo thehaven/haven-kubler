@@ -6,11 +6,13 @@
 # This hook can be used to configure the build container itself, install packages, run any command, etc
 #
 configure_bob() {
+    # Fix portage and sync latest:
     mv /etc/portage/postsync.d/eix /tmp/
     fix_portage_profile_symlink
     emerge dev-vcs/git && rm -Rf /var/sync/portage
     emerge --sync
-    emerge -u portage git
+    emerge -u portage dev-vcs/git
+
     # migrate from files to directories at /etc/portage/package.*
     for i in /etc/portage/package.{accept_keywords,unmask,mask,use}; do
         [[ -f "${i}" ]] && { cat "${i}"; mv "${i}" "${i}".old; }
@@ -30,15 +32,15 @@ configure_bob() {
     # install default packages
     # when using overlay1 docker storage the created hard link will trigger an error during openssh uninstall
     [[ -f /usr/"${_LIB}"/misc/ssh-keysign ]] && rm /usr/"${_LIB}"/misc/ssh-keysign
-    emerge -C net-misc/openssh
     update_use 'dev-libs/openssl' -bindist
-    emerge dev-libs/openssl
     update_use 'dev-vcs/git' '-perl'
     update_use 'app-crypt/pinentry' '+ncurses'
     update_use 'dev-libs/libpcre2' '+jit'
     update_keywords 'app-portage/layman' '+~amd64'
     update_keywords 'dev-python/ssl-fetch' '+~amd64'
     update_keywords 'app-admin/su-exec' '+~amd64'
+    emerge -C net-misc/openssh
+    emerge dev-libs/openssl
     emerge dev-vcs/git app-portage/layman app-misc/jq app-shells/bash-completion
     install_git_postsync_hooks
     configure_layman
