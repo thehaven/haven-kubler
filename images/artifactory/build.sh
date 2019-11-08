@@ -18,5 +18,6 @@ configure_rootfs_build()
 finish_rootfs_build()
 {
     rm -Rf /opt/artifactory/tomcat/logs/catalina
+    ln -s /opt/artifactory /opt/jfrog
     :
 }
