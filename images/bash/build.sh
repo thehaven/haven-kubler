@@ -10,6 +10,8 @@ configure_rootfs_build()
 {
     update_use 'sys-libs/ncurses' '+minimal'
     unprovide_package sys-libs/readline
+    # these use flags pull in gcc as runtime dep
+    update_use app-portage/portage-utils -qmanifest -qtegrity
 }
 
 #
@@ -17,5 +19,10 @@ configure_rootfs_build()
 #
 finish_rootfs_build()
 {
-    :
+    cp /etc/{passwd,group,inputrc} "${_EMERGE_ROOT}"/etc
+    # busybox's grep doesn't support --colour=auto args, add a check for the alias in bashrc
+    sed-or-die 'alias grep=' 'grep --colour=auto root /etc/group \&> /dev/null \&\& alias grep=' \
+        "${_EMERGE_ROOT}"/etc/bash/bashrc
+    # add ll global alias
+    echo "alias ll='ls -lah --group-directories-first'" >> "${_EMERGE_ROOT}"/etc/bash/bashrc  
 }
