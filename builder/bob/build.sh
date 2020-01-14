@@ -6,15 +6,12 @@
 # This hook can be used to configure the build container itself, install packages, run any command, etc
 #
 configure_bob() {
-    # Fix portage and sync latest:
-    mv /etc/portage/postsync.d/eix /tmp/
-    fix_portage_profile_symlink
-    emerge dev-vcs/git && rm -Rf /var/sync/portage
-    emerge --sync
-    emerge -u portage dev-vcs/git
 
     # install basics used by helper functions
-    emerge app-portage/flaggie app-portage/eix app-portage/gentoolkit
+    mv /etc/portage/postsync.d/eix /tmp/
+    fix_portage_profile_symlink
+   
+    emerge app-portage/flaggie app-portage/eix app-portage/gentoolkit sys-apps/portage
     configure_eix && mv /tmp/eix /etc/portage/postsync.d/
     mkdir -p /etc/portage/package.{accept_keywords,unmask,mask,use}
     touch /etc/portage/package.accept_keywords/flaggie
@@ -24,16 +21,25 @@ configure_bob() {
     echo 'LANG="en_US.UTF-8"' > /etc/env.d/02locale
     env-update
     source /etc/profile
-    # install default packages
-    # when using overlay1 docker storage the created hard link will trigger an error during openssh uninstall
-    [[ -f /usr/"${_LIB}"/misc/ssh-keysign ]] && rm /usr/"${_LIB}"/misc/ssh-keysign
+
+    # Update portage use/keywords etc:
     update_use 'dev-libs/openssl' -bindist
     update_use 'dev-vcs/git' '-perl'
     update_use 'app-crypt/pinentry' '+ncurses'
     update_keywords 'app-portage/layman' '+~amd64'
     update_keywords 'dev-libs/openssl' '+~amd64'
-    update_keywords 'dev-python/ssl-fetch' '+~amd64'
+    update_keywords 'dev-lang/perl' '+~amd64'
+    #update_keywords 'dev-python/ssl-fetch' '+~amd64'
     update_keywords 'app-admin/su-exec' '+~amd64'
+
+    # Fix portage and sync latest:
+    emerge dev-vcs/git && rm -Rf /var/sync/portage
+    emerge --sync
+    emerge -u sys-apps/portage app-portage/gentoolkit dev-vcs/git
+
+    # install default packages
+    # when using overlay1 docker storage the created hard link will trigger an error during openssh uninstall
+    [[ -f /usr/"${_LIB}"/misc/ssh-keysign ]] && rm /usr/"${_LIB}"/misc/ssh-keysign
     emerge -C net-misc/openssh
     emerge dev-libs/openssl
     emerge --usepkg n --getbinpkg n dev-vcs/git app-portage/layman app-misc/jq app-shells/bash-completion
