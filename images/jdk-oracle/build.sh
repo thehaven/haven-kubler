@@ -9,7 +9,7 @@ _packages="=dev-java/oracle-jdk-bin-1.8.0.202"
 configure_rootfs_build()
 {
     download_from_oracle "https://github.com/frekele/oracle-java/releases/download/8u202-b08/jdk-8u202-linux-x64.tar.gz"
-    update_use 'dev-java/oracle-jdk-bin' +headless-awt +jce +fontconfig
+    update_use 'dev-java/oracle-jdk-bin' '+headless-awt +gentoo-vm -alsa -cups'
     # skip python and iced-tea
     provide_package dev-lang/python dev-java/icedtea-bin
 
