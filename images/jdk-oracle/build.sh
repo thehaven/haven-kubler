@@ -1,7 +1,7 @@
 #
 # Kubler phase 1 config, pick installed packages and/or customize the build
 #
-_packages="=dev-java/oracle-jdk-bin-1.8.0.202"
+_packages="app-crypt/p11-kit app-eselect/eselect-java dev-java/java-config =dev-java/oracle-jdk-bin-1.8.0.202"
 
 #
 # This hook is called just before starting the build of the root fs
