@@ -37,7 +37,6 @@ configure_bob() {
     update_use 'app-crypt/pinentry' '+ncurses'
     update_use 'dev-libs/libpcre2' '+jit'
     update_keywords 'app-portage/layman' '+~amd64'
-    update_keywords 'dev-python/ssl-fetch' '+~amd64'
     update_keywords 'app-admin/su-exec' '+~amd64'
     emerge -C net-misc/openssh
     emerge dev-libs/openssl
