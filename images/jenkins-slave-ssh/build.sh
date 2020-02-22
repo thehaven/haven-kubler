@@ -21,7 +21,8 @@ finish_rootfs_build()
     JNLP_SLAVE_VERSION='3.36-2'
 
     # Add Jenkins user and Remoting jar:
-    useradd -m jenkins
+    groupadd -g 1000 jenkins
+    useradd -u 1000 -g 1000 -m jenkins
     curl --create-dirs -sSLo /usr/share/jenkins/slave.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${JNLP_REMOTING}/remoting-${JNLP_REMOTING}.jar
     chmod 755 /usr/share/jenkins
     chmod 644 /usr/share/jenkins/slave.jar

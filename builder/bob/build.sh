@@ -28,7 +28,6 @@ configure_bob() {
     update_use 'app-crypt/pinentry' '+ncurses'
     update_keywords 'app-portage/layman' '+~amd64'
     update_keywords 'dev-libs/openssl' '+~amd64'
-    update_keywords 'dev-lang/perl' '+~amd64'
     update_keywords 'app-admin/su-exec' '+~amd64'
 
     # Fix portage and sync latest:
