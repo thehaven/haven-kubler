@@ -7,15 +7,9 @@ configure_builder()
     update_keywords 'net-misc/openssh' '+~amd64'
     update_use 'dev-libs/openssl' '-bindist'
     update_use 'net-misc/openssh' '-bindist'
-    :
 }
 
 configure_rootfs_build()
-{
-    :
-}
-
-finish_rootfs_build()
 {
     JNLP_REMOTING='3.9'
     JNLP_SLAVE_VERSION='3.36-2'
@@ -35,6 +29,10 @@ finish_rootfs_build()
     mkdir -p /home/jenkins/.ssh && chmod 700 /home/jenkins/.ssh
     mkdir -p /home/jenkins/.jenkins
     chown jenkins:jenkins /home/jenkins/
-    mkdir /workdir; chown jenkins:jenkins /workdir
-    :
+    mkdir /workdir; chown jenkins:jenkins /workdir 
+}
+
+finish_rootfs_build()
+{
+   :
 }
