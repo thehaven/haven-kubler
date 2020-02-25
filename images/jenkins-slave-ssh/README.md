@@ -6,15 +6,15 @@ Simple jenkins docker executor to run ssh commands on remote systems.
 
 Run this [jenkins-slave-ssh][jenkins-slave-ssh] image with:
 ```
-docker run -d --name jenkins-slave-ssh haven/jenkins-slave-ssh:latest
+docker run --rm -it --name jenkins-slave-ssh haven/jenkins-slave-ssh:latest /bin/bash
 ```
 
 For persistence run [jenkins-slave-ssh][jenkins-slave-ssh] image with:
 ```bash
-docker run -d --name jenkins-slave-ssh \
+docker run --rm -it --name jenkins-slave-ssh \
   -v <local path>:/workdir \
   -v ${HOME}/.ssh:/home/jenkins/.ssh \
-  haven/jenkins-slave-ssh:latest
+  haven/jenkins-slave-ssh:latest /bin/bash
 ```
 
 [Last Build][packages]
