@@ -4,12 +4,12 @@ Simple jenkins docker executor to run ssh commands on remote systems.
 
 /workdir and /home/jenkins/.ssh are moutable volumes. Ensure you have any keys you need in the latter.
 
-Run this [jenkins-slave-ssh][] image with:
+Run this [jenkins-slave-ssh][https://github.com/thehaven/haven-kubler/blob/master/images/jenkins-slave-ssh] image with:
 ```
 docker run -d --name jenkins-slave-ssh haven/jenkins-slave-ssh:latest
 ```
 
-For persistence run [jenkins-slave-ssh][] image with:
+For persistence run [jenkins-slave-ssh][https://github.com/thehaven/haven-kubler/blob/master/images/jenkins-slave-ssh] image with:
 ```bash
 docker run -d --name jenkins-slave-ssh \
   -v <local path>:/workdir \
@@ -19,5 +19,5 @@ docker run -d --name jenkins-slave-ssh \
 
 [Last Build][packages]
 
-[jenkins-slave-ssh]: https://jenkins-slave-ssh.url
-[packages]: PACKAGES.md
+[jenkins-slave-ssh]: https://github.com/thehaven/haven-kubler/blob/master/images/jenkins-slave-ssh
+[packages]: https://github.com/thehaven/haven-kubler/blob/master/images/jenkins-slave-ssh/PACKAGES.md
