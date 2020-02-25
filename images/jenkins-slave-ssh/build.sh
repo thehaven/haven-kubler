@@ -1,4 +1,4 @@
-_packages="net-misc/openssh net-misc/mosh app-admin/sudo"
+_packages="net-misc/openssh net-misc/mosh app-admin/sudo net-misc/keychain"
 
 configure_builder()
 {

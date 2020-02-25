@@ -1,6 +1,6 @@
 ### haven/jenkins-slave-ssh:dev
 
-Built: Sat 22 Feb 13:51:47 GMT 2020
+Built: Tue 25 Feb 11:08:19 GMT 2020
 Image Size: 309MB
 
 #### Installed
@@ -21,6 +21,7 @@ dev-libs/protobuf-3.10.1 | `zlib -emacs -examples -static-libs -test`
 dev-perl/IO-Tty-1.120.0 | ``
 mail-mta/nullmailer-2.2 | `ssl -test`
 net-libs/gnutls-3.6.7-r1 | `cxx idn nls openssl seccomp tls-heartbeat -dane -doc -examples -guile -pkcs11 -sslv2 -sslv3 -static-libs -test (-test-full) -tools -valgrind`
+net-misc/keychain-2.8.5 | ``
 net-misc/mosh-1.3.2 | `client mosh-hardening server utempter -examples -libressl -ufw`
 net-misc/openssh-8.2_p1-r2 | `(pie) ssl -`
 perl-core/File-Temp-0.230.900 | ``
