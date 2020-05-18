@@ -1,4 +1,4 @@
-_packages="app-shells/bash =dev-util/artifactory-pro-bin-6.17.0"
+_packages="app-shells/bash =dev-util/artifactory-pro-bin-6.19.1"
 configure_bob()
 {
     :

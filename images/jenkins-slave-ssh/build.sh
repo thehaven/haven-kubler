@@ -1,6 +1,6 @@
 _packages="net-misc/openssh net-misc/mosh app-admin/sudo net-misc/keychain"
-JNLP_REMOTING='3.9'
-JNLP_SLAVE_VERSION='3.36-2'
+export JNLP_REMOTING='3.9'
+export JNLP_SLAVE_VERSION='3.36-2'
 
 configure_builder()
 {
