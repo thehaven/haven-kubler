@@ -1,6 +1,6 @@
 ### haven/jenkins-slave-ssh:dev
 
-Built: Tue 25 Feb 14:04:55 GMT 2020
+Built: Wed 26 Feb 19:15:12 GMT 2020
 Image Size: 309MB
 
 #### Installed
@@ -23,7 +23,7 @@ mail-mta/nullmailer-2.2 | `ssl -test`
 net-libs/gnutls-3.6.7-r1 | `cxx idn nls openssl seccomp tls-heartbeat -dane -doc -examples -guile -pkcs11 -sslv2 -sslv3 -static-libs -test (-test-full) -tools -valgrind`
 net-misc/keychain-2.8.5 | ``
 net-misc/mosh-1.3.2 | `client mosh-hardening server utempter -examples -libressl -ufw`
-net-misc/openssh-8.2_p1-r2 | `(pie) ssl -`
+net-misc/openssh-8.2_p1-r3 | `(pie) ssl -`
 perl-core/File-Temp-0.230.900 | ``
 sys-apps/opentmpfiles-0.2 | `(-selinux)`
 sys-apps/shadow-4.6 | `acl cracklib nls (split-usr) xattr -audit -pam (-selinux) -skey`
@@ -34,7 +34,7 @@ Package | USE Flags
 --------|----------
 **FROM haven/jdk-oracle** |
 app-arch/bzip2-1.0.6-r11 | `(split-usr) -static -static-libs`
-app-crypt/p11-kit-0.23.16.1-r1 | `asn1 libffi trust -debug`
+app-crypt/p11-kit-0.23.19-r1 | `asn1 libffi trust -debug`
 app-eselect/eselect-fontconfig-1.1-r1 | ``
 app-eselect/eselect-java-0.4.0 | ``
 dev-java/java-config-2.2.0-r4 | `-test`
