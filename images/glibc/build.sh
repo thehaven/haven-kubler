@@ -15,6 +15,7 @@ configure_bob()
         echo "${locale}" >> /etc/locale.gen
     done
     locale-gen
+    mkdir -p /var/cache/eix && chown portage:portage /var/cache/eix && eix-update -o /var/cache/eix/portage.eix
     mkdir -p "${_EMERGE_ROOT}"/usr/"${_LIB}"/locale
     cp /usr/"${_LIB}"/locale/locale-archive "${_EMERGE_ROOT}"/usr/"${_LIB}"/locale/
     # set timezone

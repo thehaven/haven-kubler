@@ -12,7 +12,7 @@ configure_bob() {
     fix_portage_profile_symlink
    
     emerge app-portage/flaggie app-portage/eix app-portage/gentoolkit sys-apps/portage
-    configure_eix && mv /tmp/eix /etc/portage/postsync.d/
+    configure_eix && mv /tmp/eix /etc/portage/postsync.d/ && eix-update
     mkdir -p /etc/portage/package.{accept_keywords,unmask,mask,use}
     touch /etc/portage/package.accept_keywords/flaggie
     # set locale of build container
@@ -26,12 +26,11 @@ configure_bob() {
     update_use 'dev-libs/openssl' -bindist
     update_use 'dev-vcs/git' '-perl'
     update_use 'app-crypt/pinentry' '+ncurses'
-    update_keywords 'app-portage/layman' '+~amd64'
     update_keywords 'dev-libs/openssl' '+~amd64'
     update_keywords 'app-admin/su-exec' '+~amd64'
 
     # Fix portage and sync latest:
-    emerge dev-vcs/git && rm -Rf /var/sync/portage
+    emerge dev-vcs/git && rm -Rf /var/sync/portage && rm -Rf /var/db/repos/gentoo
     emerge --sync
     emerge -u sys-apps/portage app-portage/gentoolkit dev-vcs/git
 
@@ -45,4 +44,5 @@ configure_bob() {
     configure_layman
     add_overlay kubler https://github.com/edannenberg/kubler-overlay.git
     emerge dev-lang/go
+    eselect profile set 16 
 }

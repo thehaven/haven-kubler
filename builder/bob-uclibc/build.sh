@@ -11,7 +11,7 @@ configure_bob() {
     emerge --oneshot portage
     # install basics used by helper functions
     emerge app-portage/flaggie app-portage/eix app-portage/gentoolkit
-    configure_eix && mv /tmp/eix /etc/portage/postsync.d/
+    configure_eix && mv /tmp/eix /etc/portage/postsync.d/ && eix-update
     mkdir -p /etc/portage/package.{accept_keywords,unmask,mask,use}
     touch /etc/portage/package.accept_keywords/flaggie
     # set locale of build container
@@ -28,11 +28,11 @@ configure_bob() {
     emerge dev-libs/openssl
     update_use 'dev-vcs/git' '-perl'
     update_use 'app-crypt/pinentry' '+ncurses'
-    update_keywords 'app-portage/layman' '+~amd64'
     update_keywords 'app-admin/su-exec' '+~amd64'
     emerge dev-vcs/git app-portage/layman app-misc/jq app-shells/bash-completion
     install_git_postsync_hooks
     configure_layman
     add_overlay kubler https://github.com/edannenberg/kubler-overlay.git
     emerge dev-lang/go
+    eselect profile set 16 
 }
