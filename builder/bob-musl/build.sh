@@ -6,11 +6,7 @@
 # This hook can be used to configure the build container itself, install packages, run any command, etc
 #
 configure_bob() {
-    
-    # install basics used by helper functions
-    mv /etc/portage/postsync.d/eix /tmp/
     fix_portage_profile_symlink
-
     # migrate from files to directories at /etc/portage/package.*
     for i in /etc/portage/package.{accept_keywords,unmask,mask,use}; do
         [[ -f "${i}" ]] && { cat "${i}"; mv "${i}" "${i}".old; }
@@ -18,40 +14,34 @@ configure_bob() {
         [[ -f "${i}".old ]] &&  mv "${i}".old "${i}"/default
     done
 
+    # install basics used by helper functions
+    eselect news read new 1> /dev/null
     emerge app-portage/flaggie app-portage/eix app-portage/gentoolkit
-    configure_eix && mv /tmp/eix /etc/portage/postsync.d/ && eix-update
-    mkdir -p /etc/portage/package.{accept_keywords,unmask,mask,use}
+    configure_eix
+
     touch /etc/portage/package.accept_keywords/flaggie
-    # set locale of build container - locale-gen not supported on musl:
-    echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
-    echo 'LANG="en_US.UTF-8"' > /etc/env.d/02locale
+    echo 'LANG="en_US.utf8"' > /etc/env.d/02locale
     env-update
     source /etc/profile
-
-    # Update portage use/keywords etc:
-    update_use 'dev-libs/openssl' -bindist
-    update_use 'dev-vcs/git' '-perl'
-    update_use 'app-crypt/pinentry' '+ncurses'
-    update_keywords 'dev-libs/openssl' '+~amd64'
-    update_keywords 'app-admin/su-exec' '+~amd64'
-
-    # Fix portage and sync latest:
-    emerge dev-vcs/git && rm -Rf /var/sync/portage && rm -Rf /var/db/repos/gentoo
-    emerge --sync
-    emerge -u portage dev-vcs/git
-
     # install default packages
     # when using overlay1 docker storage the created hard link will trigger an error during openssh uninstall
     [[ -f /usr/"${_LIB}"/misc/ssh-keysign ]] && rm /usr/"${_LIB}"/misc/ssh-keysign
-    emerge -C net-misc/openssh
+    emerge -C net-misc/openssh dev-libs/openssl
+    update_use 'net-misc/openssh' -bindist
+    update_use 'dev-libs/openssl' -bindist
     emerge dev-libs/openssl
-    emerge --usepkg n --getbinpkg n dev-vcs/git app-portage/layman app-misc/jq app-shells/bash-completion
+    emerge @preserved-rebuild
+    update_use 'dev-vcs/git' '-perl'
+    update_use 'app-crypt/pinentry' '+ncurses'
+    update_use 'dev-libs/libpcre2' '+jit'
+    update_keywords 'app-admin/su-exec' '+~amd64'
+    emerge dev-vcs/git app-portage/layman app-misc/jq app-shells/bash-completion
     install_git_postsync_hooks
+    [[ "${BOB_UPDATE_WORLD}" == true ]] && emerge -vuND world
     configure_layman
     add_layman_overlay musl
     add_overlay kubler https://github.com/edannenberg/kubler-overlay.git
     # go binary bootstrap fails on musl so we need to bootstrap from source
     update_use 'dev-lang/go' +srcgo
     emerge dev-lang/go::kubler
-    eselect profile set --force 30
 }

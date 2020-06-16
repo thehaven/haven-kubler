@@ -8,7 +8,10 @@ _packages="dev-db/influxdb"
 #
 configure_rootfs_build()
 {
-    :
+    # copying the source folder fails for some reason. https://bugs.gentoo.org/721074
+    cp /var/db/repos/gentoo/eclass/golang-vcs.eclass ~/golang-vcs.eclass
+    sed-or-die '"$@" || die' '"$@"' /var/db/repos/gentoo/eclass/golang-vcs.eclass
+    sed-or-die 'set -- cp -r' 'cp -r' /var/db/repos/gentoo/eclass/golang-vcs.eclass
 }
 
 #
@@ -16,5 +19,6 @@ configure_rootfs_build()
 #
 finish_rootfs_build()
 {
-    :
+    # revert eclass hack
+    mv ~/golang-vcs.eclass /var/db/repos/gentoo/eclass/golang-vcs.eclass
 }

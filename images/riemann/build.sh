@@ -17,7 +17,7 @@ configure_rootfs_build()
 finish_rootfs_build()
 {
     local riemann_version riemann_url riemann_file
-    riemann_version="0.3.0"
+    riemann_version="0.3.5"
     riemann_url="https://github.com/riemann/riemann/releases/download/${riemann_version}/riemann-${riemann_version}.tar.bz2"
     download_file "${riemann_url}"
     riemann_file="${__download_file}"
@@ -27,6 +27,6 @@ finish_rootfs_build()
     popd
     tar xvjf "${riemann_file}"
     mv /riemann-"${riemann_version}" "${_EMERGE_ROOT}"/riemann
-    sed -i 's/host "127.0.0.1"/host "0.0.0.0"/g' "${_EMERGE_ROOT}"/riemann/etc/riemann.config
+    sed-or-die 'host "127.0.0.1"' 'host "0.0.0.0"' "${_EMERGE_ROOT}"/riemann/etc/riemann.config
     log_as_installed "manual install" "riemann-${riemann_version}" "https://github.com/riemann/riemann"
 }

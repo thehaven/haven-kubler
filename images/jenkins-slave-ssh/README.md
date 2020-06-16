@@ -19,5 +19,5 @@ docker run --rm -it --name jenkins-slave-ssh \
 
 [Last Build][packages]
 
-[jenkins-slave-ssh]: https://github.com/thehaven/haven-kubler/blob/master/images/jenkins-slave-ssh
-[packages]: https://github.com/thehaven/haven-kubler/blob/master/images/jenkins-slave-ssh/PACKAGES.md
+[jenkins-slave-ssh]: https://github.com/thehaven/haven-haven/blob/master/images/jenkins-slave-ssh
+[packages]: https://github.com/thehaven/haven-haven/blob/master/images/jenkins-slave-ssh/PACKAGES.md

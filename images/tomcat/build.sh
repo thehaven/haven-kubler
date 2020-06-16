@@ -6,13 +6,13 @@ _tomcat_slot="${BOB_TOMCAT_SLOT}"
 
 configure_bob()
 {
+    # needs jdk 8 for building
+    emerge dev-java/openjdk-bin:8
+    eselect java-vm set system 1
     # build tomcat-native package on the host
     unprovide_package dev-java/java-config app-eselect/eselect-java app-arch/zip
-    update_use 'dev-java/oracle-jdk-bin' +headless-awt +jce -fontconfig
-    emerge dev-java/oracle-jdk-bin
     emerge dev-java/ant-core dev-java/ant-junit dev-java/java-config dev-java/tomcat-native www-servers/tomcat
 }
-
 
 #
 # This hook is called just before starting the build of the root fs
@@ -41,8 +41,8 @@ finish_rootfs_build()
     gentoo_classpath="$(java-config --with-dependencies --classpath "${tomcat_deps//:/,}")"
     gentoo_classpath=${gentoo_classpath%:}
 
-    sed -i "s|CLASSPATH=\`java-config --classpath "${_tomcat_slot}"\`|CLASSPATH=`java-config --with-dependencies --classpath "${_tomcat_slot}",tomcat-native`|g" "${catalina}"
-    sed -i "s|\${gentoo\.classpath}|${gentoo_classpath//:/,}|g" "${cata_conf}"
+    sed-or-die "CLASSPATH=\`java-config --classpath "${_tomcat_slot}"\`" "CLASSPATH=`java-config --with-dependencies --classpath "${_tomcat_slot}",tomcat-native`" "${catalina}"
+    sed-or-die "\${gentoo\.classpath}" "${gentoo_classpath//:/,}" "${cata_conf}"
 
     # make TOMCAT_SLOT available in build containers depending on this image
     echo -e "#!/usr/bin/env bash\nexport TOMCAT_SLOT=${_tomcat_slot}" > /etc/profile.d/tomcat.sh

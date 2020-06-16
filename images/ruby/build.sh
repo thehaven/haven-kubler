@@ -13,7 +13,6 @@ configure_rootfs_build()
     mkdir "${_EMERGE_ROOT}"/etc
     echo "-ruby_targets_ruby24" >> /etc/portage/profile/use.mask
     update_keywords 'dev-lang/ruby' '+~amd64'
-    update_keywords '=dev-ruby/test-unit-3.2.8' '+~amd64'
 }
 
 #
@@ -21,5 +20,6 @@ configure_rootfs_build()
 #
 finish_rootfs_build()
 {
-    :
+    # some gems seem to use a hard coded rake binary name 'rake24' which no longer exists
+    ln -sr "${_EMERGE_ROOT}"/usr/bin/rake "${_EMERGE_ROOT}"/usr/bin/rake24
 }

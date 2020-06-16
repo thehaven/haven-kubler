@@ -15,7 +15,6 @@ configure_bob()
         echo "${locale}" >> /etc/locale.gen
     done
     locale-gen
-    mkdir -p /var/cache/eix && chown portage:portage /var/cache/eix && eix-update -o /var/cache/eix/portage.eix
     mkdir -p "${_EMERGE_ROOT}"/usr/"${_LIB}"/locale
     cp /usr/"${_LIB}"/locale/locale-archive "${_EMERGE_ROOT}"/usr/"${_LIB}"/locale/
     # set timezone
@@ -27,13 +26,16 @@ configure_bob()
 #
 configure_rootfs_build()
 {
-    # make sure lib symlink exists before gentoofunctions package creates a dir during install
-    #mkdir -p "${_EMERGE_ROOT}"/lib64
-    #ln -sr "${_EMERGE_ROOT}"/lib64 "${_EMERGE_ROOT}"/lib
     # as we broke the normal builder chain, recreate the docs for the busybox image
     init_docs 'haven/busybox'
-    update_use 'sys-apps/busybox' '+static +make-symlinks'
-    generate_doc_package_installed 'sys-apps/busybox'
+    update_use 'sys-apps/busybox' +static +make-symlinks
+    update_use 'sys-apps/sed' +static -acl -nls
+    # bug with 1.31.1-r2 ebuild not respecting the static use flag
+    provide_package sys-libs/glibc
+    generate_doc_package_installed 'sys-apps/busybox' 'sys-apps/sed'
+    update_use 'sys-apps/sed' -static +acl +nls
+    # remove workaround
+    unprovide_package sys-libs/glibc
     # fake portage install
     provide_package sys-apps/portage
 
