@@ -10,6 +10,7 @@ configure_bob()
     update_use 'net-proxy/haproxy' '+crypt +net_ns +pcre +slz +ssl +threads +vim-syntax -zlib'
     emerge --unmerge dev-python/cryptography net-misc/iputils && emerge dev-libs/openssl
     emerge --usepkg=n haproxy
+    copy_gcc_libs
 }
 
 configure_rootfs_build()

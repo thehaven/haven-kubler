@@ -6,7 +6,7 @@ _packages="dev-java/openjdk-bin"
 configure_builder()
 {
     update_use -postscript
-    update_use 'dev-java/openjdk-bin' +headless-awt -webstart
+    update_use 'dev-java/openjdk-bin' +headless-awt
     echo 'dev-java/openjdk-bin -gentoo-vm' >> /etc/portage/profile/package.use.mask
     update_keywords dev-java/openjdk-bin '+~amd64'
     # skip python and iced-tea

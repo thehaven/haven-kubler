@@ -6,8 +6,8 @@ _packages="dev-java/openjdk-jre-bin"
 configure_builder()
 {
     update_use -postscript
-    update_use 'dev-java/openjdk-jre-bin' -webstart +headless-awt
-    update_use 'dev-java/openjdk-bin' -webstart +headless-awt
+    update_use 'dev-java/openjdk-jre-bin' +headless-awt
+    update_use 'dev-java/openjdk-bin' +headless-awt
     echo 'dev-java/openjdk-jre-bin -gentoo-vm' >> /etc/portage/profile/package.use.mask
     echo 'dev-java/openjdk-bin -gentoo-vm' >> /etc/portage/profile/package.use.mask
     update_keywords dev-java/openjdk-jre-bin '+~amd64'

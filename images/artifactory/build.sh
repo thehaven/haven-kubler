@@ -1,4 +1,4 @@
-_packages="app-shells/bash =dev-util/artifactory-pro-bin-6.19.1"
+_packages="app-shells/bash =dev-util/artifactory-pro-bin-7.11.5"
 configure_bob()
 {
     :
@@ -19,7 +19,6 @@ configure_rootfs_build()
 
 finish_rootfs_build()
 {
-    rm -Rf /opt/artifactory/tomcat/logs/catalina
-    ln -s /opt/artifactory /opt/jfrog
+    rm -Rf /opt/jfrog/artifactory/tomcat/logs/catalina/*
     :
 }
