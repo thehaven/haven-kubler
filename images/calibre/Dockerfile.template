@@ -2,7 +2,6 @@ FROM ${IMAGE_PARENT}
 LABEL maintainer="${MAINTAINER}"
 
 ADD rootfs.tar /
-ADD calibre.tar /calibre
 
 EXPOSE 8080/tcp
 
