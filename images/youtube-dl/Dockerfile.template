@@ -1,0 +1,8 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer ${MAINTAINER}
+
+ADD rootfs.tar /
+
+COPY youtube-dl.sh /opt/scripts/
+
+CMD ["/opt/scripts/youtube-dl.sh"]

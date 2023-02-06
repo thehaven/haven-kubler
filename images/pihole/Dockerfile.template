@@ -1,0 +1,11 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer ${MAINTAINER}
+
+ADD rootfs.tar /
+
+EXPOSE 53/tcp
+EXPOSE 53/udp
+
+VOLUME /etc/pihole
+
+CMD ["/usr/local/bin/pihole"]

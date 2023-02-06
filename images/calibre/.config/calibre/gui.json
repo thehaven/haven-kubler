@@ -1,0 +1,259 @@
+{
+  "quick_start_guide_added": true, 
+  "book_details_splitter_horizontal_state": [
+    true, 
+    341
+  ], 
+  "quickview_dialog_books_table_widths": [
+    189, 
+    189, 
+    189
+  ], 
+  "jobs view column layout2": {
+    "__class__": "bytearray", 
+    "__value__": "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0IAAAAFAQEBAAAAAAAAAAAAAAAAAGT/////AAAAhAAAAAAAAAACAAABsgAAAAEAAAAAAAABkAAAAAQAAAAA"
+  }, 
+  "convert_single_dialog_geom": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAJ7AAAAsAAABn4AAAOGAAACfQAAAMcAAAZ8AAADggAAAAAAAA=="
+  }, 
+  "advanced search dialog current tab": 1, 
+  "card_b_view books view state": {
+    "column_alignment": {
+      "timestamp": "center", 
+      "size": "center"
+    }, 
+    "column_sizes": {
+      "title": 66, 
+      "timestamp": 82, 
+      "inlibrary": 106, 
+      "collections": 115, 
+      "authors": 104, 
+      "size": 65
+    }, 
+    "languages_injected": true, 
+    "column_positions": {
+      "title": 1, 
+      "timestamp": 3, 
+      "inlibrary": 0, 
+      "collections": 5, 
+      "authors": 2, 
+      "size": 4
+    }, 
+    "sort_history": [
+      [
+        "timestamp", 
+        false
+      ]
+    ], 
+    "hidden_columns": [], 
+    "last_modified_injected": true
+  }, 
+  "previous_sort_order_BooksView": {
+    "timestamp": false, 
+    "title": true
+  }, 
+  "metadata_single_gui_geom": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAjqAAABdAAADXUAAAPmAAAI7AAAAYsAAA1zAAAD4gAAAAEAAA=="
+  }, 
+  "manage_authors_dialog_geometry": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAAAAAAAAAAAAv8AAAFVAAAAAAAAAAAAAAL/AAABVQAAAAAAAA=="
+  }, 
+  "plugin config dialog:User Interface Action:Find Duplicates": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAH6AAABGAAAA0QAAAJBAAAB/QAAATEAAANBAAACPgAAAAAAAA=="
+  }, 
+  "replace_scene_breaks_history": [
+    "", 
+    "<hr />", 
+    "\u2217 \u2217 \u2217", 
+    "\u2022 \u2022 \u2022", 
+    "\u2666 \u2666 \u2666", 
+    "\u2020 \u2020", 
+    "\u2021 \u2021 \u2021", 
+    "\u221e \u221e \u221e", 
+    "\u00a4 \u00a4 \u00a4"
+  ], 
+  "bulk_metadata_window_tab": 0, 
+  "manage_authors_table_widths": [
+    225, 
+    225, 
+    225
+  ], 
+  "memory_view books view state": {
+    "column_alignment": {
+      "timestamp": "center", 
+      "size": "center"
+    }, 
+    "column_sizes": {
+      "title": 350, 
+      "timestamp": 98, 
+      "inlibrary": 106, 
+      "collections": 115, 
+      "authors": 271, 
+      "size": 65
+    }, 
+    "languages_injected": true, 
+    "column_positions": {
+      "title": 1, 
+      "timestamp": 3, 
+      "inlibrary": 0, 
+      "collections": 5, 
+      "authors": 2, 
+      "size": 4
+    }, 
+    "sort_history": [
+      [
+        "timestamp", 
+        false
+      ]
+    ], 
+    "hidden_columns": [], 
+    "last_modified_injected": true
+  }, 
+  "tag_browser_splitter_horizontal_state": [
+    true, 
+    208
+  ], 
+  "toolbar_icon_size": "small", 
+  "jobs_dialog_geometry": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAL9AAABmgAABw8AAASAAAAC/wAAAbEAAAcNAAAEfAAAAAAAAA=="
+  }, 
+  "action-layout-toolbar-child": [
+    "Kindle Collections"
+  ], 
+  "action-layout-toolbar": [
+    "Add Books", 
+    "Edit Metadata", 
+    null, 
+    "Convert Books", 
+    "Find Duplicates", 
+    "View", 
+    "Choose Library", 
+    "Fetch News", 
+    "Store", 
+    "Save To Disk", 
+    "Connect Share", 
+    "Remove Books", 
+    "Preferences", 
+    "Extract ISBN", 
+    "Quality Check", 
+    "FanFictionDownLoader"
+  ], 
+  "library_usage_stats": {
+    "/home/share/books/calibre": 101
+  }, 
+  "Plugin Updater plugin:plugin updater dialog": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAAAAAAAqwAABIkAAAKpAAAAAgAAAMIAAASHAAACpQAAAAAAAA=="
+  }, 
+  "grid view visible": false, 
+  "duplicate finder plugin:duplicate dialog": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAF8AAAASwAAA44AAALsAAABfwAAAGQAAAOLAAAC6QAAAAAAAA=="
+  }, 
+  "convert_bulk_dialog_geom": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAGyAAAAywAABbUAAAOhAAABtAAAAOIAAAWzAAADnQAAAAAAAA=="
+  }, 
+  "jobs view column layout": {
+    "__class__": "bytearray", 
+    "__value__": "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABA0AAAAEAQEBAAAAAAAAAAAAAAAAAGT/////AAAAhAAAAAAAAAADAAACVwAAAAEAAAAAAAAA7gAAAAEAAAAAAAAAyAAAAAIAAAAA"
+  }, 
+  "card_a_view books view state": {
+    "column_alignment": {
+      "timestamp": "center", 
+      "size": "center"
+    }, 
+    "column_sizes": {
+      "title": 66, 
+      "timestamp": 82, 
+      "inlibrary": 106, 
+      "collections": 115, 
+      "authors": 104, 
+      "size": 65
+    }, 
+    "languages_injected": true, 
+    "column_positions": {
+      "title": 1, 
+      "timestamp": 3, 
+      "inlibrary": 0, 
+      "collections": 5, 
+      "authors": 2, 
+      "size": 4
+    }, 
+    "sort_history": [
+      [
+        "timestamp", 
+        false
+      ]
+    ], 
+    "hidden_columns": [], 
+    "last_modified_injected": true
+  }, 
+  "action-layout-toolbar-device": [
+    "Add Books", 
+    "Edit Metadata", 
+    null, 
+    "Convert Books", 
+    "View", 
+    "Send To Device", 
+    null, 
+    null, 
+    "Location Manager", 
+    null, 
+    null, 
+    "Fetch News", 
+    "Save To Disk", 
+    "Connect Share", 
+    null, 
+    "Remove Books", 
+    null, 
+    "Help", 
+    "Preferences", 
+    "Kindle Collections", 
+    "Extract ISBN", 
+    "Quality Check", 
+    "FanFictionDownLoader"
+  ], 
+  "plugin config dialog:Metadata download:IsbnDB": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAHaAAABKwAAAyQAAAIMAAAB3QAAAUQAAAMhAAACCQAAAAAAAA=="
+  }, 
+  "filename_pattern_history": [
+    "(?P<title>.+) - (?P<author>[^_]+)", 
+    "(?P<title>.+)", 
+    "(?P<author>[^_-]+) -?\\s*(?P<series>[^_0-9-]*)(?P<series_index>[0-9]*)\\s*-\\s*(?P<title>[^_].+) ?"
+  ], 
+  "plugin config dialog:User Interface Action:Kindle Collections": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAEBAAAAfAAAA/4AAAK6AAABBAAAAJUAAAP7AAACtwAAAAAAAA=="
+  }, 
+  "metasingle_window_geometry3": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAmUAAAA4QAADXUAAAOFAAAJlgAAAPgAAA1zAAADgQAAAAEAAA=="
+  }, 
+  "quickview_dialog_geometry": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAKBAAACOQAABYYAAAOqAAAChAAAAlIAAAWDAAADpwAAAAAAAA=="
+  }, 
+  "cover_browser_splitter_vertical_state": [
+    false, 
+    300
+  ], 
+  "single-cover-fetch-dialog-geometry": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAoNAAABYAAADWIAAAPSAAAKDwAAAXcAAA1gAAADzgAAAAEAAA=="
+  }, 
+  "preferences_window_geometry": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAAGbAAAAlQAABSIAAAN/AAABnQAAAKwAAAUgAAADewAAAAAAAA=="
+  }, 
+  "bulk_metadata_window_geometry": {
+    "__class__": "bytearray", 
+    "__value__": "AdnQywABAAAAAACcAAAASwAABGMAAALrAAAAnwAAAGQAAARgAAAC6AAAAAAAAA=="
+  }
+}

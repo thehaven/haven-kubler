@@ -1,0 +1,17 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer ${MAINTAINER}
+
+ADD rootfs.tar /
+
+COPY docker-healthcheck.sh /usr/bin/docker-healthcheck
+HEALTHCHECK --interval=60s --timeout=5s --start-period=5s --retries=3 CMD ["docker-healthcheck"]
+
+VOLUME ["/opt/nzbhydra2/data"]
+EXPOSE 5076
+
+HEALTHCHECK --interval=5m --timeout=3s \
+  CMD curl -f http://localhost:5076/login.html || exit 1
+
+USER nzbhydra2 
+
+CMD ["/opt/nzbhydra2/nzbhydra2", "--nobrowser"]

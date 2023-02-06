@@ -1,0 +1,7 @@
+{
+  "Options": {
+    "maxDownloads": 1, 
+    "appendTOC": false, 
+    "getAllAuthors": false
+  }
+}

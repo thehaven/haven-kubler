@@ -1,0 +1,19 @@
+{
+  "searchType": "titleauthor", 
+  "autoDeleteBinaryDups": false, 
+  "showAllGroups": true, 
+  "authorSoundexLength": 8, 
+  "showTagAuthor": true, 
+  "titleSoundexLength": 6, 
+  "includeLanguages": false, 
+  "authorMatch": "identical", 
+  "options": {
+    "shortcutGroupNotDuplicate": "", 
+    "shortcutNext": "", 
+    "shortcutFindDuplicates": "", 
+    "shortcutPrevious": "", 
+    "shortcutClearResults": ""
+  }, 
+  "sortGroupsByTitle": false, 
+  "titleMatch": "identical"
+}

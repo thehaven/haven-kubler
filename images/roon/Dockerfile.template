@@ -1,0 +1,17 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer ${MAINTAINER}
+
+ADD rootfs.tar /
+
+ENV ROON_SERVER_PKG RoonServer_linuxx64.tar.bz2
+ENV ROON_SERVER_URL http://download.roonlabs.net/builds/${ROON_SERVER_PKG}
+ENV ROON_DATAROOT /data
+ENV ROON_ID_DIR /data
+
+COPY install.sh /
+COPY docker-healthcheck.sh /usr/bin/docker-healthcheck
+HEALTHCHECK --interval=60s --timeout=5s --start-period=60s --retries=3 CMD ["docker-healthcheck"]
+
+VOLUME ["/data","/media"]
+
+ENTRYPOINT ["/install.sh"]

@@ -1,0 +1,53 @@
+{
+  "add a plugin dialog": "/home/haven/files", 
+  "add books dialog dir": "/home/haven/Downloads", 
+  "catalogs_to_be_synced": {
+    "__class__": "set", 
+    "__value__": []
+  }, 
+  "database location dialog": "/storage/books-calibre", 
+  "library_delete_books_again": false, 
+  "metasingle_splitter_state2": "\u0000\u0000\u0000�\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0003\u0000\u0000\u0001n\u0000\u0000\u0004x\u0000\u0000\u0001j\u0001\u0000\u0000\u0000\u0003\u0001\u0000\u0000\u0000\u0001", 
+  "metasingle_window_geometry2": "\u0001���\u0000\u0001\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0018\u0000\u0000\u0004�\u0000\u0000\u0003\u001f\u0000\u0000\u0000\u0000\u0000\u0000\u0000,\u0000\u0000\u0002y\u0000\u0000\u0001�\u0000\u0000\u0000\u0000\u0002\u0000", 
+  "recursive book import root dir dialog": "/home/share/nostromo/torrents/NY Times Bestsellers (November 17 2013)(Fiction-NonFiction)(EPUB+MOBI)+Extras [Team Nanban](pimprg)/Books", 
+  "s_r_search_mode": 0, 
+  "sort_history": [
+    [
+      "timestamp", 
+      false
+    ], 
+    [
+      "title", 
+      true
+    ], 
+    [
+      "timestamp", 
+      false
+    ], 
+    [
+      "timestamp", 
+      false
+    ]
+  ], 
+  "systray_msg": true, 
+  "update to version 0.7.53": false, 
+  "update to version 0.7.54": false, 
+  "update to version 0.7.55": false, 
+  "update to version 0.7.56": false, 
+  "update to version 0.7.57": false, 
+  "update to version 0.8.1": false, 
+  "update to version 0.8.2": false, 
+  "update to version 0.8.3": false, 
+  "update to version 0.8.36": false, 
+  "update to version 0.8.4": false, 
+  "update to version 0.8.40": false, 
+  "update to version 0.8.44": false, 
+  "update to version 0.8.5": false, 
+  "update to version 0.8.57": false, 
+  "update to version 0.8.59": false, 
+  "update to version 0.8.6": false, 
+  "update to version 0.9.10": false, 
+  "update to version 0.9.15": false, 
+  "welcome_wizard_device": "kindle", 
+  "welcome_wizard_was_run": true
+}

@@ -1,0 +1,10 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer ${MAINTAINER}
+
+ADD rootfs.tar /
+
+EXPOSE 3306
+USER mysql
+VOLUME ["/var/lib/mysqld","/etc/mysql","/var/log/mysql","/backup"]
+USER mysql
+CMD ["/usr/sbin/mysqld", "--basedir=/usr"]

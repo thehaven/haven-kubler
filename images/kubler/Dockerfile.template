@@ -1,0 +1,8 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer="${MAINTAINER}"
+
+ADD rootfs.tar /
+VOLUME ["/kubler", "/var/run/docker.sock"]
+USER kubler
+WORKDIR /kubler
+CMD ["/usr/bin/kubler", "-h"]

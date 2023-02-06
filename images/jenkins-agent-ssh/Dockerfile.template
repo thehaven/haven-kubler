@@ -1,0 +1,35 @@
+FROM ${IMAGE_PARENT}
+
+ARG BUILD_DATE
+ARG IMAGE_NAME
+ARG VCS_URL
+ARG VCS_REF
+ARG JOB_URL
+
+LABEL maintainer ${MAINTAINER} \
+    org.label-schema.vendor="THN" \
+    org.label-schema.schema-version="1.0" \
+    org.label-schema.build-date="${BUILD_DATE}" \
+    org.label-schema.name="${IMAGE_NAME}" \
+    org.label-schema.description="Jenkins Slave for SSH based jobs" \
+    org.label-schema.usage="/README.md" \
+    org.label-schema.vcs-url="${VCS_URL}" \
+    org.label-schema.vcs-ref="${VCS_REF}" \
+    org.label-schema.docker.dockerfile="/Dockerfile" \
+    org.thehavennet.ci.job-url="${JOB_URL}" \
+    org.thehavennet.docker.cli-version="${DOCKER_CLI_VERSION}"
+
+COPY ./README.md .
+COPY ./Dockerfile .
+
+ADD rootfs.tar /
+
+VOLUME ["/workdir","/home/jenkins/.ssh"]
+
+COPY docker-healthcheck.sh /usr/bin/docker-healthcheck
+HEALTHCHECK --interval=60s --timeout=5s --start-period=5s --retries=3 CMD ["docker-healthcheck"]
+
+WORKDIR /workdir
+USER 1000:1000
+
+ENTRYPOINT ["jenkins-agent"]

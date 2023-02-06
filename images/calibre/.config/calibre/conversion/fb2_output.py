@@ -1,0 +1,3 @@
+{
+	'sectionize' : u'files',
+}

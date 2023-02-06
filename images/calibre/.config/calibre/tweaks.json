@@ -1,0 +1,19 @@
+{
+  "__copyright__": "2010, Kovid Goyal <kovid@kovidgoyal.net>", 
+  "__docformat__": "restructuredtext en", 
+  "__license__": "GPL v3", 
+  "author_sort_copy_method": "invert", 
+  "book_details_will_display": [
+    "*"
+  ], 
+  "book_details_wont_display": [], 
+  "bool_custom_columns_are_tristate": "yes", 
+  "draw_hidden_section_indicators": true, 
+  "generate_cover_foot_font": null, 
+  "generate_cover_title_font": null, 
+  "max_content_server_tags_shown": 5, 
+  "maximum_cover_size": [
+    1200, 
+    1600
+  ]
+}

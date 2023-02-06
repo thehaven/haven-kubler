@@ -1,0 +1,21 @@
+{
+  "EXTRA_AUTHOR_DETAILS_PREFIX": "", 
+  "LCC": "#lcc", 
+  "GENRE_EXACT_MATCH": "True", 
+  "OCLC_IS_ACTIVE": "False", 
+  "FAST_IS_ACTIVE": "False", 
+  "DDC_IS_ACTIVE": "False", 
+  "GENRE_DDC_IS_ACTIVE": "False", 
+  "GENRE_LCC_IS_ACTIVE": "False", 
+  "EXTRA_AUTHOR_DETAILS": "#lcead", 
+  "EXTRA_AUTHOR_DETAILS_IS_ACTIVE": "True", 
+  "FAST": "#fast", 
+  "LCC_IS_ACTIVE": "False", 
+  "GENRE": "#lc_genre", 
+  "GENRE_IS_INACTIVE": "True", 
+  "OCLC_IDENTIFIER": "True", 
+  "OCLC": "#oclc_owi", 
+  "DDC": "#ddc", 
+  "GENRE_LCC_MATCH_LENGTH": 2, 
+  "FAST_PREFIX": ""
+}

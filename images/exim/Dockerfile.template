@@ -1,0 +1,28 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer ${MAINTAINER}
+
+ADD rootfs.tar /
+
+RUN openssl req -x509 -newkey rsa:4096 -keyout /etc/exim/key.pem -out /etc/exim/cert.pem -days 365 -nodes -subj "/C=US/ST=Denial/L=Springfield/O=Dis/CN=www.example.com"
+RUN ln -s /dev/stdout /var/log/exim/exim_main.log && \
+    ln -s /dev/stdout /var/log/exim/exim_reject.log && \
+    ln -s /dev/stdout /var/log/exim/exim_panic.log
+
+ENV CERTFILE='/etc/exim/cert.pem' \
+    KEYFILE='/etc/exim/key.pem' \
+    PASSWDFILE=/etc/exim/passwd \
+    RELAY_FROM_HOSTS='@ : 127.0.0.1 : localhost' \
+    RELAY_TO_DOMAINS='@ : localhost' \
+    LOCAL_DOMAINS='@ : localhost' \
+    SECURITY_BYPASS='@ : 127.0.0.1 : localhost'
+
+VOLUME ["/etc/exim","/etc/mail","/var/spool/mail"]
+
+EXPOSE 25/tcp
+EXPOSE 465/tcp
+EXPOSE 587/tcp
+
+COPY ./exim.conf /etc/exim
+
+USER mail
+CMD ["/usr/sbin/exim", "-bdf", "-q15m"]

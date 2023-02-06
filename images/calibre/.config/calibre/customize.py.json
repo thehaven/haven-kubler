@@ -1,0 +1,24 @@
+{
+  "disabled_plugins": {
+    "__class__": "set", 
+    "__value__": []
+  }, 
+  "enabled_plugins": {
+    "__class__": "set", 
+    "__value__": []
+  }, 
+  "filetype_mapping": {}, 
+  "plugin_customization": {
+    "IsbnDB": "QFSMO45E"
+  }, 
+  "plugins": {
+    "Barnes & Noble": "/home/haven/.config/calibre/plugins/Barnes & Noble.zip", 
+    "Extract ISBN": "/home/haven/.config/calibre/plugins/Extract ISBN.zip", 
+    "FanFictionDownLoader": "/home/haven/.config/calibre/plugins/FanFictionDownLoader.zip", 
+    "Find Duplicates": "/home/haven/.config/calibre/plugins/Find Duplicates.zip", 
+    "Goodreads": "/home/haven/.config/calibre/plugins/Goodreads.zip", 
+    "Kindle Collections": "/home/haven/.config/calibre/plugins/Kindle Collections.zip", 
+    "Quality Check": "/home/haven/.config/calibre/plugins/Quality Check.zip", 
+    "Read MP3 AudioBook metadata": "/home/haven/.config/calibre/plugins/Read MP3 AudioBook metadata.zip"
+  }
+}

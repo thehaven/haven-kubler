@@ -1,0 +1,12 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer="${MAINTAINER}"
+
+ADD rootfs.tar /
+
+EXPOSE 8089/tcp
+
+COPY docker-healthcheck.sh /usr/bin/docker-healthcheck
+COPY files/splunk-licence-server.linux.amd64 /usr/local/bin/splunk-licence-server.linux.amd64 
+HEALTHCHECK --interval=60s --timeout=5s --start-period=5s --retries=3 CMD ["docker-healthcheck"]
+
+CMD ["/usr/local/bin/splunk-licence-server.linux.amd64 -host 0.0.0.0 -port 8089"]

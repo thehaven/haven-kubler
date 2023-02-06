@@ -1,0 +1,22 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer ${MAINTAINER}
+
+ADD rootfs.tar /
+
+EXPOSE 32400/tcp 3005/tcp 8324/tcp 32469/tcp 1900/udp 32410/udp 32412/udp 32413/udp 32414/udp
+VOLUME /media /config /transcode
+
+RUN chown plex:plex /media /config /transcode
+
+ENV TERM="xterm" LANG="C.UTF-8" LC_ALL="C.UTF-8"
+ENV PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="/config"
+ENV PLEX_MEDIA_SERVER_HOME=/usr/lib/plexmediaserver
+ENV PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS=6
+ENV PLEX_MEDIA_SERVER_TMPDIR=/transcode
+ENV PLEX_MEDIA_SERVER_INFO_VENDOR=Docker
+ENV PLEX_MEDIA_SERVER_INFO_DEVICE="Docker Container"
+
+USER plex
+HEALTHCHECK --interval=5s --timeout=2s --retries=20 CMD curl -k --connect-timeout 15 --silent --show-error --fail http://localhost:32400/identity || exit 1
+CMD /usr/sbin/start_pms
+CMD [ "/bin/sh", "-c", "/usr/lib/plexmediaserver/Plex\ Media\ Server" ]
