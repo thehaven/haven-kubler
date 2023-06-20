@@ -14,6 +14,9 @@ configure_bob() {
     #emerge --usepkg=n sys-apps/portage app-portage/gemato app-portage/flaggie app-portage/eix app-portage/gentoolkit
     configure_eix
     mkdir -p /etc/portage/package.{accept_keywords,unmask,mask,use}
+    # use hot fix in 0.99.4
+    echo '=app-portage/flaggie-0.99.4 ~amd64' >> /etc/portage/package.accept_keywords/flaggie
+    emerge app-portage/flaggie app-portage/eix app-portage/gentoolkit
     touch /etc/portage/package.accept_keywords/flaggie
     # set locale of build container
     echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
@@ -30,7 +33,7 @@ configure_bob() {
     update_use 'dev-vcs/git' '-perl'
     update_use 'app-crypt/pinentry' '+ncurses'
     update_keywords 'app-admin/su-exec' '+~amd64'
-    emerge -u app-eselect/eselect-repository app-misc/jq app-shells/bash-completion app-portage/layman
+    emerge -u app-eselect/eselect-repository app-misc/jq app-shells/bash-completion
     #install_git_postsync_hooks
     update_use 'sys-apps/util-linux' '-su'
     emerge --update --newuse --deep @world
