@@ -17,7 +17,7 @@ ENV JAVA_OPTIONS="-server -Xms512m -Xmx4g -Xss256k -XX:PermSize=128m -XX:MaxPerm
 RUN sh -c 'rm -Rf $TOMCAT_HOME/logs && ln -s $ARTIFACTORY_HOME/logs/catalina $TOMCAT_HOME/logs'
 
 VOLUME ["/opt/jfrog/var/artifactory/data", "/opt/jfrog/artifactory/var/etc", "/opt/jfrog/artifactory/var/artifactory/log"]
-EXPOSE 8081
+EXPOSE 8082
 
 HEALTHCHECK --interval=5m --timeout=3s \
   CMD curl -f http://localhost:8081/ || exit 1

@@ -8,7 +8,9 @@ _packages="sys-libs/readline net-misc/curl app-admin/eselect app-portage/portage
 #
 configure_rootfs_build()
 {
-    rm -rf /var/db/repos/gentoo
+    add_overlay haven-overlay https://gitlab-ee.thehavennet.org.uk/gentoo/haven-overlay.git
+    rm -Rf /var/sync/portage /var/db/repos/gentoo && emerge --sync && etc-update --automode -5 && emerge --oneshot portage
+    #rm -rf /var/db/repos/gentoo
     mkdir -p /var/cache/eix
     chown portage:portage /var/cache/eix
     emerge --sync

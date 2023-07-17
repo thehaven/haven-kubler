@@ -17,12 +17,13 @@ configure_bob()
 #
 configure_rootfs_build()
 {
-    echo 'NGINX_MODULES_HTTP="access addition auth_basic auth_pam autoindex brotli browser charset dav dav_ext empty_gif fancyindex fastcgi geo geoip gzip gzip_static headers_more http2 limit_req limit_zone lua map memc memcached metrics naxsi ndk ngx_pagespeed passenger proxy realip redislog referer rewrite scgi slowfs_cache split_clients srcache ssi stub_status sub tcpconns threads upload_progress upstream_ip_hash upstream_keepalive upstream_least_conn userid uwsgi vhost_traffic_status xslt"' >> /etc/portage/make.conf
+    echo 'NGINX_MODULES_HTTP="access addition auth_basic auth_pam autoindex brotli browser charset dav dav_ext empty_gif fancyindex fastcgi geo geoip gzip gzip_static headers_more http2 limit_req limit_zone map memc memcached metrics ndk ngx_pagespeed passenger proxy realip redislog referer rewrite scgi slowfs_cache split_clients srcache ssi stub_status sub tcpconns threads upload_progress upstream_ip_hash upstream_keepalive upstream_least_conn userid uwsgi vhost_traffic_status xslt"' >> /etc/portage/make.conf
     echo 'NGINX_MODULES_MAIL="imap smtp"' >> /etc/portage/make.conf
     echo 'NGINX_MODULES_STREAM="access limit_conn upstream_least_conn upstream_zone"' >> /etc/portage/make.conf
+    update_use 'app-misc/mime-types' '+nginx'
     update_keywords 'www-servers/nginx' '+~amd64'
-    update_use 'www-servers/nginx' '+http2'
-    update_use 'dev-libs/libpcre' '-readline'
+    update_use 'www-servers/nginx' '+nginx_modules_http_v2 +aio +http2 -pcre2 +pcre-jit +ssl +ssl-cert-cb +threads'
+    update_use 'dev-libs/libpcre' '-readline +jit'
 }
 
 #

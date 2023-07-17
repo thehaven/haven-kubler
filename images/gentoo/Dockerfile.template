@@ -1,0 +1,9 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer="${MAINTAINER}"
+
+ADD rootfs.tar /
+
+COPY files/portage /etc/
+VOLUME ["/usr/portage","/usr/portage-distfiles","/usr/portage-packages"]
+
+CMD ["/bin/bash"]

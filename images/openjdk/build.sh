@@ -5,6 +5,7 @@ _packages="dev-java/openjdk"
 
 configure_builder()
 {
+    rm -Rf /var/sync/portage && emerge --sync && etc-update --automode -5 && emerge --oneshot portage
     update_use -postscript
     update_use 'dev-java/openjdk' '+headless-awt +gentoo-vm -alsa -cups'
     echo 'dev-java/openjdk -gentoo-vm' >> /etc/portage/profile/package.use.mask
