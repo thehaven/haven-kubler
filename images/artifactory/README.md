@@ -5,11 +5,11 @@ Run this [artifactory][] image with:
 ```bash
 docker run -d -p 8081:8081/tcp \
  --restart=unless-stopped --name artifactory \
- haven/artifactory:latest /bin/sh /opt/artifactory/bin/artifactory.sh run
+ haven/artifactory:latest /bin/sh /opt/jfrog/artifactory/app/bin/artifactory.sh
 ```
 You can then connect to it via: http://<docker host ip>:8081 Default credentials are admin/password
 
-For persistence mount against /opt/artifactory/data and /opt/artifactory/etc i.e.
+For persistence mount against /opt/jfrog/artifactory/data, /opt/jfrog/artifactory/etc and /opt/jfrog/artifactory/var/log i.e.
 
 ```bash
 docker run -d -p 8081:8081/tcp \
@@ -19,10 +19,10 @@ docker run -d -p 8081:8081/tcp \
  --restart=unless-stopped \
  --name artifactory \
  --hostname artifactory \
- haven/artifactory:latest /bin/sh /opt/artifactory/bin/artifactory.sh
+ haven/artifactory:latest /bin/sh /opt/jfrog/artifactory/app/bin/artifactory.sh
 ```
 
 [Last Build][packages]
 
-[artifactory]: https://artifactory.url
-[packages]: PACKAGES.md
+[artifactory]: https://jfrog.com/artifactory/
+[packages]: https://github.com/thehaven/haven-kubler/tree/master/images/artifactory/PACKAGES.md
