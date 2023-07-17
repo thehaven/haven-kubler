@@ -13,11 +13,13 @@ For persistence mount against /opt/artifactory/data and /opt/artifactory/etc i.e
 
 ```bash
 docker run -d -p 8081:8081/tcp \
- -v data:/opt/artifactory/data \
- -v etc:/opt/artifactory/etc \
+ -v data:/opt/jfrog/artifactory/var/data \
+ -v etc:/opt/jfrog/artifactory/var/etc \
+ -v log:/opt/jfrog/artifactory/var/log
  --restart=unless-stopped \
  --name artifactory \
- haven/artifactory:latest /bin/sh /opt/artifactory/bin/artifactory.sh run 
+ --hostname artifactory \
+ haven/artifactory:latest /bin/sh /opt/artifactory/bin/artifactory.sh
 ```
 
 [Last Build][packages]

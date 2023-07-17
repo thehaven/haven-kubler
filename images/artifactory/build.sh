@@ -1,4 +1,4 @@
-_packages="app-shells/bash =dev-util/artifactory-pro-bin-7.12.6"
+_packages="app-shells/bash =dev-util/artifactory-pro-bin-7.12.6 dev-db/sqlite"
 configure_bob()
 {
     :
@@ -20,6 +20,7 @@ configure_rootfs_build()
 
 finish_rootfs_build()
 {
-    rm -Rf /opt/jfrog/artifactory/tomcat/logs/catalina/*
+    rm -Rf "${_EMERGE_ROOT}/opt/jfrog/artifactory/tomcat/logs/catalina/*"
+    chown -Rf artifactory:artifactory "${_EMERGE_ROOT}/opt/jfrog"
     :
 }

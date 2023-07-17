@@ -5,17 +5,13 @@ ADD rootfs.tar /
 ADD files/artifactory.jar /root
 RUN sh -c '/bin/echo -e "2\n/opt/jfrog/artifactory/app/artifactory/tomcat\nyes\nexit\n" | java -jar /root/artifactory.jar'
 
-ENV ARTIFACTORY_HOME="/opt/jfrog/artifactory"
-ENV ARTIFACTORY_USER="artifactory"
-ENV START_LOCAL_REPLICATOR="true"
-ENV TOMCAT_HOME="/opt/jfrog/artifactory/tomcat"
-ENV ARTIFACTORY_PID="/opt/jfrog/artifactory/run/artifactory.pid"
-ENV CATALINA_BASE="/opt/jfrog/artifactory/tomcat"
-ENV CATALINA_HOME="/opt/jfrog/artifactory/tomcat"
-ENV CATALINA_TMPDIR="/opt/jfrog/artifactory/tomcat/temp"
-ENV JRE_HOME="/usr"
-ENV CLASSPATH="/opt/jfrog/artifactory/tomcat/bin/bootstrap.jar:/opt/jfrog/artifactory/tomcat/bin/tomcat-juli.jar"
-ENV CATALINA_PID="/opt/jfrog/artifactory/run/artifactory.pid"
+ENV JFROG_HOME="/opt/jfrog"
+ENV JF_PRODUCT_HOME="/opt/jfrog/artifactory"
+ENV JF_REPLICATOR_ENABLED="false"
+ENV JF_ARTIFACTORY_PID="/opt/jfrog/artifactory/var/run/artifactory.pid"
+ENV ARTIFACTORY_PID="/opt/jfrog/artifactory/var/run/artifactory.pid"
+ENV JAVA_HOME="/usr/lib/jvm/openjdk-bin-11"
+ENV JRE_HOME="/usr/lib/jvm/openjdk-bin-11"
 ENV JAVA_OPTIONS="-server -Xms512m -Xmx4g -Xss256k -XX:PermSize=128m -XX:MaxPermSize=256m -XX:+UseG1GC"
 
 RUN sh -c 'rm -Rf $TOMCAT_HOME/logs && ln -s $ARTIFACTORY_HOME/logs/catalina $TOMCAT_HOME/logs'
@@ -27,4 +23,4 @@ HEALTHCHECK --interval=5m --timeout=3s \
   CMD curl -f http://localhost:8081/ || exit 1
 
 USER artifactory
-CMD ["/opt/jfrog/artifactory/app/bin/artifactory.sh", "run"]
+CMD ["/opt/jfrog/artifactory/app/bin/artifactory.sh"]
