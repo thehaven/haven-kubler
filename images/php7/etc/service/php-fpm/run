@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec 2>&1
+exec /usr/bin/php-fpm"${PHP_SLOT}" -y /etc/php/fpm-php"${PHP_SLOT}"/php-fpm.conf -F

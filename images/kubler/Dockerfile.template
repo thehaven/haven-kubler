@@ -5,4 +5,5 @@ ADD rootfs.tar /
 VOLUME ["/kubler", "/var/run/docker.sock"]
 USER kubler
 WORKDIR /kubler
+ENTRYPOINT ["dockerd"]  
 CMD ["/usr/bin/kubler", "-h"]

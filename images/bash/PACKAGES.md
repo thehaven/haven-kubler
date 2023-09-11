@@ -1,17 +1,17 @@
 ### haven/bash:dev
 
-Built: Thu  7 Sep 20:51:39 BST 2023
+Built: Sun 10 Sep 15:45:43 BST 2023
 Image Size: 303MB
 
 #### Installed
 Package | USE Flags
 --------|----------
-app-admin/eselect-1.4.25 | `-doc -emacs -vim-syntax`
+app-admin/eselect-1.4.26 | `-doc -emacs -vim-syntax`
 app-alternatives/bzip2-1 | `reference (split-usr) -lbzip2 -pbzip2`
 app-arch/bzip2-1.0.8-r4 | `(split-usr) -static -static-libs -verify-sig`
 app-portage/portage-utils-0.96.1 | `openmp -qmanifest -qtegrity -static`
 app-shells/bash-5.1_p16-r6 | `net nls (readline) -afs -bashlogger -examples -mem-scramble -plugins -verify-sig`
-dev-libs/gmp-6.2.1-r5 | `asm cpudetection cxx -doc -pic -static-libs`
+dev-libs/gmp-6.3.0 | `asm cpudetection cxx -doc -pic -static-libs`
 dev-libs/mpc-1.3.1 | `-static-libs`
 dev-libs/mpfr-4.2.0_p12 | `-static-libs -verify-sig`
 net-dns/c-ares-1.19.1 | `-static-libs -test -verify-sig`
@@ -20,7 +20,7 @@ net-misc/curl-8.1.2 | `adns ftp http2 imap openssl pop3 progress-meter smtp ssl 
 sys-apps/acl-2.3.1-r2 | `nls (split-usr) -static-libs`
 sys-apps/attr-2.5.1-r2 | `nls (split-usr) -debug -static-libs`
 sys-apps/coreutils-9.3-r3 | `acl nls openssl (split-usr) (xattr) -caps -gmp -hostname -kill -multicall (-selinux) -static -test -vanilla -verify-sig`
-sys-apps/file-5.44-r3 | `bzip2 seccomp zlib -lzip -lzma -python -static-libs -verify-sig -zstd`
+sys-apps/file-5.45-r1 | `bzip2 seccomp zlib -lzip -lzma -python -static-libs -verify-sig -zstd`
 sys-apps/findutils-4.9.0-r2 | `nls (-selinux) -static -test -verify-sig`
 sys-apps/gentoo-functions-0.19 | ``
 sys-apps/sed-4.9 | `acl nls (-selinux) -static -verify-sig`
@@ -36,7 +36,7 @@ Package | USE Flags
 --------|----------
 **FROM haven/openssl** |
 app-misc/ca-certificates-20230311.3.90 | `-cacert`
-dev-libs/openssl-3.0.9-r2 | `asm -fips -ktls -rfc3779 -sctp -static-libs -test -tls-compression -vanilla -verify-sig -weak-ssl-ciphers`
+dev-libs/openssl-3.0.10 | `asm -fips -ktls -rfc3779 -sctp -static-libs -test -tls-compression -vanilla -verify-sig -weak-ssl-ciphers`
 sys-apps/debianutils-5.8 | `installkernel -static`
 sys-kernel/installkernel-gentoo-7 | `-grub`
 **FROM haven/s6** |

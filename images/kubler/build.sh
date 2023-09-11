@@ -1,4 +1,4 @@
-_packages="app-containers/kubler app-containers/docker-cli app-misc/jq net-misc/openssh net-misc/wget"
+_packages="app-containers/kubler app-containers/docker-cli app-containers/docker app-misc/jq net-misc/openssh net-misc/wget dev-vcs/git"
 # Install a standard system directory layout at ${_EMERGE_ROOT}, optional, default: false
 #BOB_INSTALL_BASELAYOUT=true
 
