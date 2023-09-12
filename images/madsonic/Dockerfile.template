@@ -1,6 +1,6 @@
 FROM ${IMAGE_PARENT}
 LABEL maintainer ${MAINTAINER}
-LABEL Version 6.3.9840
+LABEL Version 7.0.10400
 
 ADD rootfs.tar /
 
@@ -28,10 +28,12 @@ ENV MADSONIC_PROXY_PORT=8888
 EXPOSE 4040
 EXPOSE 4050
 
-VOLUME /media /config
+USER madsonic
+
+VOLUME /storage/music /media /config
 
 WORKDIR /usr/libexec/madsonic
-CMD /usr/bin/java -Xms${MADSONIC_INIT_MEMORY}m -Xmx${MADSONIC_MAX_MEMORY}m \
+CMD /etc/java-config-2/current-system-vm/bin/java -Xms${MADSONIC_INIT_MEMORY}m -Xmx${MADSONIC_MAX_MEMORY}m \
   -Dmadsonic.home=${MADSONIC_HOME} \
   -Dmadsonic.host=${MADSONIC_HOST} \
   -Dmadsonic.port=${MADSONIC_HTTP_PORT} \
