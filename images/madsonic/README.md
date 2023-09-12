@@ -48,5 +48,5 @@ ENV MADSONIC_PROXY_PORT=8888
 
 [Last Build][packages]
 
-[madsonic]: https://http://beta.madsonic.org/
+[madsonic]: https://beta.madsonic.org/
 [packages]: PACKAGES.md
