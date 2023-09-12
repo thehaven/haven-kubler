@@ -17,9 +17,12 @@ docker run -d \
 ```
 
 There are three volume mounts avaiable, most folk will use just /media and /config:
- /media
- /config
- /storage/music (legacy for my own environment)
+
+```
+/media # Mount for music
+/config # Persist config
+/storage/music # Legacy Music for my own environment
+```
 
 ENV overrides available with the following defaults:
 
