@@ -1,7 +1,7 @@
 #
 # Kubler phase 1 config, pick installed packages and/or customize the build
 #
-_packages="dev-java/icedtea-bin"
+_packages="dev-java/icedtea-bin:8"
 
 configure_builder()
 {
