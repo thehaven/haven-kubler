@@ -1,0 +1,60 @@
+FROM ${IMAGE_PARENT}
+LABEL maintainer ${MAINTAINER}
+LABEL Version 11.0.0-SNAPSHOT.20230217142243
+
+ADD rootfs.tar /
+
+ENV AIRSONIC_CONTEXT_PATH=/
+ENV AIRSONIC_HOME=/config
+ENV AIRSONIC_HOST=0.0.0.0
+ENV AIRSONIC_HTTP_PORT=4040
+ENV AIRSONIC_HTTPS_PORT=4050
+ENV AIRSONIC_INIT_MEMORY=192
+ENV AIRSONIC_MAX_MEMORY=1024
+ENV AIRSONIC_DB=''
+ENV AIRSONIC_DEFAULT_MUSIC_FOLDER=/media/default
+ENV AIRSONIC_DEFAULT_UPLOAD_FOLDER=/media/uploaded
+ENV AIRSONIC_DEFAULT_PODCAST_FOLDER=/media/podcast
+ENV AIRSONIC_DEFAULT_PLAYLIST_IMPORT_FOLDER=/media/playlists/import
+ENV AIRSONIC_DEFAULT_PLAYLIST_EXPORT_FOLDER=/media/playlists/export
+ENV AIRSONIC_DEFAULT_PLAYLIST_BACKUP_FOLDER=/media/playlists/backup
+ENV AIRSONIC_DEFAULT_TRANSCODE_FOLDER=/var/lib/airsonic/transcode
+ENV AIRSONIC_DEFAULT_TIMEZONE='Europe/London'
+ENV AIRSONIC_GZIP=true
+ENV AIRSONIC_PROXY_TYPE=http
+ENV AIRSONIC_PROXY_HOST=localhost
+ENV AIRSONIC_PROXY_PORT=8888
+
+EXPOSE 4040
+EXPOSE 4050
+
+USER airsonic
+
+VOLUME /storage/music /media /config
+
+WORKDIR /
+
+CMD /usr/bin/java -Xms${AIRSONIC_INIT_MEMORY}m -Xmx${AIRSONIC_MAX_MEMORY}m \
+  -Dairsonic.home=${AIRSONIC_HOME} \
+  -Dserver.address=${AIRSONIC_HOST} \
+  -Dserver.port=${AIRSONIC_HTTP_PORT} \
+  -Dairsonic.httpsPort=${AIRSONIC_HTTPS_PORT} \
+  -Dairsonic.contextPath=${AIRSONIC_CONTEXT_PATH} \
+  -Dairsonic.defaultMusicFolder=${AIRSONIC_DEFAULT_MUSIC_FOLDER} \
+  -Dairsonic.defaultUploadFolder=${AIRSONIC_DEFAULT_UPLOAD_FOLDER} \
+  -Dairsonic.defaultPodcastFolder=${AIRSONIC_DEFAULT_PODCAST_FOLDER} \
+  -Dairsonic.defaultPlaylistImportFolder=${AIRSONIC_DEFAULT_PLAYLIST_IMPORT_FOLDER} \
+  -Dairsonic.defaultPlaylistExportFolder=${AIRSONIC_DEFAULT_PLAYLIST_EXPORT_FOLDER} \
+  -Dairsonic.defaultPlaylistBackupFolder=${AIRSONIC_DEFAULT_PLAYLIST_BACKUP_FOLDER} \
+  -Dairsonic.defaultTranscodeFolder=${AIRSONIC_DEFAULT_TRANSCODE_FOLDER} \
+  -Duser.timezone=${AIRSONIC_DEFAULT_TIMEZONE} \
+  -Dairsonic.update=${AIRSONIC_UPDATE} \
+  -Dairsonic.gzip=${AIRSONIC_GZIP} \
+  -Dairsonic.proxy=${AIRSONIC_PROXY} \
+  -Dairsonic.proxyType=${AIRSONIC_PROXY_TYPE} \
+  -Dairsonic.proxyHost=${AIRSONIC_PROXY_HOST} \
+  -Dairsonic.proxyPort=${AIRSONIC_PROXY_PORT} \
+  -Dairsonic.db="${AIRSONIC_DB}" \
+  -Djava.awt.headless=true \
+  -Dserver.forward-headers-strategy=FRAMEWORK \
+  -jar /usr/bin/airsonic.war 2>&1
