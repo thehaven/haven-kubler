@@ -6,16 +6,18 @@
 # This hook can be used to configure the build container itself, install packages, run any command, etc
 #
 configure_bob() {
+
+    # Fix GPG issues:
+    rm -rf /etc/portage/gnupg; getuto
+    #chown -R portage:portage /etc/portage/gnupg
+    #chmod 700 /etc/portage/gnupg
+
     fix_portage_profile_symlink
-    emerge --unmerge perl; emerge app-admin/perl-cleaner && perl-cleaner --all
     emerge -u --usepkg=n dev-vcs/git sys-apps/portage app-portage/gemato app-portage/flaggie app-portage/eix app-portage/gentoolkit
     rm -Rf /var/db/repos/gentoo; emerge --sync
     # install basics used by helper functions
     eselect news read new 1> /dev/null
     mkdir -p /etc/portage/package.{accept_keywords,unmask,mask,use}
-    # FUCK PERL!
-    #emerge -uDNv --backtrack=100 --autounmask-keep-masks=y @world
-    #emerge app-admin/perl-cleaner && perl-cleaner --all
     
     # use hot fix in 0.99.4
     echo '=app-portage/flaggie-0.99.4 ~amd64' >> /etc/portage/package.accept_keywords/flaggie
@@ -37,10 +39,11 @@ configure_bob() {
     update_keywords 'app-admin/su-exec' '+~amd64'
     emerge dev-vcs/git app-eselect/eselect-repository app-misc/jq app-shells/bash-completion
     #install_git_postsync_hooks
-    emerge --update --newuse --deep @world
-    emerge --update --changed-use --deep --with-bdeps=y --changed-deps=y --binpkg-respect-use=y --autounmask-write @world
+    emerge -vuND @world
+    #emerge --update --changed-use --deep --with-bdeps=y --changed-deps=y --binpkg-respect-use=y --autounmask-write @world
     add_overlay haven-overlay https://gitlab-ee.thehavennet.org.uk/gentoo/haven-overlay.git
     add_overlay kubler https://github.com/edannenberg/kubler-overlay.git
-    emerge dev-lang/go
-    emerge @preserved-rebuild
+    emerge -kg dev-lang/go
+    emerge -kg @preserved-rebuild
+    emerge --newuse --deep --with-bdeps=y --changed-deps=y --binpkg-respect-use=y -kg @system
 }
