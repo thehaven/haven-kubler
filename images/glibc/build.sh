@@ -2,7 +2,7 @@
 #
 # Kubler phase 1 config, pick installed packages and/or customize the build
 #
-_packages="sys-libs/glibc"
+_packages="sys-libs/glibc sys-libs/libxcrypt"
 _timezone="${BOB_TIMEZONE:-UTC}"
 _glibc_locales=("C.UTF8 UTF-8" "en_US.UTF-8 UTF-8")
 BOB_SKIP_LIB_CLEANUP=true
@@ -20,6 +20,8 @@ configure_bob()
     cp /usr/lib/locale/locale-archive "${_EMERGE_ROOT}"/usr/lib/locale/
     # set timezone
     echo $_timezone > /etc/timezone
+    # 30.06.23 - update glibc in build container first to resolve a blocker
+    emerge sys-libs/glibc
 }
 
 #
@@ -66,7 +68,7 @@ finish_rootfs_build()
     # backup iconv encodings so other images can pull them in again via _iconv_from=glibc
     tar -cpf "${_ROOTFS_BACKUP}"/glibc-iconv.tar "${_EMERGE_ROOT}"/usr/"${_LIB}"/gconv/
     # purge iconv
-    rm -rf "${_EMERGE_ROOT}"/usr/"${_LIB}"/gconv/*
+    rm -fr "${_EMERGE_ROOT}"/usr/"${_LIB}"/gconv/*
     # add entry to purged section in PACKAGES.md
     write_checkbox_line "Glibc Iconv Encodings" "checked" "${_DOC_FOOTER_PURGED}"
 }
