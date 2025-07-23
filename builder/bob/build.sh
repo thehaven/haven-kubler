@@ -19,9 +19,10 @@ configure_bob() {
     eselect news read new 1> /dev/null
     mkdir -p /etc/portage/package.{accept_keywords,unmask,mask,use}
     
-    # use hot fix in 0.99.4
-    echo '=app-portage/flaggie-0.99.4 ~amd64' >> /etc/portage/package.accept_keywords/flaggie
+    # Flaggie
+    echo 'app-portage/flaggie ~amd64' >> /etc/portage/package.accept_keywords/flaggie
     emerge app-portage/flaggie app-portage/eix app-portage/gentoolkit
+    rm -f /etc/portage/postsync.d/50-eix-postsync
     configure_eix
     touch /etc/portage/package.accept_keywords/flaggie
     # set locale of build container
