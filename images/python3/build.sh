@@ -1,7 +1,7 @@
 #
-# Kubler phase 1 config, pick installed packages and/or customize the build
+# Haven phase 1 config, pick installed packages and/or customize the build
 #
-_packages="dev-lang/python:3.7 dev-python/pip"
+_packages="dev-lang/python dev-python/pip"
 #_keep_headers=true
 
 configure_bob()
@@ -14,10 +14,8 @@ configure_bob()
 #
 configure_rootfs_build()
 {
-    echo 'PYTHON_TARGETS="python3_7"' >> /etc/portage/make.conf
-    echo 'PYTHON_SINGLE_TARGET="python3_7"' >> /etc/portage/make.conf
-    echo 'USE_PYTHON="3.7"' >> /etc/portage/make.conf
     update_use '+sqlite'
+    provide_package sys-devel/gcc
 
     # add user/group for unprivileged container usage
     groupadd -g 404 python
@@ -30,5 +28,6 @@ configure_rootfs_build()
 #
 finish_rootfs_build()
 {
-    :
+    # required for internal modules
+    copy_gcc_libs
 }
