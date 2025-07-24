@@ -11,7 +11,7 @@ configure_rootfs_build()
     #sed -i '/app-crypt\/rhash.*/d' /etc/portage/profile/package.provided
     #copy_gcc_libs
     #ldconfig
-    update_use 'media-video/ffmpeg' '+amr +amrenc +bzip2 +cpudetection +encode +fdk +mp3 +threads +vorbis -xvid -x265 -x264 -webp -vpx -vaapi -vdpau -dav1d'
+    update_use 'media-video/ffmpeg' '+amr +amrenc +bzip2 +fdk +vorbis -xvid -x265 -x264 -webp -vpx -vaapi -vdpau -dav1d'
     #emerge --newuse --deep --with-bdeps=y --changed-deps=y --binpkg-respect-use=y -kg dev-build/cmake
     update_use 'net-dns/bind' '+caps +geoip +gssapi'
     update_keywords 'net-dns/bind' '+~amd64'
