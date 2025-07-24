@@ -8,7 +8,7 @@ _packages="mail-mta/exim"
 #
 configure_rootfs_build()
 {
-    update_use 'mail-mta/exim' '+dovecot-sasl +dnsdb +dsn +exiscan-acl +ldap +maildir +mysql +perl +sasl +spf -radius'
+    update_use 'mail-mta/exim' '+dovecot-sasl +dnsdb +dsn +exiscan-acl +ldap +maildir +mysql +perl +sasl +spf +sqlite -radius'
 }
 
 #
