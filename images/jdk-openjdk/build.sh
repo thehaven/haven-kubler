@@ -1,5 +1,5 @@
 #
-# Kubler phase 1 config, pick installed packages and/or customize the build
+# Haven phase 1 config, pick installed packages and/or customize the build
 #
 _packages="dev-java/openjdk-bin"
 
@@ -7,11 +7,9 @@ configure_builder()
 {
     update_use -postscript
     update_use 'dev-java/openjdk-bin' +headless-awt
-    echo 'dev-java/openjdk-bin -gentoo-vm' >> /etc/portage/profile/package.use.mask
-   # update_keywords dev-java/openjdk-bin '+~amd64'
-    # skip python and iced-tea
-    provide_package dev-lang/python dev-lang/python-exec dev-java/icedtea-bin
-
+    update_use 'media-libs/harfbuzz' -graphite
+    # skip python
+    provide_package dev-lang/python dev-lang/python-exec dev-python/wheel dev-python/setuptools-scm dev-python/setuptools dev-python/jaraco-text dev-python/setuptools dev-python/platformdirs dev-python/packaging dev-python/more-itertools dev-python/ordered-set
     # install java in build container so depending builds have it available
     emerge dev-java/openjdk-bin
 }

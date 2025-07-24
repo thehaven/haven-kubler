@@ -1,5 +1,5 @@
 FROM ${IMAGE_PARENT}
-LABEL maintainer ${MAINTAINER}
+LABEL maintainer="${MAINTAINER}"
 
 ONBUILD ARG JAVA_UID
 ONBUILD ARG JAVA_GID
@@ -13,5 +13,5 @@ ADD rootfs.tar /
 
 ENV JAVA_HOME=/etc/java-config-2/current-system-vm
 
-RUN eselect java-vm set system 1 && \
+RUN ln -s /opt/openjdk-jre-bin-17/ /etc/java-config-2/current-system-vm && \
     update-ca-certificates
