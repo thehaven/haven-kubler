@@ -1,7 +1,7 @@
 ### haven/busybox:dev
 
-Built: Wed 23 Jul 16:00:22 BST 2025
-Image Size: 3.24MB
+Built: Mon 22 Sep 19:58:42 BST 2025
+Image Size: 3.31MB
 
 #### Installed
 Package | USE Flags

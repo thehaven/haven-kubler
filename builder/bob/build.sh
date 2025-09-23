@@ -23,7 +23,7 @@ configure_bob() {
     echo 'app-portage/flaggie ~amd64' >> /etc/portage/package.accept_keywords/flaggie
     emerge app-portage/flaggie app-portage/eix app-portage/gentoolkit
     rm -f /etc/portage/postsync.d/50-eix-postsync
-    configure_eix
+    eix-update
     touch /etc/portage/package.accept_keywords/flaggie
     # set locale of build container
     echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen

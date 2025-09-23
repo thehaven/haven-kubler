@@ -1,6 +1,6 @@
 ### haven/s6:dev
 
-Built: Wed 23 Jul 16:18:29 BST 2025
+Built: Mon 22 Sep 20:17:32 BST 2025
 Image Size: 19.5MB
 
 #### Installed
@@ -16,7 +16,7 @@ Package | USE Flags
 **FROM haven/glibc** |
 dev-libs/libunistring-1.3 | `-doc -static-libs`
 net-dns/libidn2-2.3.8 | `nls -static-libs -verify-sig`
-sys-libs/glibc-2.41-r4 | `cet multiarch ssp (static-libs) -audit -caps -compile-locales (-custom-cflags) -doc -gd -hash-sysv-compat -headers-only (-multilib) -multilib-bootstrap -nscd -perl -profile (-selinux) (-stack-realign) -suid -systemd -systemtap -test (-vanilla)`
+sys-libs/glibc-2.41-r6 | `cet multiarch ssp (static-libs) -audit -caps -compile-locales (-custom-cflags) -doc -gd -hash-sysv-compat -headers-only (-multilib) -multilib-bootstrap -nscd -perl -profile (-selinux) (-stack-realign) -suid -systemd -systemtap -test (-vanilla)`
 sys-libs/libxcrypt-4.4.38 | `(compat) (system) -headers-only -static-libs -test`
 sys-libs/timezone-data-2025b | `nls -leaps-timezone -zic-slim`
 **FROM haven/busybox** |
