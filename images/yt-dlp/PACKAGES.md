@@ -1,50 +1,24 @@
 ### haven/yt-dlp:dev
 
-Built: Wed 24 Sep 11:40:37 BST 2025
-Image Size: 572MB
-
+Built: Wed 24 Sep 16:22:13 BST 2025
+Image Size: 338MB
 
 #### Installed
 Package | USE Flags
 --------|----------
-app-crypt/libb2-0.98.1-r3 | `openmp -native-cflags -static-libs`
-app-misc/mime-types-2.1.54 | `-nginx`
-dev-db/sqlite-3.50.4 | `readline -debug -doc -icu -secure-delete -static-libs -tcl -test -tools`
-dev-lang/python-3.13.5_p1 | `ensurepip readline sqlite ssl -bluetooth -debug -examples -gdbm (-jit) -libedit -ncurses -pgo -test -tk -valgrind -verify-sig`
-dev-lang/python-exec-2.4.10 | `(native-symlinks) -test`
-dev-lang/python-exec-conf-2.4.6 | ` `
 dev-libs/elfutils-0.193 | `bzip2 lzma nls utils -debuginfod -stacktrace -static-libs -test -valgrind -verify-sig -zstd`
-dev-libs/expat-2.7.1 | `unicode -examples -static-libs -test`
 dev-libs/fribidi-1.0.16 | `-doc -test`
 dev-libs/glib-2.84.3 | `elf introspection mime xattr -dbus -debug -doc (-selinux) -static-libs -sysprof -systemtap -test -utils`
 dev-libs/gmp-6.3.0-r1 | `asm cpudetection cxx -doc -pic -static-libs`
 dev-libs/gobject-introspection-1.84.0-r1 | `-doctool -gtk-doc -test`
 dev-libs/gobject-introspection-common-1.84.0 | ``
-dev-libs/libffi-3.5.2 | `exec-static-trampoline -debug -pax-kernel -static-libs -test`
-dev-libs/libpcre2-10.45 | `bzip2 jit pcre16 pcre32 readline unicode zlib -libedit -static-libs -valgrind -verify-sig`
 dev-libs/libtomcrypt-1.18.2-r4 | `gmp libtommath -tomsfastmath`
 dev-libs/libtommath-1.3.0 | `-doc -examples -static-libs`
 dev-libs/libxml2-2.13.9 | `python readline -examples -icu -lzma -static-libs -test`
-dev-libs/mpc-1.3.1 | `-static-libs`
-dev-libs/mpdecimal-4.0.1 | `-cxx -test`
-dev-libs/mpfr-4.2.2 | `-static-libs -verify-sig`
 dev-python/cffi-1.17.1 | `-debug -doc -test`
-dev-python/ensurepip-pip-25.2 | `(test-rust) -test`
-dev-python/gentoo-common-1 | ``
-dev-python/jaraco-collections-5.2.1 | `-test`
-dev-python/jaraco-context-6.0.1-r1 | `-test`
-dev-python/jaraco-functools-4.3.0 | `-test`
-dev-python/jaraco-text-4.0.0 | `-test`
-dev-python/more-itertools-10.7.0 | `-doc`
-dev-python/packaging-25.0 | `-test`
-dev-python/platformdirs-4.3.8 | `-test`
 dev-python/ply-3.11-r2 | `-examples`
 dev-python/pycparser-2.22 | `-test`
 dev-python/pycryptodome-3.23.0 | `-debug`
-dev-python/setuptools-80.9.0-r1 | `-test`
-dev-python/setuptools-scm-8.3.1 | `-test`
-dev-python/trove-classifiers-2025.8.26.11 | `-test`
-dev-python/wheel-0.45.1 | `-test`
 dev-util/pkgconf-2.5.1 | `(native-symlinks) -test`
 media-fonts/liberation-fonts-2.1.5 | `-`
 media-gfx/graphite2-1.3.14_p20210810-r3 | `-perl -test`
@@ -70,18 +44,62 @@ media-video/rtmpdump-2.4_p20210219 | `ssl tools -gnutls -static-libs`
 net-misc/aria2-1.37.0 | `libxml2 nettle nls ssl -adns -bittorrent (-gnutls) -jemalloc -libuv -metalink -scripts -sqlite -ssh -tcmalloc -test -xmlrpc`
 net-misc/yt-dlp-2025.09.05 | `-test`
 sci-libs/fftw-3.3.10-r1 | `openmp threads -doc -fortran -mpi -test (-zbus)`
-sys-apps/findutils-4.10.0 | `nls (-selinux) -static -test -test-full -verify-sig`
-sys-apps/gentoo-functions-0.19 | ``
-sys-apps/util-linux-2.41.1-r1 | `caps cramfs hardlink nls readline suid tty-helpers (unicode) -audit -build -cryptsetup -fdformat -kill -logger -magic -ncurses -pam -python (-rtas) (-selinux) -slang -static-libs -su -systemd -test -udev -uuidd -verify-sig`
-sys-devel/gcc-14.3.1_p20250801 | `cet (cxx) (default-stack-clash-protection) (default-znow) fortran nls openmp (pie) sanitize ssp zstd -ada (-custom-cflags) -d -debug -doc (-fixed-point) -go -graphite -hardened (-ieee-long-double) -jit (-libssp) -lto -modula2 (-multilib) -objc -objc`
-sys-devel/gcc-config-2.12.1 | `(cc-wrappers) (native-symlinks)`
-sys-libs/libcap-ng-0.8.5 | `-python -static-libs`
 x11-libs/cairo-1.18.4-r1 | `glib -`
 x11-libs/pixman-0.46.0 | `(-loongson2f) -static-libs -test`
 x11-misc/shared-mime-info-2.4-r2 | `-test`
 #### Inherited
 Package | USE Flags
 --------|----------
+**FROM haven/python3** |
+app-crypt/libb2-0.98.1-r3 | `openmp -native-cflags -static-libs`
+app-misc/mime-types-2.1.54 | `-nginx`
+dev-db/sqlite-3.50.4 | `readline -debug -doc -icu -secure-delete -static-libs -tcl -test -tools`
+dev-lang/python-3.13.5_p1 | `ensurepip readline sqlite ssl -bluetooth -debug -examples -gdbm (-jit) -libedit -ncurses -pgo -test -tk -valgrind -verify-sig`
+dev-lang/python-exec-2.4.10 | `(native-symlinks) -test`
+dev-lang/python-exec-conf-2.4.6 | ` `
+dev-libs/expat-2.7.1 | `unicode -examples -static-libs -test`
+dev-libs/libffi-3.5.2 | `exec-static-trampoline -debug -pax-kernel -static-libs -test`
+dev-libs/libpcre2-10.45 | `bzip2 jit pcre16 pcre32 readline unicode zlib -libedit -static-libs -valgrind -verify-sig`
+dev-libs/mpdecimal-4.0.1 | `-cxx -test`
+dev-python/cachecontrol-0.14.3 | `-test`
+dev-python/certifi-3024.7.22 | `-test`
+dev-python/charset-normalizer-3.4.3 | `-test`
+dev-python/colorama-0.4.6 | `-examples -test`
+dev-python/dependency-groups-1.3.1 | `-test`
+dev-python/distlib-0.4.0 | `-test`
+dev-python/distro-1.9.0 | `-test`
+dev-python/ensurepip-pip-25.2 | `(test-rust) -test`
+dev-python/gentoo-common-1 | ``
+dev-python/idna-3.10 | ` `
+dev-python/jaraco-collections-5.2.1 | `-test`
+dev-python/jaraco-context-6.0.1-r1 | `-test`
+dev-python/jaraco-functools-4.3.0 | `-test`
+dev-python/jaraco-text-4.0.0 | `-test`
+dev-python/linkify-it-py-2.0.3 | `-test`
+dev-python/markdown-it-py-4.0.0 | `-test`
+dev-python/mdurl-0.1.2 | `-test`
+dev-python/more-itertools-10.7.0 | `-doc`
+dev-python/msgpack-1.1.1 | `native-extensions -debug -test`
+dev-python/packaging-25.0 | `-test`
+dev-python/pip-25.2 | `(test-rust) -test`
+dev-python/platformdirs-4.3.8 | `-test`
+dev-python/pygments-2.19.2 | `-test`
+dev-python/pyproject-hooks-1.2.0 | `-test`
+dev-python/pysocks-1.7.1-r2 | ` `
+dev-python/requests-2.32.5 | `(test-rust) -socks5 -test`
+dev-python/resolvelib-1.2.0 | `-test`
+dev-python/rich-14.1.0 | `-test`
+dev-python/setuptools-80.9.0-r1 | `-test`
+dev-python/setuptools-scm-8.3.1 | `-test`
+dev-python/tomli-w-1.2.0 | `-test`
+dev-python/trove-classifiers-2025.8.26.11 | `-test`
+dev-python/truststore-0.10.4 | `-test`
+dev-python/typing-extensions-4.14.1 | `-test`
+dev-python/uc-micro-py-1.0.3 | `-test`
+dev-python/urllib3-2.5.0 | `-brotli -http2 -test -zstd`
+dev-python/wheel-0.45.1 | `-test`
+sys-apps/util-linux-2.41.1-r1 | `caps cramfs hardlink nls readline suid tty-helpers (unicode) -audit -build -cryptsetup -fdformat -kill -logger -magic -ncurses -pam -python (-rtas) (-selinux) -slang -static-libs -su -systemd -test -udev -uuidd -verify-sig`
+sys-libs/libcap-ng-0.8.5 | `-python -static-libs`
 **FROM haven/bash** |
 app-admin/eselect-1.4.30 | `-doc -emacs -vim-syntax`
 app-alternatives/bzip2-1 | `reference -lbzip2 -pbzip2 (-split-usr)`

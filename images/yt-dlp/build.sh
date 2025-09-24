@@ -8,7 +8,7 @@
 #     kubler.sh build -i haven/yt-dlp
 # ..and then search the Portage database:
 #     eix <search-string>
-_packages="app-shells/bash net-misc/yt-dlp media-video/ffmpeg net-misc/aria2"
+_packages="app-shells/bash net-misc/yt-dlp media-video/ffmpeg net-misc/aria2 dev-python/pycryptodome"
 # Install a standard system directory layout at ${_EMERGE_ROOT}, optional, default: false
 #BOB_INSTALL_BASELAYOUT=true
 
@@ -28,6 +28,7 @@ configure_builder()
     # Packages installed in this hook don't end up in the final image but are available for depending image builds
     #emerge dev-lang/go app-misc/foo
     emerge --oneshot dev-libs/glib
+    update_keywords 'dev-libs/openssl' '+~amd64'
     :
 }
 
@@ -41,6 +42,8 @@ configure_rootfs_build()
 
     # ..or a Gentoo package keyword
     #update_keywords 'dev-lang/some-package' '+~amd64'
+    update_keywords 'dev-libs/openssl' '+~amd64'
+    ACCEPT_KEYWORDS='~amd64' emerge ='dev-libs/openssl-3.5.2'
 
     # Download a file and add it to Portage's patch dir (/etc/portage/patches), 3rd arg is optional
     #add_patch sys-apps/bash https://foo.net/bar.patch my_custom_name
@@ -68,7 +71,6 @@ configure_rootfs_build()
     # - Enable AV1 decode via dav1d; libaom for completeness (encode/alt decode)
     # - Enable common codecs/containers/subtitles and hardware accel hooks
     update_use 'media-video/ffmpeg' '+bzip2 +chromaprint +dav1d -drm +fontconfig -gnutls +gpl +libass +librtmp +libsoxr +openssl +opus +postproc +svt-av1 +theora +truetype -vaapi -vdpau +vorbis +vpx +webp +x264 -x265 -xvid -libaom +xml +zlib'
-    :
 }
 
 #
