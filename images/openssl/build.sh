@@ -1,19 +1,20 @@
 #
 # Kubler phase 1 config, pick installed packages and/or customize the build
 #
-_packages="dev-libs/openssl"
+_packages=">=dev-libs/openssl-3.5.3"
 
-#
-# This hook is called just before starting the build of the root fs
-#
+configure_builder()
+{
+    emerge --sync
+    update_keywords 'dev-libs/openssl' '+~amd64'
+    :
+}
+
 configure_rootfs_build()
 {
     :
 }
 
-#
-# This hook is called just before packaging the root fs tar ball, ideal for any post-install tasks, clean up, etc
-#
 finish_rootfs_build()
 {
     :

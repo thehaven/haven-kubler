@@ -36,22 +36,24 @@ docker run --rm -it \
 
 ### Environment variables (overrides)
 
-All key runtime settings can be overridden via Docker env vars.
+All key runtime settings can be overridden via Docker env vars or CLI parameters:
 
-- **YTDLP_DOWNLOAD_DIR**: Download directory inside the container. Default: `/media`
-- **YTDLP_INPUT_SOURCE**: File path or URL. Default: `"${YTDLP_DOWNLOAD_DIR}/channel_list.txt"`
-- **YTDLP_DAYS**: Integer number of days to look back. Default: `7`
-- **YTDLP_ONESHOT**: `true|false` to enable one-shot URL mode. Default: `false`
-- **YTDLP_SUBTITLE_LANGS**: Comma-separated subtitle languages. Default: `en`
-- **YTDLP_MIN_FREE_SPACE**: Minimum free space required (GB). Default: `5`
-- **YTDLP_CODEC**: `mp4|vp9|av1` with intelligent fallbacks. Default: `mp4`
-- **YTDLP_FOREGROUND**: `true|false` console logging vs. log file. Default: `false` in script, but container CMD uses `--foreground`
-- **YTDLP_DEBUG**: `true|false` adds verbose yt-dlp output. Default: `false`
-- **YTDLP_DRY_RUN**: `true|false` simulate downloads. Default: `false`
-- **YTDLP_USER_AGENT**: Custom User-Agent string. Default: Chrome UA
-- **YTDLP_PLAYLIST_END**: Limit playlist items processed. Default: `10`
-- **YTDLP_DOWNLOADER_ARGS**: aria2c tuning string. Default: `aria2c:-c -j 3 -s 3 -x 3 -k 1M --max-concurrent-downloads=1 --log-level=warn --file-allocation=none`
-- **YTDLP_FORCE_IPV4**: `true|false` to add `--force-ipv4`. Default: `true`
+| Environment Variable | CLI Parameter | Default Value | Example Values | Description |
+|---------------------|---------------|---------------|----------------|-------------|
+| `YTDLP_DOWNLOAD_DIR` | `--dir` | `/media` | `/srv/youtube`, `/downloads` | Download directory inside the container |
+| `YTDLP_INPUT_SOURCE` | `--input-source` | `${YTDLP_DOWNLOAD_DIR}/channel_list.txt` | `/media/my_channels.txt`, `https://youtube.com/@user/videos` | File path or direct URL |
+| `YTDLP_DAYS` | `--days` | `7` | `14`, `30`, `1` | Number of days to look back for downloads |
+| `YTDLP_ONESHOT` | `--oneshot` | `false` | `true`, `false` | Enable one-shot URL mode (bypasses file reading) |
+| `YTDLP_SUBTITLE_LANGS` | `--subtitle-langs` | `en` | `en,es`, `en,de,fr` | Comma-separated subtitle languages |
+| `YTDLP_MIN_FREE_SPACE` | `--min-free-space` | `5` | `10`, `20` | Minimum free space required (GB) |
+| `YTDLP_CODEC` | `--codec` | `mp4` | `mp4`, `vp9`, `av1` | Video codec preference with intelligent fallbacks |
+| `YTDLP_FOREGROUND` | `--foreground` | `false` | `true`, `false` | Console logging vs. log file (container CMD uses `--foreground`) |
+| `YTDLP_DEBUG` | `--debug` | `false` | `true`, `false` | Enable verbose yt-dlp output |
+| `YTDLP_DRY_RUN` | `--dry-run` | `false` | `true`, `false` | Simulate downloads without downloading |
+| `YTDLP_USER_AGENT` | _(built-in)_ | Chrome UA | `"Mozilla/5.0..."` | Custom User-Agent string |
+| `YTDLP_PLAYLIST_END` | _(built-in)_ | `10` | `5`, `25`, `50` | Limit playlist items processed |
+| `YTDLP_DOWNLOADER_ARGS` | _(built-in)_ | `aria2c:-c -j 3 -s 3 -x 3 -k 1M...` | `aria2c:-j 5 -x 5` | aria2c tuning parameters |
+| `YTDLP_FORCE_IPV4` | _(built-in)_ | `true` | `true`, `false` | Force IPv4 connections |
 
 Examples:
 
@@ -75,7 +77,7 @@ docker run --rm -it \
 
 ### Choosing a codec (MP4/H.264 vs VP9 vs AV1)
 
-You can select the preferred codec via `--codec {mp4|vp9|av1}` or `-e YTDLP_CODEC=...`. The script will fall back smartly when the exact choice is not available.
+You can select the preferred codec via `--codec {mp4|vp9|av1}` or `-e YTDLP_CODEC=...`. Each codec uses intelligent format strings with robust fallback chains to ensure successful downloads even when the preferred format isn't available.
 
 | Option | Container | Video codec | Audio (typical) | HW decode support | 4K readiness | Compression efficiency | CPU decode cost | Compatibility | When to choose |
 |---|---|---|---|---|---|---|---|---|---|
@@ -85,15 +87,16 @@ You can select the preferred codec via `--codec {mp4|vp9|av1}` or `-e YTDLP_CODE
 
 Notes:
 
+- Each codec option uses comprehensive format strings with multiple fallback paths to maximize download success
+- Format selection is handled entirely by yt-dlp's format strings - no additional format sorting conflicts
 - The image enables software H.264 encoding (x264) and AV1 encoding (SVT-AV1). VP9 is available (libvpx) if needed, but default output is MP4/H.264 unless `--codec` is set.
 - Hardware acceleration is not enabled in this image; all encoding/decoding is CPU-only.
-- YouTube doesn’t serve MP3; typical audio is AAC (MP4) or Opus (WebM). No MP3 encoder is included.
+- YouTube doesn't serve MP3; typical audio is AAC (MP4) or Opus (WebM). No MP3 encoder is included.
 
 ### Volumes and permissions
 
 - The image declares `VOLUME ["/media"]`. Mount your host directory there.
 - Container runs as user `1000:1000` by default. Ensure the mounted host directory is writable by this UID/GID, or override at runtime:
-
   ```bash
   docker run --rm -it \
     --user $(id -u):$(id -g) \
@@ -119,6 +122,63 @@ Files are written under `${YTDLP_DOWNLOAD_DIR}` into folders by uploader and pla
     -v /path/on/host:/media \
     haven/yt-dlp:latest
   ```
+
+### Shell Function Wrapper (Recommended)
+
+For easier usage, you can add these functions to your `~/.bashrc` or `~/.zshrc`:
+
+```bash
+# yt-dlp Docker wrapper functions
+YTDLP_VERSION="${YTDLP_VERSION:-latest}"
+YTDLP_VOLUME_PATH="${YTDLP_VOLUME_PATH:-${HOME}/Downloads/Youtube}"
+YTDLP_ENV_FILE="${YTDLP_ENV_FILE:-.env_yt-dlp}"
+
+# Main function - passes all arguments through to the container
+ytdlp() {
+    local IMAGE="haven/yt-dlp:${YTDLP_VERSION}"
+    
+    # Pull latest and clean up
+    docker pull "${IMAGE}"
+    docker rm -f yt-dlp 2>/dev/null || true
+    mkdir -p "${YTDLP_VOLUME_PATH}"
+
+    # Run container with all arguments passed through
+    docker run --rm -it \
+        --name yt-dlp --hostname yt-dlp \
+        -v "${YTDLP_VOLUME_PATH}:/media" \
+        $([ -f "${YTDLP_ENV_FILE}" ] && echo "--env-file ${YTDLP_ENV_FILE}") \
+        -e OPENSSL_CONF=/dev/null \
+        --user=1000:1000 \
+        --memory=2g --cpus=2 \
+        --log-driver=json-file --log-opt max-size=10m \
+        "${IMAGE}" "$@"
+}
+
+# One-shot download function
+ytdlp-oneshot() {
+    [ $# -eq 0 ] && { echo "Usage: ytdlp-oneshot <URL> [options]"; return 1; }
+    ytdlp --oneshot --input-source "$1" "${@:2}"
+}
+
+# Playlist mode (reads from channel_list.txt)
+ytdlp-playlist() {
+    ytdlp "$@"  # Default behavior
+}
+```
+
+**Usage examples:**
+```bash
+# One-shot downloads
+ytdlp-oneshot "https://www.youtube.com/@royalsociety/videos"
+ytdlp-oneshot "https://www.youtube.com/@royalsociety/videos" --days 14 --codec vp9
+
+# Playlist mode (needs channel_list.txt in your volume path)
+ytdlp-playlist --days 30 --codec av1
+
+# Direct usage with any parameters
+ytdlp --oneshot --input-source "https://youtube.com/watch?v=abc123" --debug
+ytdlp --help
+```
 
 ### Notes
 

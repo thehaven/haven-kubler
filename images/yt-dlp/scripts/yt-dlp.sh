@@ -2,8 +2,8 @@
 
 #
 # Module Name: yt-dlp.sh
-# Author: Haven
-# Version: 1.0.0
+# Author: Haven (Updated 2025.09.25)
+# Version: 1.1.0
 # Purpose: Automated YouTube channel downloader wrapper for yt-dlp with aria2c acceleration
 # Usage: ./yt-dlp.sh [OPTIONS]
 #
@@ -25,7 +25,7 @@ help() {
   echo "  --dry-run          Show what would be downloaded without actually downloading"
   echo "  --subtitle-langs   Comma-separated list of subtitle languages (default: en)"
   echo "  --min-free-space   Minimum free space required in GB (default: 5)"
-  echo "  --codec            Video codec preference: mp4, vp9, or av1 (default: mp4, with fallbacks)"
+  echo "  --codec            Video codec preference: h264, vp9, or av1 (default: h264)"
   echo ""
   echo "Examples:"
   echo "  $(basename "$0") --oneshot --dir /media/KidsYoutube --input-source https://www.youtube.com/@royalsociety/videos"
@@ -39,7 +39,7 @@ INPUT_SOURCE_DEFAULT=${YTDLP_INPUT_SOURCE:-"${DOWNLOAD_DIR_DEFAULT}/channel_list
 DAYS_DEFAULT=${YTDLP_DAYS:-7}
 SUBTITLE_LANGS_DEFAULT=${YTDLP_SUBTITLE_LANGS:-'en'}
 MIN_FREE_SPACE_DEFAULT=${YTDLP_MIN_FREE_SPACE:-5}
-CODEC_DEFAULT=${YTDLP_CODEC:-'mp4'}
+CODEC_DEFAULT=${YTDLP_CODEC:-'h264'}
 
 # Additional defaults (env-overridable)
 USER_AGENT=${YTDLP_USER_AGENT:-'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
@@ -215,26 +215,24 @@ check_disk_space() {
 check_disk_space "${DOWNLOAD_DIR}" "${MIN_FREE_SPACE}"
 
 # Validate codec choice
-if [[ "$CODEC" != "mp4" && "$CODEC" != "vp9" && "$CODEC" != "av1" ]]; then
-    echo "Error: Invalid codec '$CODEC'. Must be 'mp4', 'vp9', or 'av1'" >&2
+if [[ "$CODEC" != "h264" && "$CODEC" != "vp9" && "$CODEC" != "av1" ]]; then
+    echo "Error: Invalid codec '$CODEC'. Must be 'h264', 'vp9', or 'av1'" >&2
     exit 1
 fi
 
 # Define format strings for different codecs
 get_format_string() {
-    local codec="$1"
-    case "$codec" in
-        "av1")
-            # AV1 with fallback to VP9, then MP4 - best quality with 4K support
-            echo 'bestvideo[ext=webm][vcodec=av01]+bestaudio[ext=webm]/bestvideo[ext=webm][vcodec=vp9]+bestaudio[ext=webm]/bestvideo[ext=webm]+bestaudio[ext=webm]/bestvideo[ext=mp4][vcodec!=av01][vcodec!=vp9]+bestaudio[ext=m4a]/bestvideo[ext=mp4]+bestaudio/best[ext=mp4]/best'
+    case "$1" in
+        "h264")
+            echo 'bestvideo[ext=mp4][vcodec^=avc1]+bestaudio[ext=m4a]/bestvideo[vcodec^=avc1]+bestaudio/best[vcodec^=avc1]/best'
             ;;
         "vp9")
-            # VP9 with fallback to MP4 - best quality VP9 first, then MP4 fallback
-            echo 'bestvideo[ext=webm][vcodec=vp9]+bestaudio[ext=webm]/bestvideo[ext=webm]+bestaudio[ext=webm]/bestvideo[ext=mp4][vcodec!=av01][vcodec!=vp9]+bestaudio[ext=m4a]/bestvideo[ext=mp4]+bestaudio/best[ext=mp4]/best'
+            # MP4-first strategy: prefer VP9 in MP4 with AAC audio, fallback to any VP9
+            echo 'bestvideo[ext=mp4][vcodec^=vp09]+bestaudio[ext=m4a]/bestvideo[vcodec^=vp09]+bestaudio/best[vcodec^=vp09]/best'
             ;;
-        "mp4")
-            # Original MP4 format with more robust fallbacks
-            echo 'bestvideo[ext=mp4][vcodec!=av01][vcodec!=vp9]+bestaudio[ext=m4a]/bestvideo[ext=mp4]+bestaudio/best[ext=mp4]/best'
+        "av1")
+            # MP4-first strategy: prefer AV1 in MP4 with AAC audio, fallback to any AV1  
+            echo 'bestvideo[ext=mp4][vcodec^=av01]+bestaudio[ext=m4a]/bestvideo[vcodec^=av01]+bestaudio/best[vcodec^=av01]/best'
             ;;
         *)
             echo "Error: Unknown codec: $codec" >&2
@@ -287,15 +285,15 @@ if [ -f "${DOWNLOAD_DIR}/cookies.txt" ]; then
 fi
 
 # Add codec-specific options to COMMON_OPTIONS
-if [ "$CODEC" = "av1" ]; then
-    COMMON_OPTIONS+=(--format-sort="ext,vcodec:av01,acodec,quality,res,fps")
-    COMMON_OPTIONS+=(--merge-output-format=webm)
+if [ "$CODEC" = "h264" ]; then
+    COMMON_OPTIONS+=(--format-sort="ext,vcodec:h264,acodec,quality,res,fps")
+    COMMON_OPTIONS+=(--merge-output-format=mp4)
 elif [ "$CODEC" = "vp9" ]; then
     COMMON_OPTIONS+=(--format-sort="ext,vcodec:vp9,acodec,quality,res,fps")
     COMMON_OPTIONS+=(--merge-output-format=webm)
 else
-    COMMON_OPTIONS+=(--format-sort="ext,vcodec:h264,acodec,quality,res,fps")
-    COMMON_OPTIONS+=(--merge-output-format=mp4)
+    COMMON_OPTIONS+=(--format-sort="ext,vcodec:av01,acodec,quality,res,fps")
+    COMMON_OPTIONS+=(--merge-output-format=webm)
 fi
 
 # Add debug verbosity if requested (overrides --no-warnings)

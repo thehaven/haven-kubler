@@ -14,7 +14,7 @@ configure_bob()
 #
 configure_rootfs_build()
 {
-    update_use '+sqlite'
+    update_use 'dev-lang/python' '+sqlite'
     provide_package sys-devel/gcc
 
     # add user/group for unprivileged container usage

@@ -1,11 +1,11 @@
-_packages="net-proxy/haproxy"
+_packages=">=net-proxy/haproxy-3.2.5"
 
 configure_bob()
 {
     rm -Rf /var/sync/portage && emerge --sync && etc-update --automode -5 && emerge --oneshot portage
+    export LUA_SINGLE_TARGET='lua5-4'
     update_keywords 'net-proxy/haproxy' '+~amd64'
-    update_use 'net-proxy/haproxy' '+crypt +net_ns +pcre +slz +ssl +threads -zlib'
-    #emerge --usepkg=n haproxy
+    update_use 'net-proxy/haproxy' '+crypt +lua +net_ns +pcre +pcre-jit +slz +ssl +threads -zlib'
     copy_gcc_libs
 }
 

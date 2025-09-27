@@ -1,6 +1,6 @@
 ### haven/busybox:dev
 
-Built: Mon 22 Sep 19:58:42 BST 2025
+Built: Fri 26 Sep 17:12:24 BST 2025
 Image Size: 3.31MB
 
 #### Installed

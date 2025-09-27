@@ -6,12 +6,12 @@ ADD rootfs.tar /
 COPY docker-healthcheck.sh /usr/bin/docker-healthcheck
 HEALTHCHECK --interval=60s --timeout=5s --start-period=5s --retries=3 CMD ["docker-healthcheck"]
 
-# Provide a writable mount point for downloads by default
+# Provide a writable mount point for downloads
 VOLUME ["/media"]
 
 # Run as non-root by default
 USER 1000:1000
 
 # Default execution
-ENTRYPOINT ["/opt/scripts/yt-dlp.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "export OPENSSL_MODULES=/usr/lib64/ossl-modules; exec /opt/scripts/yt-dlp.sh $@", "--"]
 CMD ["--foreground"]
