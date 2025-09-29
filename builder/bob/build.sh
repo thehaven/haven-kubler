@@ -25,7 +25,7 @@ configure_bob() {
     eix-update
     #touch /etc/portage/package.accept_keywords/flaggie
     # set locale of build container
-    echo 'en_GB.UTF-8 UTF-8' >> /etc/locale.gen
+    echo -e "en_GB ISO-8859-1\nen_GB.UTF-8 UTF-8\nen_US ISO-8859-1\nen_US.UTF-8 UTF-8" >> /etc/locale.gen
     echo 'LANG="en_GB.utf8"' > /etc/env.d/02locale
     locale-gen
     env-update

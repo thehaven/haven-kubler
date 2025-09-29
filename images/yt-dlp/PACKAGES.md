@@ -1,7 +1,7 @@
 ### haven/yt-dlp:dev
 
-Built: Sat 27 Sep 10:00:24 BST 2025
-Image Size: 432MB
+Built: Mon 29 Sep 12:57:45 BST 2025
+Image Size: 436MB
 
 #### Installed
 Package | USE Flags
@@ -9,10 +9,16 @@ Package | USE Flags
 dev-libs/elfutils-0.193 | `bzip2 lzma nls utils -debuginfod -stacktrace -static-libs -test -valgrind -verify-sig -zstd`
 dev-libs/fribidi-1.0.16 | `-doc -test`
 dev-libs/glib-2.84.4 | `elf introspection mime xattr -dbus -debug -doc (-selinux) -static-libs -sysprof -systemtap -test -utils`
+dev-libs/gmp-6.3.0-r1 | `asm cpudetection cxx -doc -pic -static-libs`
 dev-libs/gobject-introspection-1.84.0-r1 | `-doctool -gtk-doc -test`
 dev-libs/gobject-introspection-common-1.84.0 | ``
+dev-libs/libtomcrypt-1.18.2-r4 | `gmp libtommath -tomsfastmath`
+dev-libs/libtommath-1.3.0 | `-doc -examples -static-libs`
 dev-libs/libxml2-2.14.6 | `python readline -icu -static-libs -test`
-dev-python/pycryptodome-3.23.0 | ``
+dev-python/cffi-2.0.0 | `-debug -doc -test`
+dev-python/ply-3.11-r2 | `-examples`
+dev-python/pycparser-2.23 | `-test`
+dev-python/pycryptodome-3.23.0 | `-debug`
 dev-util/pkgconf-2.5.1 | `(native-symlinks) -test`
 media-fonts/liberation-fonts-2.1.5 | `-`
 media-gfx/graphite2-1.3.14_p20210810-r4 | `-perl -test`
@@ -32,6 +38,7 @@ media-libs/libva-2.22.0-r1 | `-`
 media-libs/libvorbis-1.3.7-r2 | `-static-libs -test`
 media-libs/libvpx-1.15.2 | `highbitdepth threads -doc -postproc -static-libs -test`
 media-libs/libwebp-1.5.0 | `jpeg png -gif -opengl -static-libs -swap-16bit-csp -tiff`
+media-libs/mutagen-1.47.0 | `-doc -test`
 media-libs/openh264-2.6.0 | `plugin -test -utils`
 media-libs/opus-1.5.2 | `-custom-modes -debug -deep-plc -doc -dred -hardened -osce -static-libs -test`
 media-libs/svt-av1-3.1.2 | `-test`
@@ -39,9 +46,10 @@ media-libs/x264-0.0.20240513 | `interlaced threads -opencl -static-libs`
 media-libs/x265-3.6-r1 | `10bit 12bit -numa -test`
 media-libs/xvid-1.3.7-r2 | `-examples`
 media-sound/lame-3.100-r3 | `frontend -debug -mp3rtp -sndfile -static-libs`
+media-video/atomicparsley-0.9.6_p20210715_p151551 | ``
 media-video/ffmpeg-7.1.2 | `bzip2 chromaprint dav1d drm fdk fontconfig gnutls gpl lame libaom libass lzma openh264 openssl opus postproc svt-av1 theora truetype vaapi vdpau vorbis vpx webp x264 x265 xml xvid zlib -`
 net-misc/aria2-1.37.0 | `libxml2 nettle nls ssl -adns -bittorrent (-gnutls) -jemalloc -libuv -metalink -scripts -sqlite -ssh -tcmalloc -test -xmlrpc`
-net-misc/yt-dlp-2025.09.23 | ``
+net-misc/yt-dlp-2025.09.23 | `-test`
 sci-libs/fftw-3.3.10-r1 | `openmp threads -doc -fortran -mpi -test (-zbus)`
 sys-apps/hwdata-0.399 | ``
 x11-base/xorg-proto-2024.1 | `-test`

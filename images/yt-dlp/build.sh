@@ -1,4 +1,4 @@
-_packages=">=net-misc/yt-dlp-2025.09.23 media-video/ffmpeg net-misc/aria2 dev-python/pycryptodome"
+_packages=">=net-misc/yt-dlp-2025.09.23 media-video/ffmpeg net-misc/aria2 media-libs/mutagen media-video/atomicparsley dev-python/pycryptodome"
 BOB_INSTALL_BASELAYOUT=true
 
 configure_builder()
@@ -11,8 +11,6 @@ configure_builder()
 
 configure_rootfs_build()
 {
-    copy_gcc_libs
-
     # Ensure runtime user/group 1000:1000 exist
     if getent group 1000 >/dev/null; then
         YTDLP_GRP="$(getent group 1000 | cut -d: -f1)"
@@ -32,8 +30,6 @@ configure_rootfs_build()
 
 finish_rootfs_build()
 {
-    copy_gcc_libs
-
     # Update /etc configs as needed:
     etc-update --automode -5
 

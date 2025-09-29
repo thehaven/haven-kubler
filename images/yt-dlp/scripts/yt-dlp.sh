@@ -39,12 +39,12 @@ INPUT_SOURCE_DEFAULT=${YTDLP_INPUT_SOURCE:-"${DOWNLOAD_DIR_DEFAULT}/channel_list
 DAYS_DEFAULT=${YTDLP_DAYS:-7}
 SUBTITLE_LANGS_DEFAULT=${YTDLP_SUBTITLE_LANGS:-'en'}
 MIN_FREE_SPACE_DEFAULT=${YTDLP_MIN_FREE_SPACE:-5}
-CODEC_DEFAULT=${YTDLP_CODEC:-'h264'}
+CODEC_DEFAULT=${YTDLP_CODEC:-'av1'}
 
 # Additional defaults (env-overridable)
 USER_AGENT=${YTDLP_USER_AGENT:-'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36'}
 PLAYLIST_END=${YTDLP_PLAYLIST_END:-10}
-DOWNLOADER_ARGS=${YTDLP_DOWNLOADER_ARGS:-'aria2c:-c -j 3 -s 3 -x 3 -k 1M --max-concurrent-downloads=1 --log-level=warn --file-allocation=none'}
+DOWNLOADER_ARGS=${YTDLP_DOWNLOADER_ARGS:-'aria2c:-c -j 1 -s 1 -x 1 --max-concurrent-downloads=1 --log-level=warn --file-allocation=none'}
 FORCE_IPV4=${YTDLP_FORCE_IPV4:-true}
 
 # Check dependencies
@@ -224,15 +224,15 @@ fi
 get_format_string() {
     case "$1" in
         "h264")
-            echo 'bestvideo[ext=mp4][vcodec^=avc1]+bestaudio[ext=m4a]/bestvideo[vcodec^=avc1]+bestaudio/best[vcodec^=avc1]/best'
+            echo 'bestvideo[vcodec^=avc1]+bestaudio[ext=m4a]/bestvideo[vcodec^=avc1]+bestaudio/best[vcodec^=avc1]/best'
             ;;
         "vp9")
             # MP4-first strategy: prefer VP9 in MP4 with AAC audio, fallback to any VP9
-            echo 'bestvideo[ext=mp4][vcodec^=vp09]+bestaudio[ext=m4a]/bestvideo[vcodec^=vp09]+bestaudio/best[vcodec^=vp09]/best'
+            echo 'bestvideo[vcodec^=vp09]+bestaudio[ext=m4a]/bestvideo[vcodec^=vp09]+bestaudio/best[vcodec^=vp09]/best'
             ;;
         "av1")
             # MP4-first strategy: prefer AV1 in MP4 with AAC audio, fallback to any AV1  
-            echo 'bestvideo[ext=mp4][vcodec^=av01]+bestaudio[ext=m4a]/bestvideo[vcodec^=av01]+bestaudio/best[vcodec^=av01]/best'
+            echo 'bestvideo[vcodec^=av01]+bestaudio[ext=m4a]/bestvideo[vcodec^=av01]+bestaudio/best[vcodec^=av01]/best'
             ;;
         *)
             echo "Error: Unknown codec: $codec" >&2
@@ -285,16 +285,16 @@ if [ -f "${DOWNLOAD_DIR}/cookies.txt" ]; then
 fi
 
 # Add codec-specific options to COMMON_OPTIONS
-if [ "$CODEC" = "h264" ]; then
-    COMMON_OPTIONS+=(--format-sort="ext,vcodec:h264,acodec,quality,res,fps")
-    COMMON_OPTIONS+=(--merge-output-format=mp4)
-elif [ "$CODEC" = "vp9" ]; then
-    COMMON_OPTIONS+=(--format-sort="ext,vcodec:vp9,acodec,quality,res,fps")
-    COMMON_OPTIONS+=(--merge-output-format=webm)
-else
-    COMMON_OPTIONS+=(--format-sort="ext,vcodec:av01,acodec,quality,res,fps")
-    COMMON_OPTIONS+=(--merge-output-format=webm)
-fi
+#if [ "$CODEC" = "h264" ]; then
+#    COMMON_OPTIONS+=(--format-sort="ext,vcodec:h264,acodec,quality,res,fps")
+#    COMMON_OPTIONS+=(--merge-output-format=mp4)
+#elif [ "$CODEC" = "vp9" ]; then
+#    COMMON_OPTIONS+=(--format-sort="ext,vcodec:vp9,acodec,quality,res,fps")
+#    COMMON_OPTIONS+=(--merge-output-format=webm)
+#else
+#    COMMON_OPTIONS+=(--format-sort="ext,vcodec:av01,acodec,quality,res,fps")
+#    COMMON_OPTIONS+=(--merge-output-format=webm)
+#fi
 
 # Add debug verbosity if requested (overrides --no-warnings)
 if [ "$DEBUG" = true ]; then
