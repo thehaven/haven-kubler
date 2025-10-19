@@ -4,6 +4,8 @@ BOB_INSTALL_BASELAYOUT=true
 configure_builder()
 {
     emerge --sync
+    emerge --oneshot dev-libs/glib
+    copy_gcc_libs
     emerge -ukg net-misc/curl net-misc/rsync app-eselect/eselect-repository 
     update_keywords 'net-dns/bind' '+~amd64'
     update_use 'net-dns/bind' '+caps +geoip +gssapi'
