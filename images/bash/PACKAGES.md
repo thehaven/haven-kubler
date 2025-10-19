@@ -1,6 +1,6 @@
 ### haven/bash:dev
 
-Built: Fri 26 Sep 17:41:43 BST 2025
+Built: Sun 19 Oct 16:58:32 BST 2025
 Image Size: 56.2MB
 
 #### Installed
@@ -12,7 +12,7 @@ app-arch/bzip2-1.0.8-r5 | `-static -static-libs -verify-sig`
 app-arch/xz-utils-5.8.1-r1 | `extra-filters nls -doc -pgo -static-libs -verify-sig`
 app-arch/zstd-1.5.7-r1 | `lzma zlib -lz4 -static-libs -test`
 app-portage/portage-utils-0.97 | `-openmp -qmanifest -static`
-app-shells/bash-5.3_p3-r2 | `net nls (readline) -afs -bashlogger -examples -mem-scramble -pgo -plugins -verify-sig`
+app-shells/bash-5.3_p3-r3 | `net nls (readline) -afs -bashlogger -examples -mem-scramble -pgo -plugins -verify-sig`
 net-dns/c-ares-1.34.5 | `-static-libs -test -verify-sig`
 net-libs/libpsl-0.21.5 | `idn -icu -static-libs -test`
 net-libs/nghttp2-1.67.1 | `-debug -hpack-tools -jemalloc -systemd -test -utils -xml`
@@ -23,7 +23,7 @@ sys-apps/attr-2.5.2-r1 | `nls -debug -static-libs`
 sys-apps/coreutils-9.8-r1 | `acl nls openssl xattr -caps -gmp -hostname -kill -multicall (-selinux) (-split-usr) -static -test -test-full -vanilla -verify-sig`
 sys-apps/file-5.46-r3 | `bzip2 seccomp zlib -lzip -lzma -python -static-libs -verify-sig -zstd`
 sys-apps/sed-4.9-r1 | `acl nls (-selinux) -static -test-full -verify-sig`
-sys-kernel/linux-headers-6.16 | `-headers-only`
+sys-kernel/linux-headers-6.17-r1 | `-headers-only`
 sys-libs/libseccomp-2.6.0-r2 | `-debug -python -static-libs -test`
 sys-libs/ncurses-6.5_p20250802 | `cxx minimal (tinfo) -ada -debug -doc -gpm -profile (-split-usr) (-stack-realign) -static-libs -test -trace -verify-sig`
 sys-libs/readline-8.3_p1 | `(unicode) -static-libs -utils -verify-sig`
