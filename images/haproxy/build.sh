@@ -1,4 +1,4 @@
-_packages=">=net-proxy/haproxy-3.2.5"
+_packages=">=net-proxy/haproxy-3.2.7"
 
 configure_bob()
 {

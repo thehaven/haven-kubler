@@ -1,7 +1,7 @@
 ### haven/yt-dlp:dev
 
-Built: Mon 29 Sep 12:57:45 BST 2025
-Image Size: 436MB
+Built: Fri 24 Oct 00:33:57 BST 2025
+Image Size: 439MB
 
 #### Installed
 Package | USE Flags
@@ -14,20 +14,20 @@ dev-libs/gobject-introspection-1.84.0-r1 | `-doctool -gtk-doc -test`
 dev-libs/gobject-introspection-common-1.84.0 | ``
 dev-libs/libtomcrypt-1.18.2-r4 | `gmp libtommath -tomsfastmath`
 dev-libs/libtommath-1.3.0 | `-doc -examples -static-libs`
-dev-libs/libxml2-2.14.6 | `python readline -icu -static-libs -test`
+dev-libs/libxml2-2.15.1 | `readline -doc -icu -python -static-libs -test`
 dev-python/cffi-2.0.0 | `-debug -doc -test`
 dev-python/ply-3.11-r2 | `-examples`
 dev-python/pycparser-2.23 | `-test`
 dev-python/pycryptodome-3.23.0 | `-debug`
 dev-util/pkgconf-2.5.1 | `(native-symlinks) -test`
 media-fonts/liberation-fonts-2.1.5 | `-`
-media-gfx/graphite2-1.3.14_p20210810-r4 | `-perl -test`
+media-gfx/graphite2-1.3.14_p20210810-r5 | `-perl -test`
 media-libs/chromaprint-1.5.1-r4 | `-test -tools`
 media-libs/dav1d-1.5.1 | `8bit 10bit asm -test -xxhash`
 media-libs/fdk-aac-2.0.3 | `-examples`
 media-libs/fontconfig-2.17.1 | `nls -doc -test`
-media-libs/freetype-2.14.1 | `adobe-cff bzip2 cleartype-hinting png -`
-media-libs/harfbuzz-11.5.1 | `cairo glib graphite introspection truetype -debug -doc -experimental -icu -test`
+media-libs/freetype-2.14.1-r1 | `adobe-cff bzip2 cleartype-hinting png -`
+media-libs/harfbuzz-12.1.0 | `cairo glib graphite introspection truetype -debug -doc -experimental -icu -test`
 media-libs/libaom-3.12.1 | `examples (-big-endian) -debug -doc -test`
 media-libs/libass-0.17.4 | `fontconfig -libunibreak -test -verify-sig`
 media-libs/libjpeg-turbo-3.1.2 | `-java -static-libs -test`
@@ -37,27 +37,27 @@ media-libs/libtheora-1.2.0-r1 | `encode -doc -examples -static-libs`
 media-libs/libva-2.22.0-r1 | `-`
 media-libs/libvorbis-1.3.7-r2 | `-static-libs -test`
 media-libs/libvpx-1.15.2 | `highbitdepth threads -doc -postproc -static-libs -test`
-media-libs/libwebp-1.5.0 | `jpeg png -gif -opengl -static-libs -swap-16bit-csp -tiff`
+media-libs/libwebp-1.6.0 | `jpeg png -gif -opengl -static-libs -swap-16bit-csp -tiff`
 media-libs/mutagen-1.47.0 | `-doc -test`
 media-libs/openh264-2.6.0 | `plugin -test -utils`
 media-libs/opus-1.5.2 | `-custom-modes -debug -deep-plc -doc -dred -hardened -osce -static-libs -test`
 media-libs/svt-av1-3.1.2 | `-test`
 media-libs/x264-0.0.20240513 | `interlaced threads -opencl -static-libs`
-media-libs/x265-3.6-r1 | `10bit 12bit -numa -test`
+media-libs/x265-4.1 | `10bit 12bit -numa -test -vmaf`
 media-libs/xvid-1.3.7-r2 | `-examples`
 media-sound/lame-3.100-r3 | `frontend -debug -mp3rtp -sndfile -static-libs`
 media-video/atomicparsley-0.9.6_p20210715_p151551 | ``
-media-video/ffmpeg-7.1.2 | `bzip2 chromaprint dav1d drm fdk fontconfig gnutls gpl lame libaom libass lzma openh264 openssl opus postproc svt-av1 theora truetype vaapi vdpau vorbis vpx webp x264 x265 xml xvid zlib -`
+media-video/ffmpeg-8.0 | `bzip2 chromaprint dav1d drm fdk fontconfig gnutls gpl lame libaom libass lzma openh264 openssl opus svt-av1 theora truetype vaapi vdpau vorbis vpx webp x264 x265 xml xvid zlib -`
 net-misc/aria2-1.37.0 | `libxml2 nettle nls ssl -adns -bittorrent (-gnutls) -jemalloc -libuv -metalink -scripts -sqlite -ssh -tcmalloc -test -xmlrpc`
-net-misc/yt-dlp-2025.09.23 | `-test`
+net-misc/yt-dlp-2025.10.22 | `-test`
 sci-libs/fftw-3.3.10-r1 | `openmp threads -doc -fortran -mpi -test (-zbus)`
-sys-apps/hwdata-0.399 | ``
+sys-apps/hwdata-0.400 | ``
 x11-base/xorg-proto-2024.1 | `-test`
 x11-libs/cairo-1.18.4-r1 | `glib -`
 x11-libs/libX11-1.8.12 | `-doc -test`
 x11-libs/libXau-1.0.12 | `-doc`
 x11-libs/libXdmcp-1.1.5 | `-doc`
-x11-libs/libdrm-2.4.125 | `-doc -test -tools -udev -valgrind`
+x11-libs/libdrm-2.4.127 | `-doc -test -tools -udev -valgrind`
 x11-libs/libpciaccess-0.18.1 | `zlib`
 x11-libs/libvdpau-1.5 | `-doc -dri -test`
 x11-libs/libxcb-1.17.0 | `xkb -doc (-selinux) -test`
@@ -71,24 +71,24 @@ Package | USE Flags
 app-crypt/libb2-0.98.1-r3 | `openmp -native-cflags -static-libs`
 app-misc/mime-types-2.1.54 | `-nginx`
 dev-db/sqlite-3.50.4 | `readline -debug -doc -icu -secure-delete -static-libs -tcl -test -tools`
-dev-lang/python-3.13.7 | `ensurepip readline sqlite ssl -bluetooth -debug -examples -gdbm (-jit) -libedit -ncurses -pgo -test -tk -valgrind -verify-sig`
-dev-lang/python-3.14.0_rc3 | `ensurepip readline sqlite ssl -bluetooth -debug -examples -gdbm (-jit) -libedit -ncurses -pgo -tail-call-interp -test -tk -valgrind -verify-sig`
+dev-lang/python-3.13.9 | `ensurepip readline sqlite ssl -bluetooth -debug -examples -gdbm (-jit) -libedit -ncurses -pgo -test -tk -valgrind -verify-sig`
+dev-lang/python-3.14.0 | `ensurepip readline sqlite ssl -bluetooth -debug -examples -gdbm (-jit) -libedit -ncurses -pgo -tail-call-interp -test -tk -valgrind -verify-sig`
 dev-lang/python-exec-2.4.10 | `(native-symlinks) -test`
 dev-lang/python-exec-conf-2.4.6 | ` `
 dev-libs/expat-2.7.3 | `unicode -examples -static-libs -test`
 dev-libs/libffi-3.5.2 | `exec-static-trampoline -debug -pax-kernel -static-libs -test`
-dev-libs/libpcre2-10.46 | `bzip2 jit pcre16 pcre32 readline unicode zlib -libedit -static-libs -valgrind -verify-sig`
+dev-libs/libpcre2-10.47 | `bzip2 jit pcre16 pcre32 readline unicode zlib -libedit -static-libs -valgrind -verify-sig`
 dev-libs/mpdecimal-4.0.1 | `-cxx -test`
 dev-python/cachecontrol-0.14.3 | `-test`
 dev-python/certifi-3024.7.22 | `-test`
-dev-python/charset-normalizer-3.4.3 | `-test`
+dev-python/charset-normalizer-3.4.4 | `-test -verify-provenance`
 dev-python/colorama-0.4.6 | `-examples -test`
 dev-python/dependency-groups-1.3.1 | `-test`
 dev-python/distlib-0.4.0 | `-test`
 dev-python/distro-1.9.0 | `-test`
 dev-python/ensurepip-pip-25.2 | `(test-rust) -test`
 dev-python/gentoo-common-1 | ``
-dev-python/idna-3.10 | ` `
+dev-python/idna-3.11 | ` `
 dev-python/jaraco-collections-5.2.1 | `-test`
 dev-python/jaraco-context-6.0.1-r1 | `-test`
 dev-python/jaraco-functools-4.3.0 | `-test`
@@ -97,18 +97,18 @@ dev-python/linkify-it-py-2.0.3 | `-test`
 dev-python/markdown-it-py-4.0.0 | `-test`
 dev-python/mdurl-0.1.2 | `-test`
 dev-python/more-itertools-10.8.0 | `-doc`
-dev-python/msgpack-1.1.1 | `native-extensions -debug -test`
+dev-python/msgpack-1.1.2 | `native-extensions -debug -test`
 dev-python/packaging-25.0 | `-test`
 dev-python/pip-25.2 | `(test-rust) -test`
-dev-python/platformdirs-4.4.0 | `-test`
+dev-python/platformdirs-4.5.0 | `-test`
 dev-python/pygments-2.19.2 | `-test`
 dev-python/pyproject-hooks-1.2.0 | `-test`
 dev-python/pysocks-1.7.1-r2 | ` `
 dev-python/requests-2.32.5 | `(test-rust) -socks5 -test`
-dev-python/resolvelib-1.2.0 | `-test`
-dev-python/rich-14.1.0 | `-test`
+dev-python/resolvelib-1.2.1 | `-test`
+dev-python/rich-14.2.0 | `-test`
 dev-python/setuptools-80.9.0-r1 | `-test`
-dev-python/setuptools-scm-9.2.0 | `-test`
+dev-python/setuptools-scm-9.2.2 | `-test -verify-provenance`
 dev-python/tomli-w-1.2.0 | `-test`
 dev-python/trove-classifiers-2025.9.11.17 | `-test -verify-provenance`
 dev-python/truststore-0.10.4 | `-test`
@@ -125,7 +125,7 @@ app-arch/bzip2-1.0.8-r5 | `-static -static-libs -verify-sig`
 app-arch/xz-utils-5.8.1-r1 | `extra-filters nls -doc -pgo -static-libs -verify-sig`
 app-arch/zstd-1.5.7-r1 | `lzma zlib -lz4 -static-libs -test`
 app-portage/portage-utils-0.97 | `-openmp -qmanifest -static`
-app-shells/bash-5.3_p3-r2 | `net nls (readline) -afs -bashlogger -examples -mem-scramble -pgo -plugins -verify-sig`
+app-shells/bash-5.3_p3-r3 | `net nls (readline) -afs -bashlogger -examples -mem-scramble -pgo -plugins -verify-sig`
 net-dns/c-ares-1.34.5 | `-static-libs -test -verify-sig`
 net-libs/libpsl-0.21.5 | `idn -icu -static-libs -test`
 net-libs/nghttp2-1.67.1 | `-debug -hpack-tools -jemalloc -systemd -test -utils -xml`
@@ -136,14 +136,14 @@ sys-apps/attr-2.5.2-r1 | `nls -debug -static-libs`
 sys-apps/coreutils-9.8-r1 | `acl nls openssl xattr -caps -gmp -hostname -kill -multicall (-selinux) (-split-usr) -static -test -test-full -vanilla -verify-sig`
 sys-apps/file-5.46-r3 | `bzip2 seccomp zlib -lzip -lzma -python -static-libs -verify-sig -zstd`
 sys-apps/sed-4.9-r1 | `acl nls (-selinux) -static -test-full -verify-sig`
-sys-kernel/linux-headers-6.16 | `-headers-only`
+sys-kernel/linux-headers-6.17-r1 | `-headers-only`
 sys-libs/libseccomp-2.6.0-r2 | `-debug -python -static-libs -test`
 sys-libs/ncurses-6.5_p20250802 | `cxx minimal (tinfo) -ada -debug -doc -gpm -profile (-split-usr) (-stack-realign) -static-libs -test -trace -verify-sig`
 sys-libs/readline-8.3_p1 | `(unicode) -static-libs -utils -verify-sig`
 sys-libs/zlib-1.3.1-r1 | `-minizip -static-libs -verify-sig`
 **FROM haven/openssl** |
 app-misc/ca-certificates-20240203.3.98 | `-cacert`
-dev-libs/openssl-3.5.3 | `asm quic -fips -ktls -rfc3779 -sctp -static-libs -test -tls-compression -vanilla -verify-sig -weak-ssl-ciphers`
+dev-libs/openssl-3.5.4 | `asm quic -fips -ktls -rfc3779 -sctp -static-libs -test -tls-compression -vanilla -verify-sig -weak-ssl-ciphers`
 **FROM haven/s6** |
 app-admin/entr-5.7 | `-test`
 dev-lang/execline-2.9.7.0 | ``
@@ -152,7 +152,7 @@ sys-apps/s6-2.13.2.0 | `execline`
 **FROM haven/glibc** |
 dev-libs/libunistring-1.3 | `-doc -static-libs`
 net-dns/libidn2-2.3.8 | `nls -static-libs -verify-sig`
-sys-libs/glibc-2.42-r1 | `cet multiarch ssp (static-libs) -audit -caps -compile-locales (-custom-cflags) -doc -gd -hash-sysv-compat -headers-only (-multilib) -multilib-bootstrap -nscd -perl -profile (-selinux) -sframe (-stack-realign) -suid -systemd -systemtap -test (-vanilla)`
+sys-libs/glibc-2.42-r1 | `cet multiarch ssp (static-libs) -audit -caps -compile-locales (-custom-cflags) -doc -gd -hash-sysv-compat -headers-only (-multilib) -multilib-bootstrap -nscd -perl -profile (-selinux) -sframe (-stack-realign) -suid -systemd -systemtap -test (-vanilla) -verify-sig`
 sys-libs/libxcrypt-4.4.38 | `(compat) (system) -headers-only -static-libs -test`
 sys-libs/timezone-data-2025b | `nls -leaps-timezone -zic-slim`
 **FROM haven/busybox** |

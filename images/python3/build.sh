@@ -7,6 +7,7 @@ _packages="dev-lang/python dev-python/pip"
 configure_bob()
 {
     emerge dev-python/pip
+    copy_gcc_libs
 }
 
 #
