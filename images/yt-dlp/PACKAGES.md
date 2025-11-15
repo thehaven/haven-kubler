@@ -1,12 +1,13 @@
 ### haven/yt-dlp:dev
 
-Built: Fri 24 Oct 00:33:57 BST 2025
-Image Size: 439MB
+Built: Sat 15 Nov 20:31:06 GMT 2025
+Image Size: 555MB
 
 #### Installed
 Package | USE Flags
 --------|----------
-dev-libs/elfutils-0.193 | `bzip2 lzma nls utils -debuginfod -stacktrace -static-libs -test -valgrind -verify-sig -zstd`
+dev-lang/deno-bin-2.5.6 | ``
+dev-libs/elfutils-0.194 | `bzip2 lzma nls utils -debuginfod -libarchive -stacktrace -static-libs -test -valgrind -verify-sig -zstd`
 dev-libs/fribidi-1.0.16 | `-doc -test`
 dev-libs/glib-2.84.4 | `elf introspection mime xattr -dbus -debug -doc (-selinux) -static-libs -sysprof -systemtap -test -utils`
 dev-libs/gmp-6.3.0-r1 | `asm cpudetection cxx -doc -pic -static-libs`
@@ -19,15 +20,16 @@ dev-python/cffi-2.0.0 | `-debug -doc -test`
 dev-python/ply-3.11-r2 | `-examples`
 dev-python/pycparser-2.23 | `-test`
 dev-python/pycryptodome-3.23.0 | `-debug`
+dev-python/yt-dlp-ejs-0.3.1 | ` `
 dev-util/pkgconf-2.5.1 | `(native-symlinks) -test`
 media-fonts/liberation-fonts-2.1.5 | `-`
 media-gfx/graphite2-1.3.14_p20210810-r5 | `-perl -test`
-media-libs/chromaprint-1.5.1-r4 | `-test -tools`
+media-libs/chromaprint-1.6.0 | `-test -tools`
 media-libs/dav1d-1.5.1 | `8bit 10bit asm -test -xxhash`
 media-libs/fdk-aac-2.0.3 | `-examples`
 media-libs/fontconfig-2.17.1 | `nls -doc -test`
 media-libs/freetype-2.14.1-r1 | `adobe-cff bzip2 cleartype-hinting png -`
-media-libs/harfbuzz-12.1.0 | `cairo glib graphite introspection truetype -debug -doc -experimental -icu -test`
+media-libs/harfbuzz-12.2.0 | `cairo glib graphite introspection truetype -debug -doc -experimental -icu -test`
 media-libs/libaom-3.12.1 | `examples (-big-endian) -debug -doc -test`
 media-libs/libass-0.17.4 | `fontconfig -libunibreak -test -verify-sig`
 media-libs/libjpeg-turbo-3.1.2 | `-java -static-libs -test`
@@ -49,7 +51,7 @@ media-sound/lame-3.100-r3 | `frontend -debug -mp3rtp -sndfile -static-libs`
 media-video/atomicparsley-0.9.6_p20210715_p151551 | ``
 media-video/ffmpeg-8.0 | `bzip2 chromaprint dav1d drm fdk fontconfig gnutls gpl lame libaom libass lzma openh264 openssl opus svt-av1 theora truetype vaapi vdpau vorbis vpx webp x264 x265 xml xvid zlib -`
 net-misc/aria2-1.37.0 | `libxml2 nettle nls ssl -adns -bittorrent (-gnutls) -jemalloc -libuv -metalink -scripts -sqlite -ssh -tcmalloc -test -xmlrpc`
-net-misc/yt-dlp-2025.10.22 | `-test`
+net-misc/yt-dlp-2025.11.12 | `deno -test`
 sci-libs/fftw-3.3.10-r1 | `openmp threads -doc -fortran -mpi -test (-zbus)`
 sys-apps/hwdata-0.400 | ``
 x11-base/xorg-proto-2024.1 | `-test`
@@ -57,7 +59,7 @@ x11-libs/cairo-1.18.4-r1 | `glib -`
 x11-libs/libX11-1.8.12 | `-doc -test`
 x11-libs/libXau-1.0.12 | `-doc`
 x11-libs/libXdmcp-1.1.5 | `-doc`
-x11-libs/libdrm-2.4.127 | `-doc -test -tools -udev -valgrind`
+x11-libs/libdrm-2.4.128 | `-doc -test -tools -udev -valgrind`
 x11-libs/libpciaccess-0.18.1 | `zlib`
 x11-libs/libvdpau-1.5 | `-doc -dri -test`
 x11-libs/libxcb-1.17.0 | `xkb -doc (-selinux) -test`
