@@ -1,4 +1,4 @@
-_packages=">=net-proxy/haproxy-3.2.7"
+_packages=">=net-proxy/haproxy-3.3.0 net-proxy/hatop net-proxy/haproxy-dataplaneapi"
 
 configure_bob()
 {
@@ -6,6 +6,7 @@ configure_bob()
     export LUA_SINGLE_TARGET='lua5-4'
     update_keywords 'net-proxy/haproxy' '+~amd64'
     update_use 'net-proxy/haproxy' '+crypt +lua +net_ns +pcre +pcre-jit +slz +ssl +threads -zlib'
+    update_use 'dev-lang/python' '+ncurses'
     copy_gcc_libs
 }
 
@@ -17,5 +18,6 @@ configure_rootfs_build()
 
 finish_rootfs_build()
 {
+    copy_gcc_libs
     :
 }

@@ -2,12 +2,20 @@ FROM ${IMAGE_PARENT}
 LABEL maintainer ${MAINTAINER}
 
 ADD rootfs.tar /
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY healthcheck.sh /usr/local/bin/healthcheck.sh
+COPY haproxy.cfg.default /usr/share/haproxy/haproxy.cfg.default
+COPY dataplaneapi.yaml.default /usr/share/haproxy/dataplaneapi.yaml.default
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh /usr/local/bin/healthcheck.sh && \
+    mkdir -p /usr/share/haproxy /etc/haproxy/maps /etc/haproxy/ssl /etc/haproxy/storage /tmp/haproxy
 
 VOLUME ["/etc/haproxy","/etc/ssl"]
 EXPOSE 80:80/tcp
 EXPOSE 443:443/tcp
+EXPOSE 5555:5555/tcp
+EXPOSE 8404:8404/tcp
 RUN mkdir -p /run && chmod 777 /tmp /run && chown haproxy:haproxy /tmp /run
 
-HEALTHCHECK CMD printf "GET / HTTP/1.1\n\n" > /dev/tcp/127.0.0.1/443
-#HEALTHCHECK CMD curl -k --fail https://localhost:443/ || exit 1
-CMD ["/usr/sbin/haproxy","-f","/etc/haproxy/haproxy.cfg"]
+HEALTHCHECK --interval=10s --timeout=3s --start-period=10s --retries=3 \
+  CMD /usr/local/bin/healthcheck.sh
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
