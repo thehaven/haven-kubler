@@ -1,5 +1,5 @@
 FROM ${IMAGE_PARENT}
-LABEL maintainer ${MAINTAINER}
+LABEL maintainer="${MAINTAINER}"
 
 ADD rootfs.tar /
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
@@ -7,14 +7,14 @@ COPY healthcheck.sh /usr/local/bin/healthcheck.sh
 COPY haproxy.cfg.default /usr/share/haproxy/haproxy.cfg.default
 COPY dataplaneapi.yaml.default /usr/share/haproxy/dataplaneapi.yaml.default
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh /usr/local/bin/healthcheck.sh && \
-    mkdir -p /usr/share/haproxy /etc/haproxy/maps /etc/haproxy/ssl /etc/haproxy/storage /tmp/haproxy
+    mkdir -p /usr/share/haproxy /etc/haproxy/maps /etc/haproxy/ssl /etc/haproxy/storage /etc/haproxy/spoe /etc/haproxy/backups /tmp/haproxy /tmp/haproxy/spoe /var/lib/haproxy
 
 VOLUME ["/etc/haproxy","/etc/ssl"]
 EXPOSE 80:80/tcp
 EXPOSE 443:443/tcp
 EXPOSE 5555:5555/tcp
 EXPOSE 8404:8404/tcp
-RUN mkdir -p /run && chmod 777 /tmp /run && chown haproxy:haproxy /tmp /run
+RUN mkdir -p /run /var/run && chmod 777 /tmp /run /var/run && chown haproxy:haproxy /tmp /run /var/run
 
 HEALTHCHECK --interval=10s --timeout=3s --start-period=10s --retries=3 \
   CMD /usr/local/bin/healthcheck.sh

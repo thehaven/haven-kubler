@@ -1,7 +1,12 @@
 ### haven/s6:dev
 
-Built: Thu 23 Oct 22:55:37 BST 2025
+Built: Sun  7 Dec 23:01:22 GMT 2025
 Image Size: 19.5MB
+
+
+
+
+
 
 #### Installed
 Package | USE Flags

@@ -1,7 +1,12 @@
 ### haven/openssl:dev
 
-Built: Thu 23 Oct 23:00:02 BST 2025
+Built: Sun  7 Dec 23:01:22 GMT 2025
 Image Size: 27.8MB
+
+
+
+
+
 
 #### Installed
 Package | USE Flags

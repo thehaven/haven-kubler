@@ -1,6 +1,10 @@
 #!/bin/sh
 set -e
 
+# Ensure required directories exist (volumes can override build-time directories)
+mkdir -p /etc/haproxy/maps /etc/haproxy/ssl /etc/haproxy/storage /etc/haproxy/spoe /etc/haproxy/backups /tmp/haproxy /tmp/haproxy/spoe /var/run
+chown -R haproxy:haproxy /etc/haproxy /tmp/haproxy
+
 # Check if HAProxy config exists, if not copy default
 HAPROXY_CONFIG_TYPE="custom"
 if [ ! -f /etc/haproxy/haproxy.cfg ]; then
@@ -24,6 +28,11 @@ else
     echo "Default Dataplane API configuration copied to /etc/haproxy/dataplaneapi.yaml"
     DATAPLANE_ENABLED=true
     DATAPLANE_CONFIG_TYPE="default"
+fi
+
+# Set proper ownership for Dataplane API config
+if [ -f /etc/haproxy/dataplaneapi.yaml ]; then
+    chown haproxy:haproxy /etc/haproxy/dataplaneapi.yaml
 fi
 
 # Display startup information
@@ -54,11 +63,22 @@ echo ""
 /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -W -db &
 HAPROXY_PID=$!
 
+# Wait for HAProxy runtime socket to be ready (no timeout)
+echo "Waiting for HAProxy runtime socket at /var/run/haproxy.sock..."
+while [ ! -S /var/run/haproxy.sock ]; do
+    sleep 0.5
+done
+
+echo "HAProxy runtime socket ready"
+# Ensure haproxy user can access the socket
+chown haproxy:haproxy /var/run/haproxy.sock 2>/dev/null || true
+
 # Start Dataplane API if enabled
 if [ "$DATAPLANE_ENABLED" = "true" ]; then
-    echo "Starting HAProxy Dataplane API..."
+    echo "Starting HAProxy Dataplane API as haproxy user..."
     # Don't fail container if Dataplane API fails to start
-    if /usr/bin/dataplaneapi --config-file=/etc/haproxy/dataplaneapi.yaml & then
+    # Run as haproxy user using su
+    if su -s /bin/sh haproxy -c "/usr/bin/dataplaneapi --config-file=/etc/haproxy/dataplaneapi.yaml" & then
         DATAPLANEAPI_PID=$!
         echo "Dataplane API started successfully (PID: $DATAPLANEAPI_PID)"
     else

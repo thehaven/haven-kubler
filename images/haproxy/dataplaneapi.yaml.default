@@ -1,30 +1,46 @@
+config_version: 2
+name: haproxy-dataplaneapi
+
 dataplaneapi:
   host: 0.0.0.0
   port: 5555
+  scheme:
+    - http
   
   # ⚠️ CHANGE THESE CREDENTIALS IN PRODUCTION!
   user:
-    - insecure: true
+    - name: admin
       password: haproxy
-      name: admin
+      insecure: true
   
   transaction:
     transaction_dir: /tmp/haproxy
+    backups_number: 1
+    backups_dir: /etc/haproxy/backups
   
   resources:
     maps_dir: /etc/haproxy/maps
     ssl_certs_dir: /etc/haproxy/ssl
     general_storage_dir: /etc/haproxy/storage
+    spoe_dir: /etc/haproxy/spoe
+    spoe_transaction_dir: /tmp/haproxy/spoe
+
+haproxy:
+  config_file: /etc/haproxy/haproxy.cfg
+  haproxy_bin: /usr/sbin/haproxy
+  master_worker_mode: false
   
-  haproxy:
-    config_file: /etc/haproxy/haproxy.cfg
-    haproxy_bin: /usr/sbin/haproxy
-    
-    reload:
-      reload_delay: 5
-      reload_cmd: kill -SIGUSR2 1
-      restart_cmd: kill -TERM 1 && /usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg
-      reload_strategy: custom
-    
-    runtime:
-      - /run/haproxy.sock
+  reload:
+    reload_delay: 5
+    reload_cmd: kill -SIGUSR2 1
+    restart_cmd: kill -TERM 1
+    reload_strategy: custom
+    reload_retention: 1
+  
+  runtime:
+    - /var/run/haproxy.sock
+
+log_targets:
+  - log_to: stdout
+    log_level: warning
+    log_format: text

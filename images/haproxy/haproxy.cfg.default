@@ -4,7 +4,7 @@ global
     chroot /var/lib/haproxy
     
     # Runtime API for Dataplane API integration
-    stats socket /run/haproxy.sock mode 660 level admin expose-fd listeners
+    stats socket /var/run/haproxy.sock mode 770 level admin expose-fd listeners
     stats timeout 30s
     
     user haproxy
