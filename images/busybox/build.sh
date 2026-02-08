@@ -1,7 +1,7 @@
 #
 # Kubler phase 1 config, pick installed packages and/or customize the build
 #
-_packages="sys-apps/busybox"
+_packages=">sys-apps/busybox-1.36 app-alternatives/sh"
 
 #
 # This hook is called just before starting the build of the root fs
@@ -10,8 +10,14 @@ configure_rootfs_build()
 {
     update_use 'sys-libs/libxcrypt' +static-libs
     update_use 'sys-apps/busybox' +make-symlinks +static
+    update_use 'app-alternatives/sh' '+busybox -bash -dash -ksh -lksh -mksh'
     update_use 'virtual/libcrypt' +static-libs
     update_use 'sys-apps/sed' +static -acl -nls
+
+    mkdir -p "${_EMERGE_ROOT}"/usr/bin
+    ln -s usr/bin "${_EMERGE_ROOT}"/bin
+    ln -s usr/bin "${_EMERGE_ROOT}"/sbin
+    ln -s bin "${_EMERGE_ROOT}"/usr/sbin
 }
 
 #
@@ -37,7 +43,7 @@ finish_rootfs_build()
     # kick openrc init stuff
     rm -rf "${_EMERGE_ROOT}"/etc/init.d/
     # eselect now uses a hard coded readlink path :/
-    ln -sr "${_EMERGE_ROOT}"/bin/readlink "${_EMERGE_ROOT}"/usr/bin/readlink
+    # ln -sr "${_EMERGE_ROOT}"/bin/readlink "${_EMERGE_ROOT}"/usr/bin/readlink
     # remove temp skip from above
     unprovide_package sys-libs/musl
 }

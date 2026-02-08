@@ -17,6 +17,8 @@ configure_rootfs_build()
 finish_rootfs_build()
 {
     uninstall_package app-shells/bash
+    # Restore /bin/sh to busybox since bash is gone
+    ln -sf busybox "${_EMERGE_ROOT}/bin/sh"
     mkdir /backup
     # since eselect-postgresql-2.1 /usr/share/pkgconfig folder is expected
     mkdir -p "${_EMERGE_ROOT}"/usr/share/pkgconfig

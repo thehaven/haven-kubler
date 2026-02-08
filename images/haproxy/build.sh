@@ -1,4 +1,4 @@
-_packages=">=net-proxy/haproxy-3.3.0 net-proxy/hatop net-proxy/haproxy-dataplaneapi"
+_packages=">=net-proxy/haproxy-3.3.1 net-proxy/hatop net-proxy/haproxy-dataplaneapi app-shells/bash app-alternatives/sh"
 
 configure_bob()
 {
@@ -12,6 +12,7 @@ configure_bob()
 
 configure_rootfs_build()
 {
+    update_use 'app-alternatives/sh' '+bash -busybox -dash -ksh -lksh -mksh'
     if [ ! -e '/emerge-root/etc/group' ]; then mkdir -p '/emerge-root/etc' && touch '/emerge-root/etc/group'; fi
     :
 }

@@ -1,4 +1,4 @@
-_packages="app-shells/bash =dev-util/artifactory-pro-bin-7.12.6 dev-db/sqlite"
+_packages="app-shells/bash app-alternatives/sh =dev-util/artifactory-pro-bin-7.12.6 dev-db/sqlite"
 configure_bob()
 {
     :
@@ -10,6 +10,7 @@ configure_rootfs_build()
     rm -Rf /var/db/repos/gentoo; emerge --sync; etc-update --automode -5; emerge --oneshot portage
     emerge net-misc/curl net-misc/rsync
     add_overlay haven-overlay  https://gitlab-ee.thehavennet.org.uk/gentoo/haven-overlay.git
+    update_use 'app-alternatives/sh' '+bash -busybox -dash -ksh -lksh -mksh'
     sed -i '/app-shells\/bash.*/d' /etc/portage/profile/package.provided
     emerge app-shells/bash
     update_keywords 'dev-util/artifactory-pro-bin' '+**'

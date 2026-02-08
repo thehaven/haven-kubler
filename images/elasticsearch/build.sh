@@ -19,4 +19,6 @@ configure_rootfs_build()
 finish_rootfs_build()
 {
     uninstall_package app-shells/bash virtual/jre-1.8.0-r1
+    # Restore /bin/sh to busybox since bash is gone
+    ln -sf busybox "${_EMERGE_ROOT}/bin/sh"
 }

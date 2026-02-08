@@ -1,7 +1,7 @@
 #
 # Kubler phase 1 config, pick installed packages and/or customize the build
 #
-_packages="net-misc/curl app-admin/eselect app-portage/portage-utils app-shells/bash app-arch/zstd"
+_packages="net-misc/curl app-admin/eselect app-portage/portage-utils app-shells/bash app-alternatives/sh app-arch/zstd"
 
 #
 # This hook is called just before starting the build of the root fs
@@ -9,6 +9,7 @@ _packages="net-misc/curl app-admin/eselect app-portage/portage-utils app-shells/
 configure_rootfs_build()
 {
     update_use 'sys-libs/ncurses' '+minimal'
+    update_use 'app-alternatives/sh' '+bash -busybox -dash -ksh -lksh -mksh'
     # these use flags pull in gcc as runtime dep
     update_use app-portage/portage-utils -qmanifest -qtegrity -openmp
 }

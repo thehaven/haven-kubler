@@ -1,4 +1,4 @@
-_packages="app-shells/bash media-tv/plex-media-server"
+_packages="app-shells/bash app-alternatives/sh media-tv/plex-media-server"
 
 configure_bob()
 {
@@ -11,6 +11,7 @@ configure_bob()
 
 configure_rootfs_build()
 {
+    update_use 'app-alternatives/sh' '+bash -busybox -dash -ksh -lksh -mksh'
     if [ ! -e '/emerge-root/etc/group' ]; then mkdir -p '/emerge-root/etc' && touch '/emerge-root/etc/group'; fi
     :
 }
