@@ -3,7 +3,7 @@ LABEL maintainer ${MAINTAINER}
 
 ADD rootfs.tar /
 
-ADD etc /etc
+COPY etc /etc
 
 ENV POSTGRES_SLOT=${BOB_POSTGRES_SLOT} \
     PGDATA=/var/lib/postgresql/data

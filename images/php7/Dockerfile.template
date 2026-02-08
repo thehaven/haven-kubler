@@ -3,7 +3,7 @@ LABEL maintainer="${MAINTAINER}"
 
 ADD rootfs.tar /
 
-ADD etc /etc
+COPY etc /etc
 
 ENV PHP_SLOT=${BOB_PHP_SLOT}
 

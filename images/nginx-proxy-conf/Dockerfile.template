@@ -3,7 +3,7 @@ LABEL maintainer ${MAINTAINER}
 
 ADD rootfs.tar /
 
-ADD docker-gen /etc/docker-gen/
+COPY docker-gen /etc/docker-gen/
 
 ENV DOCKER_HOST=unix:///var/run/docker.sock \
     NGINX_ID=nginxproxy_nginx_1

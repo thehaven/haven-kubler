@@ -3,7 +3,7 @@ LABEL maintainer ${MAINTAINER}
 
 ADD rootfs.tar /
 
-ADD etc /etc
+COPY etc /etc
 
 # listen on 0.0.0.0, log to stderr
 RUN sed-or-die '127.0.0.1' '0.0.0.0' /etc/mysql/mysql.d/50-distro-server.cnf

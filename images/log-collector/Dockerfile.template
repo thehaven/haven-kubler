@@ -7,10 +7,10 @@ RUN gem install fluentd --no-ri --no-rdoc
 
 RUN gem install fluent-plugin-elasticsearch --no-ri --no-rdoc
 
-ADD etc /etc
+COPY etc /etc
 
 WORKDIR /config
-ADD docker-gen /config/template
+COPY docker-gen /config/template
 
 RUN chmod +x $(find /etc/service -name run) && \
     ln -s /etc/s6_finish_default /etc/service/docker-gen/finish && \

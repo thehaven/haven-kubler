@@ -3,7 +3,7 @@ LABEL maintainer ${MAINTAINER}
 
 ADD rootfs.tar /
 
-ADD etc /etc
+COPY etc /etc
 
 # env for cert creation: CRT_COUNTRY, CRT_STATE, CRT_LOCATION, CRT_ORG, CRT_CN
 ENV PHP_SLOT=${BOB_PHP_SLOT} \
