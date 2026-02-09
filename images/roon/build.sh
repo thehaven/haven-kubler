@@ -10,6 +10,12 @@ configure_rootfs_build()
     update_use 'media-video/ffmpeg' '+amr +amrenc +bzip2 +fdk +libsoxr +mp3 +opus +vorbis -xvid -x265 -x264 -webp -vpx -vaapi -vdpau -dav1d -pulseaudio -openal -speex'
     update_use 'net-dns/bind' '+caps +geoip +gssapi'
     update_keywords 'net-dns/bind' '+~amd64'
+
+    # Fix circular dependency
+    update_use 'dev-libs/glib' '-mime'
+    emerge dev-libs/glib
+    update_use 'dev-libs/glib' '+mime'
+
     emerge -ukg net-dns/bind
     :
 }
