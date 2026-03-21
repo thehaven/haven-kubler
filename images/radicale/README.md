@@ -29,6 +29,31 @@ environment:
 
 Alternatively, if this variable is unset, you can mount a custom users file directly to `/etc/radicale/users`.
 
+### User Management
+
+Radicale uses the standard `htpasswd` format. While the default configuration supports `plain` text (for compatibility with legacy setups), it is highly recommended to use **bcrypt** for production.
+
+#### Generating Bcrypt Hashes
+You can generate compatible hashes using `openssl` on your host or by using the container's built-in Python environment:
+
+**Option A: OpenSSL (Host)**
+```bash
+# Replace 'mypassword' with your actual password
+openssl passwd -6 mypassword
+```
+
+**Option B: Python (In Container)**
+```bash
+docker exec radicale /opt/scripts/venv/bin/python3 -c "from passlib.hash import bcrypt; print('user:' + bcrypt.hash('mypassword'))"
+```
+
+#### Adding Multiple Users
+Combine the hashes into a multiline string for the `RADICALE_USERS_HTPASSWD` variable:
+```text
+admin:$2b$12$R... (hash)
+haven:$2b$12$S... (hash)
+```
+
 ### Usage
 
 ```bash
