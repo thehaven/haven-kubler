@@ -19,14 +19,20 @@ finish_rootfs_build()
 {
     # Copy configuration files
     mkdir -p "${_EMERGE_ROOT}/etc/radicale"
-    cp -rp "${_CONFIG}/files/radicale/"* "${_EMERGE_ROOT}/etc/radicale/"
+    cp -rp "${_CONFIG}/files/radicale/config" "${_EMERGE_ROOT}/etc/radicale/" 2>/dev/null || true
+    cp -rp "${_CONFIG}/files/radicale/rights" "${_EMERGE_ROOT}/etc/radicale/" 2>/dev/null || true
+    cp -rp "${_CONFIG}/files/radicale/logging" "${_EMERGE_ROOT}/etc/radicale/" 2>/dev/null || true
+    
+    # Copy scripts to /opt/scripts
+    mkdir -p "${_EMERGE_ROOT}/opt/scripts"
+    cp -rp "${_CONFIG}/files/radicale/scripts/"* "${_EMERGE_ROOT}/opt/scripts/"
     
     # Ensure log and data directories exist
     mkdir -p "${_EMERGE_ROOT}/var/log/radicale"
     mkdir -p "${_EMERGE_ROOT}/var/lib/radicale"
     
-    # Setup venv for NLP in /etc/radicale/scripts/venv
-    local venv_path="${_EMERGE_ROOT}/etc/radicale/scripts/venv"
+    # Setup venv for NLP in /opt/scripts/venv
+    local venv_path="${_EMERGE_ROOT}/opt/scripts/venv"
     rm -rf "${venv_path}"
     
     echo ">>> Setting up NLP venv with uv..."
@@ -54,11 +60,12 @@ finish_rootfs_build()
 EOF
 
     # Fix permissions (Radicale UID 327)
-    chmod +x "${_EMERGE_ROOT}/etc/radicale/scripts/smart_categorize.py"
-    chmod +x "${_EMERGE_ROOT}/etc/radicale/scripts/pre-commit"
-    chmod +x "${_EMERGE_ROOT}/etc/radicale/scripts/docker-entrypoint.sh"
+    chmod +x "${_EMERGE_ROOT}/opt/scripts/smart_categorize.py"
+    chmod +x "${_EMERGE_ROOT}/opt/scripts/pre-commit"
+    chmod +x "${_EMERGE_ROOT}/opt/scripts/docker-entrypoint.sh"
     
     chown -R 327:327 "${_EMERGE_ROOT}/etc/radicale"
     chown -R 327:327 "${_EMERGE_ROOT}/var/log/radicale"
     chown -R 327:327 "${_EMERGE_ROOT}/var/lib/radicale"
+    chown -R 327:327 "${_EMERGE_ROOT}/opt/scripts"
 }

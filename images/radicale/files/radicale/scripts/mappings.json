@@ -1,0 +1,110 @@
+{
+  "PEOPLE": {
+    "ALEXIS": [
+      "Alexis"
+    ],
+    "ETHAN": [
+      "Ethan"
+    ],
+    "ISAAC": [
+      "Isaac"
+    ],
+    "ANNE": [
+      "Anne"
+    ],
+    "SIMON": [
+      "Simon",
+      "Haven"
+    ],
+    "JACK": [
+      "Jack"
+    ]
+  },
+  "GROUPS": {
+    "KIDS": [
+      "kids",
+      "children"
+    ],
+    "BOYS": [
+      "boys"
+    ],
+    "ALL": [
+      "all",
+      "everyone"
+    ]
+  },
+  "SUBJECTS": {
+    "DRUMS": [
+      "drum",
+      "drums"
+    ],
+    "PIANO": [
+      "piano"
+    ],
+    "SWIMMING": [
+      "swimming"
+    ],
+    "RIDING": [
+      "riding"
+    ],
+    "JU-JITSU": [
+      "ju-jitsu"
+    ],
+    "TESCO": [
+      "tesco"
+    ],
+    "ASTRA": [
+      "astra"
+    ],
+    "DISCOVERY": [
+      "discovery"
+    ],
+    "BALLYHOLME": [
+      "ballyholme"
+    ],
+    "NAS": [
+      "nas"
+    ]
+  },
+  "ACTIONS": {
+    "PTO": [
+      "pto",
+      "off work"
+    ],
+    "ON_CALL": [
+      "on call"
+    ],
+    "LESSON": [
+      "lesson"
+    ],
+    "PRACTICE": [
+      "practice"
+    ],
+    "APPOINTMENT": [
+      "appointment"
+    ],
+    "DOCTOR": [
+      "doctor"
+    ],
+    "DENTIST": [
+      "dentist",
+      "orthodontist"
+    ],
+    "THERAPY": [
+      "therapy",
+      "physiotherapy"
+    ],
+    "GARAGE": [
+      "garage",
+      "mot",
+      "service"
+    ],
+    "BIRTHDAY": [
+      "birthday"
+    ],
+    "HOLIDAY": [
+      "holiday",
+      "closed"
+    ]
+  }
+}

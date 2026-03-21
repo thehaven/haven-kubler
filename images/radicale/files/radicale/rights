@@ -1,0 +1,21 @@
+# Radicale Rights Configuration
+
+[haven]
+user = haven
+collection = .*
+permission = rw
+
+[shadow]
+user = shadow
+collection = .*
+permission = rw
+
+[owner-write]
+user = .+
+collection = %(login)s(/.*)?
+permission = rw
+
+[family-shared]
+user = .+
+collection = family(/.*)?
+permission = rw
