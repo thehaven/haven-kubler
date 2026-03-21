@@ -1,4 +1,4 @@
-_packages="www-apps/radicale"
+_packages="www-apps/radicale sys-apps/shadow sys-apps/util-linux"
 
 configure_bob()
 {
@@ -48,17 +48,6 @@ finish_rootfs_build()
     # Download spacy model
     "${venv_path}/bin/python" -m spacy download en_core_web_sm
     
-    # Configure git for radicale user
-    cat <<EOF > "${_EMERGE_ROOT}/var/lib/radicale/.gitconfig"
-[user]
-	name = Radicale
-	email = radicale@thehavennet.org.uk
-[push]
-	default = simple
-[safe]
-	directory = /var/lib/radicale
-EOF
-
     # Fix permissions (Radicale UID 327)
     chmod +x "${_EMERGE_ROOT}/opt/scripts/smart_categorize.py"
     chmod +x "${_EMERGE_ROOT}/opt/scripts/pre-commit"
