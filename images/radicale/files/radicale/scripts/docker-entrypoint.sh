@@ -19,13 +19,26 @@ git config --global user.name "Radicale Server"
 git config --global user.email "radicale@thehavennet.org.uk"
 git config --global safe.directory "$DATA_DIR"
 
-# 3. Secret Injection
+# 3. Bootstrap Configuration
+if [ ! -f "$CONFIG_DIR/config" ]; then
+    echo ">>> Configuration missing in $CONFIG_DIR. Bootstrapping from golden defaults..."
+    mkdir -p "$CONFIG_DIR"
+    cp -rp /opt/defaults/etc/radicale/* "$CONFIG_DIR/"
+    
+    # Apply best-practice defaults based on environment
+    if [ "$RADICALE_FORCE_BCRYPT" = "true" ]; then
+        echo ">>> Environment flag set: Switching to bcrypt encryption..."
+        sed -i 's/htpasswd_encryption = plain/htpasswd_encryption = bcrypt/' "$CONFIG_DIR/config"
+    fi
+fi
+
+# 4. Secret Injection
 if [ -n "$RADICALE_USERS_HTPASSWD" ]; then
     echo ">>> Injecting users from environment..."
     echo "$RADICALE_USERS_HTPASSWD" > "$CONFIG_DIR/users"
 fi
 
-# 4. Dynamic Recovery & Remote Setup
+# 5. Dynamic Recovery & Remote Setup
 if [ -z "$(ls -A "$DATA_DIR")" ] && [ -n "$RADICALE_GIT_REMOTE" ]; then
     echo ">>> Data volume is empty. Recovery via git clone..."
     git clone "$RADICALE_GIT_REMOTE" "$DATA_DIR"
@@ -41,13 +54,13 @@ if [ -n "$RADICALE_GIT_REMOTE" ]; then
     git -C "$DATA_DIR" remote add origin "$RADICALE_GIT_REMOTE"
 fi
 
-# 5. Hook Deployment
+# 6. Hook Deployment
 echo ">>> Refreshing pre-commit hooks..."
 mkdir -p "$DATA_DIR/.git/hooks"
 cp "$SCRIPTS_DIR/pre-commit" "$DATA_DIR/.git/hooks/pre-commit"
 chmod +x "$DATA_DIR/.git/hooks/pre-commit"
 
-# 6. Final Permissions & Privilege Drop
+# 7. Final Permissions & Privilege Drop
 echo ">>> Applying final permissions..."
 chown -R radicale:radicale "$CONFIG_DIR" "/var/log/radicale" "$DATA_DIR" "$SCRIPTS_DIR"
 

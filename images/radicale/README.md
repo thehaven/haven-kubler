@@ -8,6 +8,7 @@ A lightweight CalDAV/CardDAV server with Git-backed storage, automated mirroring
 - **NLP Categorisation**: Automatically extracts tags (e.g., `DRUMS`, `KIDS`) from event summaries using spaCy.
 - **Git Integrity**: Storage root `/var/lib/radicale` is a Git repository with automated commits and mirroring.
 - **Disaster Recovery**: Automatically clones from `RADICALE_GIT_REMOTE` if the data volume is empty on boot.
+- **Auto-Bootstrapping**: Automatically restores golden default configurations if `/etc/radicale` is empty or missing.
 
 ### Environment Variables
 
@@ -15,6 +16,7 @@ A lightweight CalDAV/CardDAV server with Git-backed storage, automated mirroring
 | :--- | :--- | :--- |
 | `RADICALE_GIT_REMOTE` | GitLab/GitHub remote URL for mirroring. | `https://oauth2:TOKEN@gitlab.com/user/repo.git` |
 | `RADICALE_USERS_HTPASSWD` | Raw `htpasswd` content for user authentication. | `admin:$apr1$hash...` (Supports multiline) |
+| `RADICALE_FORCE_BCRYPT` | Set to `true` to force bcrypt encryption on bootstrap. | `true` |
 
 #### Managing Many Users
 For large user sets, provide a multiline string in your `.env` or Docker Compose file:

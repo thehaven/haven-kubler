@@ -17,11 +17,13 @@ configure_rootfs_build()
 
 finish_rootfs_build()
 {
-    # Copy configuration files
+    # Copy configuration files and create a golden copy for bootstrapping
     mkdir -p "${_EMERGE_ROOT}/etc/radicale"
-    cp -rp "${_CONFIG}/files/radicale/config" "${_EMERGE_ROOT}/etc/radicale/" 2>/dev/null || true
-    cp -rp "${_CONFIG}/files/radicale/rights" "${_EMERGE_ROOT}/etc/radicale/" 2>/dev/null || true
-    cp -rp "${_CONFIG}/files/radicale/logging" "${_EMERGE_ROOT}/etc/radicale/" 2>/dev/null || true
+    mkdir -p "${_EMERGE_ROOT}/opt/defaults/etc/radicale"
+    for f in config rights logging; do
+        cp -rp "${_CONFIG}/files/radicale/$f" "${_EMERGE_ROOT}/etc/radicale/" 2>/dev/null || true
+        cp -rp "${_CONFIG}/files/radicale/$f" "${_EMERGE_ROOT}/opt/defaults/etc/radicale/" 2>/dev/null || true
+    done
     
     # Copy scripts to /opt/scripts
     mkdir -p "${_EMERGE_ROOT}/opt/scripts"
