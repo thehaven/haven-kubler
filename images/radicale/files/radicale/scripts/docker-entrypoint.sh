@@ -30,6 +30,9 @@ if [ ! -f "$CONFIG_DIR/config" ]; then
         echo ">>> Environment flag set: Switching to bcrypt encryption..."
         sed -i 's/htpasswd_encryption = plain/htpasswd_encryption = bcrypt/' "$CONFIG_DIR/config"
     fi
+    
+    # Ensure users file exists to prevent startup crash
+    touch "$CONFIG_DIR/users"
 fi
 
 # 4. Secret Injection
