@@ -5,6 +5,7 @@ ADD rootfs.tar /
 
 VOLUME ["/etc/radicale", "/var/lib/radicale", "/var/log/radicale"]
 EXPOSE 5232/TCP
+EXPOSE 9100/TCP
 HEALTHCHECK --interval=5m --timeout=3s \
   CMD curl -f http://localhost:5232/ || exit 1
 

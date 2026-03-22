@@ -67,6 +67,9 @@ chmod +x "$DATA_DIR/.git/hooks/pre-commit"
 echo ">>> Applying final permissions..."
 chown -R radicale:radicale "$CONFIG_DIR" "/var/log/radicale" "$DATA_DIR" "$SCRIPTS_DIR"
 
+echo ">>> Starting Prometheus Exporter..."
+/opt/scripts/venv/bin/python3 /opt/scripts/metrics_exporter.py &
+
 echo ">>> Starting Radicale..."
 exec setpriv --reuid=radicale --regid=radicale --init-groups \
     /usr/bin/radicale --config "$CONFIG_DIR/config"

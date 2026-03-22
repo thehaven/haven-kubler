@@ -46,7 +46,7 @@ finish_rootfs_build()
     
     # Use --seed to include pip so 'spacy download' works
     uv venv --seed "${venv_path}"
-    uv pip install --python "${venv_path}/bin/python" spacy passlib bcrypt icalendar
+    uv pip install --python "${venv_path}/bin/python" spacy passlib bcrypt icalendar prometheus_client
     # Download spacy model
     "${venv_path}/bin/python" -m spacy download en_core_web_sm
     
