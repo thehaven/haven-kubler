@@ -1,12 +1,13 @@
 ### haven/radicale:dev
 
-Built: Sat 21 Mar 11:06:23 GMT 2026
-Image Size: 592MB
+Built: Sun 22 Mar 20:24:47 GMT 2026
+Image Size: 594MB
 
 #### Installed
 Package | USE Flags
 --------|----------
 acct-group/radicale-0-r3 | ``
+acct-group/shadow-0 | ``
 acct-user/radicale-0-r4 | ``
 dev-python/bcrypt-5.0.0 | `-debug -test`
 dev-python/defusedxml-0.8.0_rc2 | `-examples`
@@ -15,6 +16,7 @@ dev-python/python-dateutil-2.9.0_p0 | `-test`
 dev-python/pytz-2026.1_p1 | `-test -verify-provenance`
 dev-python/six-1.17.0 | `-doc -test`
 dev-python/vobject-0.9.8 | `-test`
+sys-apps/shadow-4.19.3 | `acl nls xattr -audit -pam (-selinux) -skey (-split-usr) -su -systemd -test -verify-sig`
 www-apps/radicale-9999 | `-test`
 #### Inherited
 Package | USE Flags

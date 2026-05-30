@@ -1,4 +1,4 @@
-_packages=">=net-misc/yt-dlp-2026.02.04 media-video/ffmpeg net-misc/aria2 media-libs/mutagen media-video/atomicparsley dev-python/pycryptodome"
+_packages=">=net-misc/yt-dlp-2026.03.17 media-video/ffmpeg net-misc/aria2 media-libs/mutagen media-video/atomicparsley dev-python/pycryptodome"
 BOB_INSTALL_BASELAYOUT=true
 
 configure_builder()
